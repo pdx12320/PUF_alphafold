@@ -1,0 +1,4 @@
+model,validation,AUC,balanced_accuracy,TN_FP_FN_TP
+summary_LR,leave_source_repeat_order_out,0.9393939393939393,0.7272727272727273,"[5, 6, 0, 3]"
+summary_RF,leave_source_repeat_order_out,0.9393939393939394,0.6666666666666666,"[11, 0, 2, 1]"
+summary_XGB,leave_source_repeat_order_out,1.0,0.8333333333333333,"[11, 0, 1, 2]"

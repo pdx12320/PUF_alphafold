@@ -1,0 +1,22 @@
+{
+  "model": "CP_density3_RF.joblib",
+  "features": [
+    "pp_nonlocal4_high_per_res",
+    "pp_nonlocal12_high_per_res",
+    "pp_nonlocal24_high_per_res"
+  ],
+  "threshold": 0.5,
+  "training_min": {
+    "pp_nonlocal4_high_per_res": 2.212998102466793,
+    "pp_nonlocal12_high_per_res": 1.189278937381404,
+    "pp_nonlocal24_high_per_res": 1.0265654648956355
+  },
+  "training_max": {
+    "pp_nonlocal4_high_per_res": 2.38728323699422,
+    "pp_nonlocal12_high_per_res": 1.3326732673267327,
+    "pp_nonlocal24_high_per_res": 1.1277227722772278
+  },
+  "n_constructs": 24,
+  "success": 4,
+  "interpretation": "ranking score; limited to represented R123 PUF12 domain"
+}

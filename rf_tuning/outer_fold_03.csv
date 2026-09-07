@@ -1,0 +1,5 @@
+scope,heldout,construct,batch,design_id,success,score,inner_threshold,candidate_id,feature_set,inner_AUC,inner_AP
+joint,3,puf12_r123_r567_r5loop67_loopr678,previous,,1,0.0663023416309564,0.45,40,CP_structure17,1.0,1.0
+CP_density3,3,puf12_r123_r567_r5loop67_loopr678,previous,,1,0.7164975390066964,0.4,0,CP_density3,0.9523809523809524,0.8333333333333334
+CP_summary14,3,puf12_r123_r567_r5loop67_loopr678,previous,,1,0.5502255753400159,0.3,22,CP_summary14,0.9523809523809524,0.8333333333333334
+CP_structure17,3,puf12_r123_r567_r5loop67_loopr678,previous,,1,0.0663023416309564,0.45,40,CP_structure17,1.0,1.0

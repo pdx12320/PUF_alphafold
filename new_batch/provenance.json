@@ -1,0 +1,14 @@
+{
+  "constructs": 15,
+  "seeds": 60,
+  "models": 300,
+  "experimental_labels_available": false,
+  "missing_design_ids": [
+    6
+  ],
+  "validation": "frozen prediction only; no new-cohort AUC",
+  "figure_uncertainty": "SD of seed mean features, technical prediction variability",
+  "RF_reconstructed_from_old_training_only": true,
+  "ranking": "XGBoost score ties are not resolved by biological evidence",
+  "alt_text": "Designs 7 and 8 have relatively high scores among related 12-repeat constructs. Designs 1 and 4 show model disagreement. Designs 9\u201311 are high-scoring but outside repeat-count training range. Designs 12\u201316 rearrange modules."
+}

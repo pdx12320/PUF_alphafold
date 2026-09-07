@@ -1,0 +1,36 @@
+{
+  "feature_names": [
+    "pp_nonlocal12_high_per_res",
+    "plddt_protein_mean",
+    "pae_contact_weighted",
+    "Rg_full_length_normalized"
+  ],
+  "standardized_intercept": -0.08057109498350981,
+  "mean": [
+    1.270327599800771,
+    89.79276340224126,
+    1.8650977785714287,
+    4.310950909819831
+  ],
+  "scale": [
+    0.03755753670210193,
+    1.2894210118005955,
+    0.3088477330844099,
+    0.03958059502405855
+  ],
+  "standardized_coefficients": [
+    0.3236420656275162,
+    0.15926684266654922,
+    -0.15071024879879946,
+    -0.22960487227384616
+  ],
+  "raw_intercept": 3.799400898457078,
+  "raw_coefficients": [
+    8.617233558062486,
+    0.1235181071263474,
+    -0.48797589444378237,
+    -5.800945441428655
+  ],
+  "threshold": 0.5,
+  "interpretation": "Exploratory ranking score, not a calibrated probability; frozen on 14 constructs."
+}

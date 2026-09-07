@@ -1,0 +1,82 @@
+{
+  "base_margin": 0.0,
+  "rules": [
+    {
+      "feature": "pp_nonlocal12_high_per_res",
+      "feature_index": 11,
+      "z_threshold": 1.23988247,
+      "raw_threshold_approx": 1.3168945311740887,
+      "leaf_if_less": -0.26164736931,
+      "leaf_if_greater_equal": 0.26164737624000006,
+      "tree_count": 21
+    },
+    {
+      "feature": "pp_nonlocal4_high_per_res",
+      "feature_index": 9,
+      "z_threshold": 1.14454627,
+      "raw_threshold_approx": 2.379752850896068,
+      "leaf_if_less": -0.80797145903,
+      "leaf_if_greater_equal": 0.8079714612799997,
+      "tree_count": 74
+    },
+    {
+      "feature": "pp_nonlocal24_high_per_res",
+      "feature_index": 13,
+      "z_threshold": 1.28797257,
+      "raw_threshold_approx": 1.1206054686426843,
+      "leaf_if_less": -0.059744353369999996,
+      "leaf_if_greater_equal": 0.05974435856,
+      "tree_count": 5
+    }
+  ],
+  "input_means": [
+    49.15417857142857,
+    3.7810906593406597,
+    0.9776958333333333,
+    0.8106007326007326,
+    0.11696428571428567,
+    0.7675824175824175,
+    0.06802299030570899,
+    3.4262820512820515,
+    2.402575431716962,
+    2.325663274631361,
+    1.3261261103590738,
+    1.270327599800771,
+    1.1402191119044183,
+    1.0848472396877755
+  ],
+  "input_scales": [
+    2.896269124772808,
+    0.2227899326748314,
+    0.02163729115558574,
+    0.04619002673686863,
+    0.036341369719112476,
+    0.04192419309216547,
+    0.006991431252583088,
+    0.3326524286727351,
+    0.021517572551626483,
+    0.04725853177146565,
+    0.01964830594236849,
+    0.03755753670210193,
+    0.014663686401257087,
+    0.027763191381404064
+  ],
+  "columns": [
+    "pr_cp_sum",
+    "pr_cp_per_nt",
+    "pr_top20_mean",
+    "pr_rna_max_mean",
+    "pr_rna_max_min",
+    "pr_rna_coverage_05",
+    "pr_protein_coverage_05",
+    "pr_high_contacts_per_nt",
+    "pp_nonlocal4_per_res",
+    "pp_nonlocal4_high_per_res",
+    "pp_nonlocal12_per_res",
+    "pp_nonlocal12_high_per_res",
+    "pp_nonlocal24_per_res",
+    "pp_nonlocal24_high_per_res"
+  ],
+  "prediction": "sigmoid(base_margin + sum(rule leaf)); standardized inputs cast to float32 before comparison",
+  "note": "Raw thresholds are for interpretation; use the saved pipeline at numerical boundaries."
+}

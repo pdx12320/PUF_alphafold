@@ -1,0 +1,17 @@
+{
+  "features": [
+    "pp_nonlocal12_high_per_res"
+  ],
+  "mean": [
+    1.2830476686193621
+  ],
+  "scale": [
+    0.03884619288509648
+  ],
+  "coefficient": [
+    0.4747608475714301
+  ],
+  "intercept": -0.07441412115709789,
+  "threshold": 0.5,
+  "role": "minimal ranking baseline, low precision at default threshold; not calibrated"
+}

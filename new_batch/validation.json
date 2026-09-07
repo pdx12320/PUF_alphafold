@@ -1,0 +1,7 @@
+{
+  "constructs": 15,
+  "seed_counts_per_construct": 4,
+  "models_per_seed": 5,
+  "frozen_XGB_formula_max_score_error": 3.0041707121952754e-08,
+  "new_labels_used": false
+}

@@ -1,0 +1,15 @@
+{
+  "python": "3.12.13",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "pandas": "2.2.3",
+  "sklearn": "1.8.0",
+  "matplotlib": "3.10.8",
+  "figure_dpi": 220,
+  "figure_size_inches": [
+    15,
+    6
+  ],
+  "uncertainty": "SD across seed means",
+  "figure_alt_text": "Three panels compare internal high-CP contacts, protein-RNA contacts and held-out logistic scores. Successes rank highest on mean internal high-CP contact density; seed values overlap with two failures."
+}

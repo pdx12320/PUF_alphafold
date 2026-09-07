@@ -1,0 +1,81 @@
+{
+  "main_predictions": 1512,
+  "grouped_validations_identical": true,
+  "figures_visually_reviewed": true,
+  "figures": [
+    {
+      "file": "validation_comparison.png",
+      "width": 3300,
+      "height": 1560,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "feature_importance.png",
+      "width": 3600,
+      "height": 1620,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "heldout_probabilities.png",
+      "width": 3600,
+      "height": 2550,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "architecture_feature_distributions.png",
+      "width": 3300,
+      "height": 2100,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "adjacent_interface_heatmap.png",
+      "width": 2700,
+      "height": 2460,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "success_failure_distributions.png",
+      "width": 3900,
+      "height": 1110,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "CCR_heatmap.png",
+      "width": 2700,
+      "height": 2400,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "file": "repeat_pair_heatmap.png",
+      "width": 3600,
+      "height": 1320,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  ],
+  "n_main": 24,
+  "n_success": 4
+}

@@ -1,0 +1,80 @@
+{
+  "feature_sets": {
+    "CP_summary14": [
+      "pr_cp_sum",
+      "pr_cp_per_nt",
+      "pr_top20_mean",
+      "pr_rna_max_mean",
+      "pr_rna_max_min",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05",
+      "pr_high_contacts_per_nt",
+      "pp_nonlocal4_per_res",
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "CP_density3": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "structural_only": [
+      "plddt_core_mean",
+      "plddt_core_min",
+      "global_core_PAE",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized",
+      "anisotropy"
+    ],
+    "CP_structural": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "plddt_core_mean",
+      "plddt_core_min",
+      "global_core_PAE",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized",
+      "anisotropy"
+    ],
+    "CP_interface": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "adj_CP_mean",
+      "adj_CP_min",
+      "nonadj_CP_mean"
+    ],
+    "full": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "plddt_core_mean",
+      "plddt_core_min",
+      "global_core_PAE",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized",
+      "anisotropy",
+      "adj_CP_mean",
+      "adj_CP_min",
+      "nonadj_CP_mean"
+    ],
+    "S12_only": [
+      "pp_nonlocal12_high_per_res"
+    ]
+  },
+  "full_local_selection": "one residue + one coherent CCR + one contact, selected in training folds only",
+  "fixed_parameters": {
+    "LR_C": 0.1,
+    "RF_trees": 300,
+    "RF_depth": 2,
+    "RF_min_leaf": 2,
+    "XGB_depth": 1,
+    "XGB_lambda": 10,
+    "XGB_alpha": 1
+  },
+  "threshold": 0.5
+}

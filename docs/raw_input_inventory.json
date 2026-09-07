@@ -1,0 +1,37 @@
+[
+  {
+    "path": "inputs/folds_2026_09_06_03_44.zip",
+    "size_bytes": 97559040,
+    "sha256": "e8bb2618e826bc0216b7e5b058f98583a5e99c48d6f7b980d4982fa8a276ea82",
+    "zip_valid": false,
+    "included_in_git": false
+  },
+  {
+    "path": "inputs/folds_2026_09_06_03_46.zip",
+    "size_bytes": 94310400,
+    "sha256": "730bb13e27558523c8f0a29aaf3aeccd504703e9a0c1ba19476795a49af1fa2c",
+    "zip_valid": false,
+    "included_in_git": false
+  },
+  {
+    "path": "upload/folds_2026_09_07_02_48.zip",
+    "size_bytes": 168470568,
+    "sha256": "52ec8c053da81b786f118d753230a6dd3097d25afd4910d89764b0cfdc500a59",
+    "zip_valid": true,
+    "included_in_git": false
+  },
+  {
+    "path": "upload/folds_2026_09_07_02_49.zip",
+    "size_bytes": 31656960,
+    "sha256": "00b9f66e97ef3006a66abd7693fafc9a7e1e422b03a209fda4d42cc24d4376e7",
+    "zip_valid": false,
+    "included_in_git": false
+  },
+  {
+    "path": "upload/91-96.zip",
+    "size_bytes": 32473925,
+    "sha256": "f83ae32d0c3d577992f4aa3eb105e7bd05ebdd5af55592b1efb8e2a6a8308f12",
+    "zip_valid": true,
+    "included_in_git": false
+  }
+]

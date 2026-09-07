@@ -1,0 +1,266 @@
+{
+  "12_130_r123456654loop328": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      5,
+      4,
+      3,
+      2,
+      8
+    ],
+    "first6_match_old_training": false
+  },
+  "15_130_r12345673456loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "first6_match_old_training": false
+  },
+  "14_130_r123456734loop568": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "first6_match_old_training": false
+  },
+  "10_130_r123_r567_r567_r56loop7_r67_no8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "13_130_r12345665432loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      5,
+      4,
+      3,
+      2,
+      8
+    ],
+    "first6_match_old_training": false
+  },
+  "9_130_r123_r567_r567_r567_r67loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "16_130_r12365673156loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      6,
+      5,
+      6,
+      6,
+      5,
+      1,
+      3,
+      2,
+      8
+    ],
+    "first6_match_old_training": false
+  },
+  "11_130_r123_r567_r567_r56loop7_r67loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "2_130_r123_r567_r5loop67_r678": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "1_130_r123_r567_r567_r67_no_loop_8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "3_130_r123_r567_r56loop7_r678": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "7_130_r123_r567_r567_rloop67loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "5_130_r123_r567_r567_r6loop78": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "8_130_r123_r567_r567_r6loop7loop8": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  },
+  "4_130_r123_r567_r567_rloop678": {
+    "repeat_order": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      5,
+      6,
+      7,
+      6,
+      7,
+      8
+    ],
+    "first6_match_old_training": true
+  }
+}

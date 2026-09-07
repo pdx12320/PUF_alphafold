@@ -1,0 +1,58 @@
+{
+  "n_constructs": 14,
+  "n_seeds": 56,
+  "n_models": 280,
+  "models": [
+    {
+      "model": "CP_summary",
+      "n_features": 14,
+      "LOCO_AUC": 0.9090909090909091,
+      "LOCO_balanced_accuracy": 0.9090909090909092,
+      "confusion_matrix_TN_FP_FN_TP": [
+        9,
+        2,
+        0,
+        3
+      ],
+      "exact_permutation_p_AUC": 0.04120879120879121
+    },
+    {
+      "model": "CP_RNA_profile",
+      "n_features": 26,
+      "LOCO_AUC": 0.0,
+      "LOCO_balanced_accuracy": 0.3181818181818182,
+      "confusion_matrix_TN_FP_FN_TP": [
+        7,
+        4,
+        3,
+        0
+      ],
+      "exact_permutation_p_AUC": 1.0
+    },
+    {
+      "model": "length_only",
+      "n_features": 1,
+      "LOCO_AUC": 0.21212121212121207,
+      "LOCO_balanced_accuracy": 0.18181818181818182,
+      "confusion_matrix_TN_FP_FN_TP": [
+        4,
+        7,
+        3,
+        0
+      ],
+      "exact_permutation_p_AUC": 0.7637362637362637
+    }
+  ],
+  "best_CP_feature_exploratory_AUC": 1.0,
+  "CP_feature_search_familywise_exact_p": 0.09340659340659341,
+  "nested_feature_threshold_selection_stump": {
+    "LOCO_balanced_accuracy": 1.0,
+    "TN_FP_FN_TP": [
+      11,
+      0,
+      0,
+      3
+    ],
+    "exact_permutation_p_balanced_accuracy": 0.01098901098901099
+  }
+}

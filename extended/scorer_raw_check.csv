@@ -1,0 +1,2 @@
+construct,pp_nonlocal12_high_per_res,plddt_protein_mean,pae_contact_weighted,Rg_full_length_normalized,n_seeds,exploratory_score,threshold_05_class,extrapolation_any_abs_z_gt3
+puf12_r123_r567_r567_r678,1.324609375,91.54244380011048,1.4764194869995118,4.323245220184326,5,0.672970665013366,success_like,False

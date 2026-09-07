@@ -1,0 +1,8 @@
+{
+  "max_abs_summary_difference": 8.881784197001252e-16,
+  "original_arrays_reused": true,
+  "original_second_zip_local_copy_truncated": true,
+  "confidence_definition": "core minimum of construct-average residue pLDDT; HC thresholds applied after model/seed CP averaging",
+  "main_n": 24,
+  "main_success": 4
+}

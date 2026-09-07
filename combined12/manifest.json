@@ -1,0 +1,52 @@
+{
+  "feature_sets": {
+    "CP_density3": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "CP_summary14": [
+      "pr_cp_sum",
+      "pr_cp_per_nt",
+      "pr_top20_mean",
+      "pr_rna_max_mean",
+      "pr_rna_max_min",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05",
+      "pr_high_contacts_per_nt",
+      "pp_nonlocal4_per_res",
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "CP_structure17": [
+      "pr_cp_sum",
+      "pr_cp_per_nt",
+      "pr_top20_mean",
+      "pr_rna_max_mean",
+      "pr_rna_max_min",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05",
+      "pr_high_contacts_per_nt",
+      "pp_nonlocal4_per_res",
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_per_res",
+      "pp_nonlocal24_high_per_res",
+      "plddt_protein_mean",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized"
+    ]
+  },
+  "labels": "previous original 3 successes; new ID1 only successful; only 12-repeat constructs",
+  "n_previous": 12,
+  "n_new": 12,
+  "n_success": 4,
+  "n_failure": 20,
+  "threshold": 0.5,
+  "random_state": 2026,
+  "interpretation": "uncalibrated score; LOCO predictions are separate from final refitted model scores"
+}
