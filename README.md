@@ -1,5 +1,24 @@
 # PUF AlphaFold CP analysis
 
+## C295 固定相对WT标签优化（2026-09-08）
+
+[结果与完整分析过程](c295_optimization/README.md) · [全部指标](c295_optimization/results/all_model_performance.csv) · [逐构建折外预测](c295_optimization/results/all_outer_predictions.csv)
+
+固定正类为 **ΔC295 < −20个百分点**，比较序列、局部ΔCP、两者组合，每个输入族26套参数。新验证在测试某个P位置时，从训练集排除所有包含该P的构建，双突变按预测次数倒数加权汇总。
+
+| 方法 | 留一BA | 严格位置留出BA |
+|---|---:|---:|
+| 原CCR RF，同一新验证 | 82.5% | 43.8% |
+| 序列 | 37.5% | 43.8% |
+| 局部ΔCP | 67.5% | 67.5% |
+| 序列＋ΔCP | 37.5% | 47.5% |
+| 输入族也在训练折内选择 | 42.5% | 56.2% |
+
+局部ΔCP的严格位置precision为43.5%，recall为100%；P4/P5测试组均全判为正类，尚无可靠组内区分。当前属于探索性候选，未建立可部署的最终模型。与下方旧版“位置组合分组”验证不同，不能直接比较其分数。
+
+![C295优化效果](c295_optimization/C295_optimization_comparison.png)
+
+
 ## 相对 WT 动态阈值分类修正版（2026-09-08）
 
 [结果、过程与复现说明](wt_relative_classification/README.md) · [完整分析过程](wt_relative_classification/PROCESS.md) · [逐突变体预测](wt_relative_classification/results/wt_relative_per_construct_predictions.csv)
@@ -105,5 +124,6 @@ python tools/reproduce_current.py
 对应PDF也在同一目录。`refit_training_scores_NOT_CV.csv`仅为最终重拟合模型的训练集评分，不能用来报告泛化性能。
 
 原始AF3大型ZIP（含MSA/templates）作为外部输入，未重复上传至Git；路径、大小及校验值见[原始输入清单](docs/raw_input_inventory.json)。全部已生成分析结果、图、模型及用于统计/建模重现的缓存已归档。[文件校验清单](docs/file_manifest.json)。
+
 
 
