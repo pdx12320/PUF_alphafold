@@ -1,0 +1,12 @@
+{
+  "n_labelled_constructs": 31,
+  "n_work": 22,
+  "n_nonwork": 9,
+  "unique_protein_sequences": 31,
+  "C388_model_count_including_unlabelled": 165,
+  "C388_labelled_models": 160,
+  "seed_aggregation": "equal mean after model aggregation",
+  "prediction_rows_checked": true,
+  "threshold_replicate_discordance": 0,
+  "code_syntax": "PASS"
+}

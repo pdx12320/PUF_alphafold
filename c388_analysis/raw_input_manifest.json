@@ -1,0 +1,32 @@
+[
+  {
+    "file": "31--60(1).zip",
+    "bytes": 182250323,
+    "sha256": "5669c44e1d8537770ad7562a285d14e715d2e3c40b3e1c14b533a960e746b2b8"
+  },
+  {
+    "file": "91-96(2).zip",
+    "bytes": 32473925,
+    "sha256": "f83ae32d0c3d577992f4aa3eb105e7bd05ebdd5af55592b1efb8e2a6a8308f12"
+  },
+  {
+    "file": "97.zip",
+    "bytes": 5400437,
+    "sha256": "56e1a01445147ed397c2a7f1face9cdcfbf39cd07cc25ab2bee57111806e21a7"
+  },
+  {
+    "file": "60-90(1).zip",
+    "bytes": 154949379,
+    "sha256": "c258158ec417157b097e723292141e7da3dd9670e2703ce46ca35e4763148626"
+  },
+  {
+    "file": "1-30(3).zip",
+    "bytes": 160696537,
+    "sha256": "b15f466bd60a34810b0fa5279979e303440d3f41bb3b7e166daf4a825b83e9b9"
+  },
+  {
+    "file": "merged_data_var3_C295_C388_C871_C_to_T_核对分组版.xlsx (5).xlsx",
+    "bytes": 20121,
+    "sha256": "7213350717840d7fc78866f2af43c515be730ba62a05b831318433950f3cf1d7"
+  }
+]

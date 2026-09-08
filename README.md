@@ -1,8 +1,22 @@
 # PUF AlphaFold CP analysis
 
+## 最新更新：C388 编辑率预测与联合阈值分析（2026-09-08）
+
+新增 **31 个 TRM 构建**的 C388 实验终点分析。以两次编辑率均值 ≥50% 定义 work 时为 22 work / 9 non-work；与下方历史 architecture 构建成功标签是不同终点。
+
+- [C388 50% 固定标签报告](c388_analysis/C388_analysis_report.md)：旧模型直接迁移、低维 LR/RF 重训、嵌套模型选择、敏感性分析。
+- [C388 × 模型分数联合阈值结果](c388_threshold/README.md)：28 种不等价标签划分、LOCO 与 TRM 突变位置分组留出。
+- 在两类均至少 5 个构建时，分组留出的探索性最佳 balanced accuracy 对应 **C388≥40%、CP＋结构 Logistic 分数≥0.459（约0.46）**：accuracy 80.6%、balanced accuracy 82.9%。训练折内选分类阈值后为 77.4%、80.7%；同方案普通 LOCO 分别为64.5%、67.9%，尚不稳定。
+- C388 30%、分数0.376 的 LOCO accuracy 90.3%，但 balanced accuracy 仅70.0%。不能用类别失衡或事后挑阈值的最高分宣称模型成熟。
+- [全部联合扫描表](c388_threshold/joint_threshold_results.csv) · [逐构建分数](c388_threshold/joint_predictions.csv) · [训练内阈值验证](c388_threshold/joint_inner_threshold_validation.csv) · [复现命令与过程](c388_threshold/REPRODUCE.md)
+
+此次 TRM 分组留出不等于 architecture-out。C388 40%／分数0.46 是待独立验证的候选，已保存的 C388 joblib 模型仍对应50%标签。
+
+## 历史 architecture 分析
+
 PUF构建成功/失败的结构特征分析、可解释模型与跨repeat排列验证。此仓库整理了当前项目的全部分析阶段、结果表、图、模型和代码；研究终点为 **construct work / non-work**，不等同于C295/C388/C871编辑效率。
 
-## 最新结论
+## Architecture 阶段结论
 
 主数据集：两批 **24种PUF12，4 success / 20 failure，7种architecture**。先对model/seed聚合，每个construct一行。PUF11及TRM变体分别做敏感性分析。
 

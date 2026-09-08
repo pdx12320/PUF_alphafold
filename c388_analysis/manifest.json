@@ -1,0 +1,121 @@
+{
+  "feature_sets": {
+    "CP3": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "CP14": [
+      "pr_cp_sum",
+      "pr_cp_per_nt",
+      "pr_top20_mean",
+      "pr_rna_max_mean",
+      "pr_rna_max_min",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05",
+      "pr_high_contacts_per_nt",
+      "pp_nonlocal4_per_res",
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_per_res",
+      "pp_nonlocal24_high_per_res"
+    ],
+    "Structure6": [
+      "plddt_core_mean",
+      "plddt_core_min",
+      "global_core_PAE",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized",
+      "anisotropy"
+    ],
+    "CP_Structure9": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "plddt_core_mean",
+      "plddt_core_min",
+      "global_core_PAE",
+      "pae_contact_weighted",
+      "Rg_full_length_normalized",
+      "anisotropy"
+    ],
+    "RNA4": [
+      "pr_cp_per_nt",
+      "pr_rna_max_mean",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05"
+    ],
+    "CP_RNA7": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "pr_cp_per_nt",
+      "pr_rna_max_mean",
+      "pr_rna_coverage_05",
+      "pr_protein_coverage_05"
+    ],
+    "CP_Interface6": [
+      "pp_nonlocal4_high_per_res",
+      "pp_nonlocal12_high_per_res",
+      "pp_nonlocal24_high_per_res",
+      "adj_CP_mean",
+      "adj_CP_min",
+      "nonadj_CP_mean"
+    ]
+  },
+  "nested_candidates": [
+    [
+      "CP3",
+      "LR"
+    ],
+    [
+      "CP3",
+      "RF"
+    ],
+    [
+      "Structure6",
+      "LR"
+    ],
+    [
+      "Structure6",
+      "RF"
+    ],
+    [
+      "CP_Structure9",
+      "LR"
+    ],
+    [
+      "CP_Structure9",
+      "RF"
+    ],
+    [
+      "RNA4",
+      "LR"
+    ],
+    [
+      "RNA4",
+      "RF"
+    ],
+    [
+      "CP_RNA7",
+      "LR"
+    ],
+    [
+      "CP_RNA7",
+      "RF"
+    ]
+  ],
+  "new_label": "mean C388 >= 0.5",
+  "preprocessing": "remove SGSETPG first7 residues for match to old 512aa range, known before label analysis",
+  "RF": {
+    "trees": 100,
+    "depth": 2,
+    "min_leaf": 3,
+    "max_features": 1.0,
+    "class_weight": "balanced"
+  },
+  "LR_C": 0.1,
+  "threshold": 0.5,
+  "primary_input": "C388 RNA context only; model->seed->construct equal means"
+}
