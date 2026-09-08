@@ -1,0 +1,70 @@
+SCAN C388 -45.0
+SCAN C388 -40.0
+SCAN C388 -35.0
+SCAN C388 -25.0
+SCAN C388 -20.0
+SCAN C388 -15.0
+SCAN C388 -10.0
+SCAN C388 -5.0
+SCAN C388 -36.450750000000006
+SCAN C388 -18.328500000000012
+SCAN C388 -16.974750000000014
+SCAN C388 -16.053000000000008
+SCAN C388 -13.108250000000002
+SCAN C388 -12.453500000000002
+SCAN C388 -11.504250000000006
+SCAN C388 -8.526250000000012
+SCAN C388 -7.097000000000008
+SCAN C388 -6.745500000000007
+SCAN C388 -6.311000000000007
+SCAN C388 -4.262000000000008
+SCAN C388 -3.133500000000012
+VALIDATED {'site': 'C388', 'model': 'Interface_CP_LR', 'label_threshold_delta_pp': -45.0, 'validation': 'LOOCV', 'n_high': 25, 'n_low': 5, 'AUC': 0.776, 'median_score_threshold': np.float64(0.4559011225138756), 'min_score_threshold': np.float64(0.42239064633136075), 'max_score_threshold': np.float64(0.5365949617597157), 'majority_accuracy': np.float64(0.8333333333333334), 'BA': np.float64(0.76), 'accuracy': np.float64(0.8666666666666667), 'sensitivity': np.float64(0.92), 'specificity': np.float64(0.6), 'TN': np.int64(3), 'FP': np.int64(2), 'FN': np.int64(2), 'TP': np.int64(23)}
+VALIDATED {'site': 'C388', 'model': 'Interface_CP_LR', 'label_threshold_delta_pp': -45.0, 'validation': 'Position_group_out', 'n_high': 25, 'n_low': 5, 'AUC': 0.744, 'median_score_threshold': np.float64(0.5), 'min_score_threshold': np.float64(0.449694121913332), 'max_score_threshold': np.float64(0.5232662428591709), 'majority_accuracy': np.float64(0.8333333333333334), 'BA': np.float64(0.78), 'accuracy': np.float64(0.7666666666666667), 'sensitivity': np.float64(0.76), 'specificity': np.float64(0.8), 'TN': np.int64(4), 'FP': np.int64(1), 'FN': np.int64(6), 'TP': np.int64(19)}
+SCAN C871 -55.0
+SCAN C871 -50.0
+SCAN C871 -45.0
+SCAN C871 -40.0
+SCAN C871 -35.0
+SCAN C871 -30.0
+SCAN C871 -25.0
+SCAN C871 -20.0
+SCAN C871 -15.0
+SCAN C871 -10.0
+SCAN C871 -39.47025
+SCAN C871 -39.4505
+SCAN C871 -39.07675
+SCAN C871 -33.73874999999999
+SCAN C871 -31.862249999999996
+SCAN C871 -27.84675
+SCAN C871 -19.238
+SCAN C871 -17.836499999999994
+SCAN C871 -13.041749999999997
+SCAN C871 -8.75399999999999
+SCAN C871 -7.959749999999989
+VALIDATED {'site': 'C871', 'model': 'ContactSeek_CCR_RF', 'label_threshold_delta_pp': -25.0, 'validation': 'LOOCV', 'n_high': 13, 'n_low': 17, 'AUC': 0.83710407239819, 'median_score_threshold': np.float64(0.5), 'min_score_threshold': np.float64(0.36114447001695466), 'max_score_threshold': np.float64(0.6214465245503167), 'majority_accuracy': np.float64(0.5666666666666667), 'BA': np.float64(0.7850678733031675), 'accuracy': np.float64(0.7666666666666667), 'sensitivity': np.float64(0.9230769230769231), 'specificity': np.float64(0.6470588235294118), 'TN': np.int64(11), 'FP': np.int64(6), 'FN': np.int64(1), 'TP': np.int64(12)}
+VALIDATED {'site': 'C871', 'model': 'ContactSeek_CCR_RF', 'label_threshold_delta_pp': -25.0, 'validation': 'Position_group_out', 'n_high': 13, 'n_low': 17, 'AUC': 0.8144796380090498, 'median_score_threshold': np.float64(0.4277738660049496), 'min_score_threshold': np.float64(0.26574998486324136), 'max_score_threshold': np.float64(0.45244403444072145), 'majority_accuracy': np.float64(0.5666666666666667), 'BA': np.float64(0.7941176470588236), 'accuracy': np.float64(0.7666666666666667), 'sensitivity': np.float64(1.0), 'specificity': np.float64(0.5882352941176471), 'TN': np.int64(10), 'FP': np.int64(7), 'FN': np.int64(0), 'TP': np.int64(13)}
+SCAN C295 -30.0
+SCAN C295 -25.0
+SCAN C295 -20.0
+SCAN C295 -15.0
+SCAN C295 -10.0
+SCAN C295 -22.7805
+SCAN C295 -21.714750000000002
+SCAN C295 -20.66125
+SCAN C295 -19.07725
+SCAN C295 -18.11975
+SCAN C295 -17.725749999999998
+SCAN C295 -16.96775
+SCAN C295 -15.723749999999999
+SCAN C295 -14.615749999999998
+SCAN C295 -14.103999999999996
+SCAN C295 -13.374999999999996
+SCAN C295 -13.053999999999997
+SCAN C295 -12.57075
+SCAN C295 -8.267249999999997
+SCAN C295 -7.196999999999997
+SCAN C295 -6.2357499999999995
+VALIDATED {'site': 'C295', 'model': 'ContactSeek_CCR_RF', 'label_threshold_delta_pp': -20.0, 'validation': 'LOOCV', 'n_high': 20, 'n_low': 10, 'AUC': 0.8150000000000001, 'median_score_threshold': np.float64(0.6355462497400437), 'min_score_threshold': np.float64(0.34773447139386415), 'max_score_threshold': np.float64(0.9167131132359909), 'majority_accuracy': np.float64(0.6666666666666666), 'BA': np.float64(0.825), 'accuracy': np.float64(0.8), 'sensitivity': np.float64(0.75), 'specificity': np.float64(0.9), 'TN': np.int64(9), 'FP': np.int64(1), 'FN': np.int64(5), 'TP': np.int64(15)}
+VALIDATED {'site': 'C295', 'model': 'ContactSeek_CCR_RF', 'label_threshold_delta_pp': -20.0, 'validation': 'Position_group_out', 'n_high': 20, 'n_low': 10, 'AUC': 0.4725, 'median_score_threshold': np.float64(0.8410673951325136), 'min_score_threshold': np.float64(0.793741513596323), 'max_score_threshold': np.float64(0.9061696645459805), 'majority_accuracy': np.float64(0.6666666666666666), 'BA': np.float64(0.525), 'accuracy': np.float64(0.4), 'sensitivity': np.float64(0.15), 'specificity': np.float64(0.9), 'TN': np.int64(9), 'FP': np.int64(1), 'FN': np.int64(17), 'TP': np.int64(3)}
+ALL DONE

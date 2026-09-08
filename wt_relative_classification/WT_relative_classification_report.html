@@ -1,0 +1,3366 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>PUF 相对 WT 动态阈值分类重分析</title><style>body{font:16px/1.7 system-ui,sans-serif;max-width:1400px;margin:36px auto;padding:0 24px;color:#172b40}h1,h2{color:#126b70}table{border-collapse:collapse;font-size:13px;width:100%;margin:20px 0}td,th{padding:9px;border-bottom:1px solid #d6e2e8;text-align:left}th{background:#ecf5f5}.box{background:#eef6fa;padding:16px;border-left:4px solid #187b85} .scroll{overflow:auto}</style><h1>PUF：相对 WT 编辑变化的动态阈值分类</h1><p class="box"><b>已重新运行三个位点全部30个突变体的分类扫描与验证。</b>标签改为 Δ编辑效率＝突变体平均编辑率−对应位点WT平均编辑率，单位为百分点（pp）。正值表示提高，负值表示下降。未使用相对百分比变化或倍数变化。</p><h2>结果</h2><p>类别1：Δ≥分界；类别0：Δ&lt;分界。当前候选分界均为负数，类别1包含下降较少和提高的构建，类别0表示下降较多。C388通常希望保留活性；C871/C295通常希望降低编辑。单个位点分类分数不等于联合特异性优化成功率。</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>位点</th>
+      <th>WT编辑率(%)</th>
+      <th>Δ分界(pp)</th>
+      <th>等价下界(不含)</th>
+      <th>等价上界(含)</th>
+      <th>对应绝对编辑率(%)</th>
+      <th>模型</th>
+      <th>Δ≥分界数</th>
+      <th>Δ&lt;分界数</th>
+      <th>留一平衡准确率</th>
+      <th>位置分组平衡准确率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C388</td>
+      <td>72.561</td>
+      <td>-45</td>
+      <td>-47.231</td>
+      <td>-40.077</td>
+      <td>27.561</td>
+      <td>Interface_CP_LR</td>
+      <td>25</td>
+      <td>5</td>
+      <td>76.0%</td>
+      <td>78.0%</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>67.501</td>
+      <td>-25</td>
+      <td>-25.883</td>
+      <td>-21.902</td>
+      <td>42.501</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>13</td>
+      <td>17</td>
+      <td>78.5%</td>
+      <td>79.4%</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>32.958</td>
+      <td>-20</td>
+      <td>-20.49</td>
+      <td>-19.753</td>
+      <td>12.958</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>20</td>
+      <td>10</td>
+      <td>82.5%</td>
+      <td>52.5%</td>
+    </tr>
+  </tbody>
+</table></div><h2>为何准确率可以与上轮相同</h2><p>同一位点的WT均值为固定常数。绝对编辑率≥t 与 Δ≥t−WT 给出相同标签。前后两轮都扫描了所有满足每类至少5个样本的相邻观测值分界，故候选分组集合相同。本轮在Δ尺度重新选择分界，并重新拟合模型、计算折外预测；按标签分组逐一比较两轮预测以验证这一点。阈值数值变化不代表模型性能提升。</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>site</th>
+      <th>matching_model_label_combinations</th>
+      <th>max_oof_score_difference</th>
+      <th>all_partitions_match</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C295</td>
+      <td>126</td>
+      <td>0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>126</td>
+      <td>0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>126</td>
+      <td>0</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table><h2>与WT直接比较：Δ=0</h2><p>三个终点达到或超过WT的构建分别只有少数几个，均未达到每类至少5个的预设条件。因此未将Δ=0作为合格动态候选，也未给出稳健的“提高/下降”分类结论。</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>site</th>
+      <th>wt_editing_pct</th>
+      <th>n</th>
+      <th>n_delta_ge_0</th>
+      <th>n_delta_lt_0</th>
+      <th>delta_min_pp</th>
+      <th>delta_max_pp</th>
+      <th>zero_threshold_eligible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C295</td>
+      <td>32.958</td>
+      <td>30</td>
+      <td>3</td>
+      <td>27</td>
+      <td>-32.958</td>
+      <td>12.303</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>72.561</td>
+      <td>30</td>
+      <td>4</td>
+      <td>26</td>
+      <td>-72.561</td>
+      <td>7.774</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>67.501</td>
+      <td>30</td>
+      <td>2</td>
+      <td>28</td>
+      <td>-59.972</td>
+      <td>4.1185</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table><h2>验证范围</h2><ul><li>模型与编辑变化分界仍在本批数据中筛选，表中成绩属于探索性结果。</li><li>模型分数阈值在训练折的内部验证中选择；接触残基筛选、CCR构建在训练折内完成。</li><li>沿用上一轮位置分组规则；双突变采用组合位置组，可能与其他组共享单个位置，不能视为严格的所有组成位置均未见验证。</li><li>WT与突变体分别对两条实验记录取均值；已复核输入，但本轮未传播实验误差，也未增加独立seed。</li><li>C295的位置分组成绩接近随机水平；C388/C871保留为后续验证候选。</li></ul><h2>验证指标与混淆矩阵</h2><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>site</th>
+      <th>model</th>
+      <th>label_threshold_delta_pp</th>
+      <th>validation</th>
+      <th>n_high</th>
+      <th>n_low</th>
+      <th>AUC</th>
+      <th>median_score_threshold</th>
+      <th>min_score_threshold</th>
+      <th>max_score_threshold</th>
+      <th>majority_accuracy</th>
+      <th>BA</th>
+      <th>accuracy</th>
+      <th>sensitivity</th>
+      <th>specificity</th>
+      <th>TN</th>
+      <th>FP</th>
+      <th>FN</th>
+      <th>TP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>-45</td>
+      <td>LOOCV</td>
+      <td>25</td>
+      <td>5</td>
+      <td>0.776</td>
+      <td>0.4559</td>
+      <td>0.42239</td>
+      <td>0.53659</td>
+      <td>0.83333</td>
+      <td>0.76</td>
+      <td>0.86667</td>
+      <td>0.92</td>
+      <td>0.6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>-45</td>
+      <td>Position_group_out</td>
+      <td>25</td>
+      <td>5</td>
+      <td>0.744</td>
+      <td>0.5</td>
+      <td>0.44969</td>
+      <td>0.52327</td>
+      <td>0.83333</td>
+      <td>0.78</td>
+      <td>0.76667</td>
+      <td>0.76</td>
+      <td>0.8</td>
+      <td>4</td>
+      <td>1</td>
+      <td>6</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>-25</td>
+      <td>LOOCV</td>
+      <td>13</td>
+      <td>17</td>
+      <td>0.8371</td>
+      <td>0.5</td>
+      <td>0.36114</td>
+      <td>0.62145</td>
+      <td>0.56667</td>
+      <td>0.78507</td>
+      <td>0.76667</td>
+      <td>0.92308</td>
+      <td>0.64706</td>
+      <td>11</td>
+      <td>6</td>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>-25</td>
+      <td>Position_group_out</td>
+      <td>13</td>
+      <td>17</td>
+      <td>0.81448</td>
+      <td>0.42777</td>
+      <td>0.26575</td>
+      <td>0.45244</td>
+      <td>0.56667</td>
+      <td>0.79412</td>
+      <td>0.76667</td>
+      <td>1</td>
+      <td>0.58824</td>
+      <td>10</td>
+      <td>7</td>
+      <td>0</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>-20</td>
+      <td>LOOCV</td>
+      <td>20</td>
+      <td>10</td>
+      <td>0.815</td>
+      <td>0.63555</td>
+      <td>0.34773</td>
+      <td>0.91671</td>
+      <td>0.66667</td>
+      <td>0.825</td>
+      <td>0.8</td>
+      <td>0.75</td>
+      <td>0.9</td>
+      <td>9</td>
+      <td>1</td>
+      <td>5</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>-20</td>
+      <td>Position_group_out</td>
+      <td>20</td>
+      <td>10</td>
+      <td>0.4725</td>
+      <td>0.84107</td>
+      <td>0.79374</td>
+      <td>0.90617</td>
+      <td>0.66667</td>
+      <td>0.525</td>
+      <td>0.4</td>
+      <td>0.15</td>
+      <td>0.9</td>
+      <td>9</td>
+      <td>1</td>
+      <td>17</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table></div><h2>逐构建结果</h2><p>表内类别均使用相对WT定义。prediction为类别1的判定；score为类别1分数，尚未校准为实验成功概率。</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>site</th>
+      <th>model</th>
+      <th>validation</th>
+      <th>construct</th>
+      <th>editing_pct</th>
+      <th>delta_editing_pp</th>
+      <th>actual_class</th>
+      <th>score</th>
+      <th>score_threshold</th>
+      <th>prediction</th>
+      <th>correct</th>
+      <th>class_1_meaning</th>
+      <th>class_0_meaning</th>
+      <th>threshold_delta_pp</th>
+      <th>WT_editing_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_etd</td>
+      <td>0</td>
+      <td>-72.561</td>
+      <td>0</td>
+      <td>0.691</td>
+      <td>0.53659</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she</td>
+      <td>61.682</td>
+      <td>-10.879</td>
+      <td>1</td>
+      <td>0.60282</td>
+      <td>0.45104</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>75.314</td>
+      <td>2.753</td>
+      <td>1</td>
+      <td>0.69373</td>
+      <td>0.4498</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne</td>
+      <td>74.309</td>
+      <td>1.7485</td>
+      <td>1</td>
+      <td>0.42227</td>
+      <td>0.43986</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>80.335</td>
+      <td>7.774</td>
+      <td>1</td>
+      <td>0.60539</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>51.892</td>
+      <td>-20.669</td>
+      <td>1</td>
+      <td>0.65412</td>
+      <td>0.44385</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>68.814</td>
+      <td>-3.747</td>
+      <td>1</td>
+      <td>0.55539</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>0</td>
+      <td>-72.561</td>
+      <td>0</td>
+      <td>0.15392</td>
+      <td>0.47827</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>8.6665</td>
+      <td>-63.895</td>
+      <td>0</td>
+      <td>0.45147</td>
+      <td>0.42239</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_aye</td>
+      <td>55.629</td>
+      <td>-16.932</td>
+      <td>1</td>
+      <td>0.60286</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_dfe</td>
+      <td>32.484</td>
+      <td>-40.077</td>
+      <td>1</td>
+      <td>0.61441</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_fwd</td>
+      <td>37.332</td>
+      <td>-35.229</td>
+      <td>1</td>
+      <td>0.52976</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_lrd</td>
+      <td>23.336</td>
+      <td>-49.225</td>
+      <td>0</td>
+      <td>0.35253</td>
+      <td>0.45291</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_nye</td>
+      <td>57.387</td>
+      <td>-15.174</td>
+      <td>1</td>
+      <td>0.6208</td>
+      <td>0.46778</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_sfe</td>
+      <td>62.916</td>
+      <td>-9.645</td>
+      <td>1</td>
+      <td>0.60062</td>
+      <td>0.46732</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_swd</td>
+      <td>66.644</td>
+      <td>-5.9175</td>
+      <td>1</td>
+      <td>0.57463</td>
+      <td>0.46669</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_syq</td>
+      <td>59.122</td>
+      <td>-13.44</td>
+      <td>1</td>
+      <td>0.57663</td>
+      <td>0.46488</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_thn</td>
+      <td>52.922</td>
+      <td>-19.64</td>
+      <td>1</td>
+      <td>0.63278</td>
+      <td>0.45761</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tte</td>
+      <td>34.889</td>
+      <td>-37.673</td>
+      <td>1</td>
+      <td>0.19599</td>
+      <td>0.47117</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_twd</td>
+      <td>59.784</td>
+      <td>-12.777</td>
+      <td>1</td>
+      <td>0.49981</td>
+      <td>0.4556</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tye</td>
+      <td>44.306</td>
+      <td>-28.255</td>
+      <td>1</td>
+      <td>0.61088</td>
+      <td>0.4556</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p5_r6_vfn</td>
+      <td>55.543</td>
+      <td>-17.018</td>
+      <td>1</td>
+      <td>0.62707</td>
+      <td>0.4562</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_mhq</td>
+      <td>25.33</td>
+      <td>-47.231</td>
+      <td>0</td>
+      <td>0.4128</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qfw</td>
+      <td>67.784</td>
+      <td>-4.777</td>
+      <td>1</td>
+      <td>0.49717</td>
+      <td>0.43388</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qrw</td>
+      <td>60.431</td>
+      <td>-12.13</td>
+      <td>1</td>
+      <td>0.58213</td>
+      <td>0.44521</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_trq</td>
+      <td>65.775</td>
+      <td>-6.7865</td>
+      <td>1</td>
+      <td>0.50584</td>
+      <td>0.4414</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfd</td>
+      <td>70.041</td>
+      <td>-2.52</td>
+      <td>1</td>
+      <td>0.57185</td>
+      <td>0.44794</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfq</td>
+      <td>65.153</td>
+      <td>-7.4075</td>
+      <td>1</td>
+      <td>0.48506</td>
+      <td>0.44328</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p7_r5_syvirr</td>
+      <td>79.377</td>
+      <td>6.816</td>
+      <td>1</td>
+      <td>0.59844</td>
+      <td>0.45045</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>LOOCV</td>
+      <td>p8_r6_gve</td>
+      <td>65.856</td>
+      <td>-6.7045</td>
+      <td>1</td>
+      <td>0.6003</td>
+      <td>0.45045</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_etd</td>
+      <td>0</td>
+      <td>-72.561</td>
+      <td>0</td>
+      <td>0.70913</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she</td>
+      <td>61.682</td>
+      <td>-10.879</td>
+      <td>1</td>
+      <td>0.51741</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>75.314</td>
+      <td>2.753</td>
+      <td>1</td>
+      <td>0.63512</td>
+      <td>0.49141</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne</td>
+      <td>74.309</td>
+      <td>1.7485</td>
+      <td>1</td>
+      <td>0.30988</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>80.335</td>
+      <td>7.774</td>
+      <td>1</td>
+      <td>0.42558</td>
+      <td>0.49141</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>51.892</td>
+      <td>-20.669</td>
+      <td>1</td>
+      <td>0.62378</td>
+      <td>0.49141</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>68.814</td>
+      <td>-3.747</td>
+      <td>1</td>
+      <td>0.57305</td>
+      <td>0.49141</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>0</td>
+      <td>-72.561</td>
+      <td>0</td>
+      <td>0.1307</td>
+      <td>0.49141</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>8.6665</td>
+      <td>-63.895</td>
+      <td>0</td>
+      <td>0.4689</td>
+      <td>0.49141</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_aye</td>
+      <td>55.629</td>
+      <td>-16.932</td>
+      <td>1</td>
+      <td>0.54113</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_dfe</td>
+      <td>32.484</td>
+      <td>-40.077</td>
+      <td>1</td>
+      <td>0.54565</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_fwd</td>
+      <td>37.332</td>
+      <td>-35.229</td>
+      <td>1</td>
+      <td>0.50074</td>
+      <td>0.52327</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_lrd</td>
+      <td>23.336</td>
+      <td>-49.225</td>
+      <td>0</td>
+      <td>0.38484</td>
+      <td>0.52327</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_nye</td>
+      <td>57.387</td>
+      <td>-15.174</td>
+      <td>1</td>
+      <td>0.54978</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_sfe</td>
+      <td>62.916</td>
+      <td>-9.645</td>
+      <td>1</td>
+      <td>0.53921</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_swd</td>
+      <td>66.644</td>
+      <td>-5.9175</td>
+      <td>1</td>
+      <td>0.52855</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_syq</td>
+      <td>59.122</td>
+      <td>-13.44</td>
+      <td>1</td>
+      <td>0.51974</td>
+      <td>0.52327</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_thn</td>
+      <td>52.922</td>
+      <td>-19.64</td>
+      <td>1</td>
+      <td>0.55447</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tte</td>
+      <td>34.889</td>
+      <td>-37.673</td>
+      <td>1</td>
+      <td>0.35901</td>
+      <td>0.52327</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_twd</td>
+      <td>59.784</td>
+      <td>-12.777</td>
+      <td>1</td>
+      <td>0.48117</td>
+      <td>0.52327</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tye</td>
+      <td>44.306</td>
+      <td>-28.255</td>
+      <td>1</td>
+      <td>0.54435</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_vfn</td>
+      <td>55.543</td>
+      <td>-17.018</td>
+      <td>1</td>
+      <td>0.55953</td>
+      <td>0.52327</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_mhq</td>
+      <td>25.33</td>
+      <td>-47.231</td>
+      <td>0</td>
+      <td>0.41987</td>
+      <td>0.44969</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qfw</td>
+      <td>67.784</td>
+      <td>-4.777</td>
+      <td>1</td>
+      <td>0.48847</td>
+      <td>0.44969</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qrw</td>
+      <td>60.431</td>
+      <td>-12.13</td>
+      <td>1</td>
+      <td>0.56585</td>
+      <td>0.44969</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_trq</td>
+      <td>65.775</td>
+      <td>-6.7865</td>
+      <td>1</td>
+      <td>0.4955</td>
+      <td>0.44969</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfd</td>
+      <td>70.041</td>
+      <td>-2.52</td>
+      <td>1</td>
+      <td>0.55562</td>
+      <td>0.44969</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfq</td>
+      <td>65.153</td>
+      <td>-7.4075</td>
+      <td>1</td>
+      <td>0.48112</td>
+      <td>0.44969</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p7_r5_syvirr</td>
+      <td>79.377</td>
+      <td>6.816</td>
+      <td>1</td>
+      <td>0.59844</td>
+      <td>0.47633</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C388</td>
+      <td>Interface_CP_LR</td>
+      <td>Position_group_out</td>
+      <td>p8_r6_gve</td>
+      <td>65.856</td>
+      <td>-6.7045</td>
+      <td>1</td>
+      <td>0.6003</td>
+      <td>0.47621</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-45</td>
+      <td>72.561</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_etd</td>
+      <td>10.094</td>
+      <td>-57.407</td>
+      <td>0</td>
+      <td>0.081775</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she</td>
+      <td>58.231</td>
+      <td>-9.27</td>
+      <td>1</td>
+      <td>0.84851</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>71.62</td>
+      <td>4.1185</td>
+      <td>1</td>
+      <td>0.77471</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne</td>
+      <td>48.703</td>
+      <td>-18.799</td>
+      <td>1</td>
+      <td>0.56595</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>32.598</td>
+      <td>-34.904</td>
+      <td>0</td>
+      <td>0.67836</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>36.35</td>
+      <td>-31.151</td>
+      <td>0</td>
+      <td>0.023903</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>27.236</td>
+      <td>-40.265</td>
+      <td>0</td>
+      <td>0.53918</td>
+      <td>0.36114</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>11.025</td>
+      <td>-56.476</td>
+      <td>0</td>
+      <td>0.35452</td>
+      <td>0.44034</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>8.3235</td>
+      <td>-59.178</td>
+      <td>0</td>
+      <td>0.089114</td>
+      <td>0.53059</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_aye</td>
+      <td>53.203</td>
+      <td>-14.299</td>
+      <td>1</td>
+      <td>0.77493</td>
+      <td>0.45086</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_dfe</td>
+      <td>7.5295</td>
+      <td>-59.972</td>
+      <td>0</td>
+      <td>0.90538</td>
+      <td>0.42154</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_fwd</td>
+      <td>28.784</td>
+      <td>-38.718</td>
+      <td>0</td>
+      <td>0.010865</td>
+      <td>0.39671</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_lrd</td>
+      <td>21.73</td>
+      <td>-45.772</td>
+      <td>0</td>
+      <td>0.063497</td>
+      <td>0.534</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_nye</td>
+      <td>47.824</td>
+      <td>-19.677</td>
+      <td>1</td>
+      <td>0.70815</td>
+      <td>0.45086</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_sfe</td>
+      <td>59.82</td>
+      <td>-7.6815</td>
+      <td>1</td>
+      <td>0.621</td>
+      <td>0.45086</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_swd</td>
+      <td>41.619</td>
+      <td>-25.883</td>
+      <td>0</td>
+      <td>0.072618</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_syq</td>
+      <td>64.281</td>
+      <td>-3.22</td>
+      <td>1</td>
+      <td>0.56701</td>
+      <td>0.4729</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_thn</td>
+      <td>50.627</td>
+      <td>-16.874</td>
+      <td>1</td>
+      <td>0.87143</td>
+      <td>0.4729</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tte</td>
+      <td>28.037</td>
+      <td>-39.465</td>
+      <td>0</td>
+      <td>0.016422</td>
+      <td>0.41019</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_twd</td>
+      <td>34.928</td>
+      <td>-32.573</td>
+      <td>0</td>
+      <td>0.032446</td>
+      <td>0.39484</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tye</td>
+      <td>37.691</td>
+      <td>-29.811</td>
+      <td>0</td>
+      <td>0.55278</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_vfn</td>
+      <td>69.45</td>
+      <td>1.948</td>
+      <td>1</td>
+      <td>0.59802</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_mhq</td>
+      <td>17.244</td>
+      <td>-50.258</td>
+      <td>0</td>
+      <td>0.87312</td>
+      <td>0.60886</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qfw</td>
+      <td>55.717</td>
+      <td>-11.784</td>
+      <td>1</td>
+      <td>0.55855</td>
+      <td>0.62145</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qrw</td>
+      <td>28.026</td>
+      <td>-39.475</td>
+      <td>0</td>
+      <td>0.1372</td>
+      <td>0.55023</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_trq</td>
+      <td>59.264</td>
+      <td>-8.238</td>
+      <td>1</td>
+      <td>0.7174</td>
+      <td>0.58288</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfd</td>
+      <td>60.059</td>
+      <td>-7.443</td>
+      <td>1</td>
+      <td>0.79285</td>
+      <td>0.56936</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfq</td>
+      <td>45.6</td>
+      <td>-21.902</td>
+      <td>1</td>
+      <td>0.77862</td>
+      <td>0.56198</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p7_r5_syvirr</td>
+      <td>28.066</td>
+      <td>-39.436</td>
+      <td>0</td>
+      <td>0.23284</td>
+      <td>0.5</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p8_r6_gve</td>
+      <td>10.227</td>
+      <td>-57.274</td>
+      <td>0</td>
+      <td>0.69098</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_etd</td>
+      <td>10.094</td>
+      <td>-57.407</td>
+      <td>0</td>
+      <td>0.051337</td>
+      <td>0.26575</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she</td>
+      <td>58.231</td>
+      <td>-9.27</td>
+      <td>1</td>
+      <td>0.7444</td>
+      <td>0.26575</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>71.62</td>
+      <td>4.1185</td>
+      <td>1</td>
+      <td>0.81333</td>
+      <td>0.45244</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne</td>
+      <td>48.703</td>
+      <td>-18.799</td>
+      <td>1</td>
+      <td>0.54556</td>
+      <td>0.26575</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>32.598</td>
+      <td>-34.904</td>
+      <td>0</td>
+      <td>0.71417</td>
+      <td>0.45244</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>36.35</td>
+      <td>-31.151</td>
+      <td>0</td>
+      <td>0.031905</td>
+      <td>0.45244</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>27.236</td>
+      <td>-40.265</td>
+      <td>0</td>
+      <td>0.73585</td>
+      <td>0.45244</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>11.025</td>
+      <td>-56.476</td>
+      <td>0</td>
+      <td>0.57905</td>
+      <td>0.45244</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>8.3235</td>
+      <td>-59.178</td>
+      <td>0</td>
+      <td>0.18667</td>
+      <td>0.45244</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_aye</td>
+      <td>53.203</td>
+      <td>-14.299</td>
+      <td>1</td>
+      <td>0.66812</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_dfe</td>
+      <td>7.5295</td>
+      <td>-59.972</td>
+      <td>0</td>
+      <td>0.55998</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_fwd</td>
+      <td>28.784</td>
+      <td>-38.718</td>
+      <td>0</td>
+      <td>0.014216</td>
+      <td>0.42777</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_lrd</td>
+      <td>21.73</td>
+      <td>-45.772</td>
+      <td>0</td>
+      <td>0.10384</td>
+      <td>0.42777</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_nye</td>
+      <td>47.824</td>
+      <td>-19.677</td>
+      <td>1</td>
+      <td>0.75248</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_sfe</td>
+      <td>59.82</td>
+      <td>-7.6815</td>
+      <td>1</td>
+      <td>0.54476</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_swd</td>
+      <td>41.619</td>
+      <td>-25.883</td>
+      <td>0</td>
+      <td>0.21993</td>
+      <td>0.42777</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_syq</td>
+      <td>64.281</td>
+      <td>-3.22</td>
+      <td>1</td>
+      <td>0.55323</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_thn</td>
+      <td>50.627</td>
+      <td>-16.874</td>
+      <td>1</td>
+      <td>0.68552</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tte</td>
+      <td>28.037</td>
+      <td>-39.465</td>
+      <td>0</td>
+      <td>0.05287</td>
+      <td>0.42777</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_twd</td>
+      <td>34.928</td>
+      <td>-32.573</td>
+      <td>0</td>
+      <td>0.014216</td>
+      <td>0.42777</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tye</td>
+      <td>37.691</td>
+      <td>-29.811</td>
+      <td>0</td>
+      <td>0.52198</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_vfn</td>
+      <td>69.45</td>
+      <td>1.948</td>
+      <td>1</td>
+      <td>0.54323</td>
+      <td>0.42777</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_mhq</td>
+      <td>17.244</td>
+      <td>-50.258</td>
+      <td>0</td>
+      <td>0.62216</td>
+      <td>0.28011</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qfw</td>
+      <td>55.717</td>
+      <td>-11.784</td>
+      <td>1</td>
+      <td>0.60928</td>
+      <td>0.28011</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qrw</td>
+      <td>28.026</td>
+      <td>-39.475</td>
+      <td>0</td>
+      <td>0.1522</td>
+      <td>0.28011</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_trq</td>
+      <td>59.264</td>
+      <td>-8.238</td>
+      <td>1</td>
+      <td>0.71252</td>
+      <td>0.28011</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfd</td>
+      <td>60.059</td>
+      <td>-7.443</td>
+      <td>1</td>
+      <td>0.69968</td>
+      <td>0.28011</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfq</td>
+      <td>45.6</td>
+      <td>-21.902</td>
+      <td>1</td>
+      <td>0.68479</td>
+      <td>0.28011</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p7_r5_syvirr</td>
+      <td>28.066</td>
+      <td>-39.436</td>
+      <td>0</td>
+      <td>0.23284</td>
+      <td>0.27732</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C871</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p8_r6_gve</td>
+      <td>10.227</td>
+      <td>-57.274</td>
+      <td>0</td>
+      <td>0.69098</td>
+      <td>0.36159</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-25</td>
+      <td>67.501</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_etd</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.33932</td>
+      <td>0.53794</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she</td>
+      <td>19.363</td>
+      <td>-13.595</td>
+      <td>1</td>
+      <td>0.90326</td>
+      <td>0.64033</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>36.896</td>
+      <td>3.938</td>
+      <td>1</td>
+      <td>0.44588</td>
+      <td>0.63076</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne</td>
+      <td>12.468</td>
+      <td>-20.49</td>
+      <td>0</td>
+      <td>0.51158</td>
+      <td>0.85649</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>19.804</td>
+      <td>-13.154</td>
+      <td>1</td>
+      <td>0.71777</td>
+      <td>0.48592</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>18.346</td>
+      <td>-14.612</td>
+      <td>1</td>
+      <td>0.70676</td>
+      <td>0.57262</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>16.636</td>
+      <td>-16.322</td>
+      <td>1</td>
+      <td>0.63373</td>
+      <td>0.5193</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.86623</td>
+      <td>0.70925</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.46806</td>
+      <td>0.8021</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_aye</td>
+      <td>17.832</td>
+      <td>-15.126</td>
+      <td>1</td>
+      <td>0.80126</td>
+      <td>0.61053</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_dfe</td>
+      <td>9.994</td>
+      <td>-22.964</td>
+      <td>0</td>
+      <td>0.79165</td>
+      <td>0.80759</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_fwd</td>
+      <td>5.5265</td>
+      <td>-27.431</td>
+      <td>0</td>
+      <td>0.61892</td>
+      <td>0.88837</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_lrd</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.26929</td>
+      <td>0.34773</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_nye</td>
+      <td>15.12</td>
+      <td>-17.837</td>
+      <td>1</td>
+      <td>0.70875</td>
+      <td>0.61053</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_sfe</td>
+      <td>20.77</td>
+      <td>-12.188</td>
+      <td>1</td>
+      <td>0.63382</td>
+      <td>0.47763</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_swd</td>
+      <td>12.126</td>
+      <td>-20.832</td>
+      <td>0</td>
+      <td>0.2811</td>
+      <td>0.91671</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_syq</td>
+      <td>18.339</td>
+      <td>-14.619</td>
+      <td>1</td>
+      <td>0.78842</td>
+      <td>0.67291</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_thn</td>
+      <td>10.361</td>
+      <td>-22.597</td>
+      <td>0</td>
+      <td>0.43994</td>
+      <td>0.85875</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tte</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.50573</td>
+      <td>0.59963</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_twd</td>
+      <td>14.556</td>
+      <td>-18.402</td>
+      <td>1</td>
+      <td>0.67955</td>
+      <td>0.67184</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_tye</td>
+      <td>15.344</td>
+      <td>-17.614</td>
+      <td>1</td>
+      <td>0.34968</td>
+      <td>0.67782</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p5_r6_vfn</td>
+      <td>27.145</td>
+      <td>-5.8125</td>
+      <td>1</td>
+      <td>0.83837</td>
+      <td>0.51221</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_mhq</td>
+      <td>13.206</td>
+      <td>-19.753</td>
+      <td>1</td>
+      <td>0.71664</td>
+      <td>0.85215</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qfw</td>
+      <td>35.804</td>
+      <td>2.8465</td>
+      <td>1</td>
+      <td>0.64084</td>
+      <td>0.68951</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_qrw</td>
+      <td>20.005</td>
+      <td>-12.953</td>
+      <td>1</td>
+      <td>0.82742</td>
+      <td>0.41089</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_trq</td>
+      <td>26.299</td>
+      <td>-6.659</td>
+      <td>1</td>
+      <td>0.97579</td>
+      <td>0.43194</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfd</td>
+      <td>31.654</td>
+      <td>-1.304</td>
+      <td>1</td>
+      <td>0.97929</td>
+      <td>0.42635</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p6_r7_wfq</td>
+      <td>24.159</td>
+      <td>-8.7995</td>
+      <td>1</td>
+      <td>0.80268</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p7_r5_syvirr</td>
+      <td>45.261</td>
+      <td>12.303</td>
+      <td>1</td>
+      <td>0.66329</td>
+      <td>0.84388</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>LOOCV</td>
+      <td>p8_r6_gve</td>
+      <td>25.223</td>
+      <td>-7.735</td>
+      <td>1</td>
+      <td>0.94631</td>
+      <td>0.84388</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_etd</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.70583</td>
+      <td>0.90617</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she</td>
+      <td>19.363</td>
+      <td>-13.595</td>
+      <td>1</td>
+      <td>0.85866</td>
+      <td>0.90617</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_she_plus_p7_r5_she</td>
+      <td>36.896</td>
+      <td>3.938</td>
+      <td>1</td>
+      <td>0.55087</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne</td>
+      <td>12.468</td>
+      <td>-20.49</td>
+      <td>0</td>
+      <td>0.84166</td>
+      <td>0.90617</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_sne_plus_p7_r5_sne</td>
+      <td>19.804</td>
+      <td>-13.154</td>
+      <td>1</td>
+      <td>0.784</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_swd_plus_p7_r5_swd</td>
+      <td>18.346</td>
+      <td>-14.612</td>
+      <td>1</td>
+      <td>0.68976</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_the_plus_p7_r5_the</td>
+      <td>16.636</td>
+      <td>-16.322</td>
+      <td>1</td>
+      <td>0.75843</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yth_plus_p7_r5_yth</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.785</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p4_r5_yye_plus_p7_p5_yye</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.49421</td>
+      <td>0.81763</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_aye</td>
+      <td>17.832</td>
+      <td>-15.126</td>
+      <td>1</td>
+      <td>0.34432</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_dfe</td>
+      <td>9.994</td>
+      <td>-22.964</td>
+      <td>0</td>
+      <td>0.67019</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_fwd</td>
+      <td>5.5265</td>
+      <td>-27.431</td>
+      <td>0</td>
+      <td>0.8817</td>
+      <td>0.84107</td>
+      <td>1</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_lrd</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.82884</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_nye</td>
+      <td>15.12</td>
+      <td>-17.837</td>
+      <td>1</td>
+      <td>0.81135</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_sfe</td>
+      <td>20.77</td>
+      <td>-12.188</td>
+      <td>1</td>
+      <td>0.33134</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_swd</td>
+      <td>12.126</td>
+      <td>-20.832</td>
+      <td>0</td>
+      <td>0.79084</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_syq</td>
+      <td>18.339</td>
+      <td>-14.619</td>
+      <td>1</td>
+      <td>0.30285</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_thn</td>
+      <td>10.361</td>
+      <td>-22.597</td>
+      <td>0</td>
+      <td>0.62193</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tte</td>
+      <td>0</td>
+      <td>-32.958</td>
+      <td>0</td>
+      <td>0.77339</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_twd</td>
+      <td>14.556</td>
+      <td>-18.402</td>
+      <td>1</td>
+      <td>0.82884</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_tye</td>
+      <td>15.344</td>
+      <td>-17.614</td>
+      <td>1</td>
+      <td>0.61307</td>
+      <td>0.84107</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p5_r6_vfn</td>
+      <td>27.145</td>
+      <td>-5.8125</td>
+      <td>1</td>
+      <td>0.94858</td>
+      <td>0.84107</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_mhq</td>
+      <td>13.206</td>
+      <td>-19.753</td>
+      <td>1</td>
+      <td>0.7577</td>
+      <td>0.88757</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qfw</td>
+      <td>35.804</td>
+      <td>2.8465</td>
+      <td>1</td>
+      <td>0.73727</td>
+      <td>0.88757</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_qrw</td>
+      <td>20.005</td>
+      <td>-12.953</td>
+      <td>1</td>
+      <td>0.72873</td>
+      <td>0.88757</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_trq</td>
+      <td>26.299</td>
+      <td>-6.659</td>
+      <td>1</td>
+      <td>0.91936</td>
+      <td>0.88757</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfd</td>
+      <td>31.654</td>
+      <td>-1.304</td>
+      <td>1</td>
+      <td>0.8565</td>
+      <td>0.88757</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p6_r7_wfq</td>
+      <td>24.159</td>
+      <td>-8.7995</td>
+      <td>1</td>
+      <td>0.71891</td>
+      <td>0.88757</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p7_r5_syvirr</td>
+      <td>45.261</td>
+      <td>12.303</td>
+      <td>1</td>
+      <td>0.66329</td>
+      <td>0.83018</td>
+      <td>0</td>
+      <td>False</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+    <tr>
+      <td>C295</td>
+      <td>ContactSeek_CCR_RF</td>
+      <td>Position_group_out</td>
+      <td>p8_r6_gve</td>
+      <td>25.223</td>
+      <td>-7.735</td>
+      <td>1</td>
+      <td>0.94631</td>
+      <td>0.79374</td>
+      <td>1</td>
+      <td>True</td>
+      <td>delta &gt;= threshold: smaller decrease or increase</td>
+      <td>delta &lt; threshold: larger decrease</td>
+      <td>-20</td>
+      <td>32.958</td>
+    </tr>
+  </tbody>
+</table></div></html>

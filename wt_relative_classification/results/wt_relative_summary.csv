@@ -1,0 +1,4 @@
+site,WT_editing_pct,threshold_delta_pp,equivalent_lower_exclusive_pp,equivalent_upper_inclusive_pp,corresponding_absolute_threshold_pct,model,n_delta_ge_threshold,n_delta_lt_threshold,LOOCV_BA,position_group_BA
+C388,72.561,-45.0,-47.23100000000001,-40.077000000000005,27.561000000000007,Interface_CP_LR,25,5,0.76,0.78
+C871,67.5015,-25.0,-25.8825,-21.901999999999987,42.50149999999999,ContactSeek_CCR_RF,13,17,0.7850678733031675,0.7941176470588236
+C295,32.958,-20.0,-20.49,-19.7525,12.957999999999998,ContactSeek_CCR_RF,20,10,0.825,0.525
