@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "c388_analysis/C388_analysis_report.md",
-      "bytes": 6935,
-      "sha256": "c4098ec2cbf234adc8b9a8b427afeeb34b696b006f9ad527f0a317ed0cf81975"
+      "bytes": 8390,
+      "sha256": "65bd0c565805f3573c0ae9bb2d0e276013d61b295b4e1b692ebf13f12e0de9bc"
     },
     {
       "path": "c388_analysis/C388_feature_distributions.pdf",
@@ -77,29 +77,14 @@
       "sha256": "4bb220b532f18908ab7cae8f90ca89cbc93b1e4689b4631b9d8fef556352700e"
     },
     {
-      "path": "c388_analysis/RNA4_LR.joblib",
-      "bytes": 1103,
-      "sha256": "35eb89a06d3d57f103f7ffca83672e6aaa2318c27bb8c595d43279a3c4d157f4"
-    },
-    {
-      "path": "c388_analysis/RNA4_RF.joblib",
-      "bytes": 14573,
-      "sha256": "07ef294b455045402522e0166eaa97026a2295658df1150f6b309497642ed80b"
-    },
-    {
       "path": "c388_analysis/Structure6_LR.joblib",
       "bytes": 1213,
       "sha256": "c9ffb4a666e357a191088af8698aa473a68dfe1b9c5198ed6ba059d28ae49d36"
     },
     {
-      "path": "c388_analysis/Structure6_RF.joblib",
-      "bytes": 14094,
-      "sha256": "cfaee8c0e77bc9296b168810c13a7c078e3bb24fd6e0f501eed8d0924b1ce538"
-    },
-    {
       "path": "c388_analysis/analyze.py",
-      "bytes": 7629,
-      "sha256": "f7e3a2f7efa2573907af96307f17addd6cfef1546e92ef3b46d1c096227deb57"
+      "bytes": 7835,
+      "sha256": "7a45b65a53a6872e6dbd2dbf9c46ddb0c33de03fd19e23e8ea8d8069ba070b95"
     },
     {
       "path": "c388_analysis/conditional_score_bootstrap.csv",
@@ -138,8 +123,8 @@
     },
     {
       "path": "c388_analysis/finish.py",
-      "bytes": 14282,
-      "sha256": "f61de26d809b3ad9e482a2ee71d39b60700e879e7488888e0c2b927041016104"
+      "bytes": 15737,
+      "sha256": "5fe04b8bfa6387fcb395897d5a83df16c35d9f89b78d93314e8c990ba9111513"
     },
     {
       "path": "c388_analysis/frozen_range_check.csv",

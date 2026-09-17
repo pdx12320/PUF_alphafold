@@ -1,5 +1,11 @@
 # PUF AlphaFold CP analysis
 
+## 固定阈值模型保留与清理（2026-09-17）
+
+已删除C388固定50%标签下表现接近随机的三个权重：`RNA4_LR`、`RNA4_RF`、`Structure6_RF`。保留三密度Logistic、CP＋结构Logistic及其余有一定信号的候选；architecture模型和C295局部ΔCP继续保留。完整比较结果与失败记录仍可核查，动态阈值分析不变。
+
+[逐项指标与清理说明](c388_analysis/C388_analysis_report.md) · [模型保留清单](c388_analysis/model_retention.json)。保留模型均为研究候选，尚需独立验证。
+
 ## C295 固定相对WT标签优化（2026-09-08）
 
 [结果与完整分析过程](c295_optimization/README.md) · [全部指标](c295_optimization/results/all_model_performance.csv) · [逐构建折外预测](c295_optimization/results/all_outer_predictions.csv)

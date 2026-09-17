@@ -82,7 +82,11 @@ for subset,mask in [('exclude_WT',a.construct!='PUF12-9'),('exclude_undetected_z
   for tr,te in splits('LOCO',ix):m=model(typ).fit(X[tr],y[tr]);pp[te]=m.predict_proba(X[te])[:,1]
   record('sensitivity',subset,key+'_'+typ,y[ix],pp[ix],ix)
 # Final fits are for reuse only; never treated as performance.
+# Keep all evaluation candidates above; export only retained research artifacts.
+retention=json.loads((O/"model_retention.json").read_text())
 for key,typ in candidates:
+ if key+"_"+typ not in retention["retained_models"]:
+  continue
  m=model(typ).fit(a[sets[key]].to_numpy(),y);joblib.dump(m,O/(key+'_'+typ+'.joblib'),compress=3)
 pd.DataFrame(res).to_csv(O/'metrics.csv',index=False);pd.DataFrame(pred).to_csv(O/'predictions.csv',index=False);json.dump({'feature_sets':sets,'nested_candidates':candidates,'new_label':'mean C388 >= 0.5','preprocessing':'remove SGSETPG first7 residues for match to old 512aa range, known before label analysis','RF':dict(trees=100,depth=2,min_leaf=3,max_features=1.,class_weight='balanced'),'LR_C':.1,'threshold':.5,'primary_input':'C388 RNA context only; model->seed->construct equal means'},open(O/'manifest.json','w'),indent=2)
 print('DONE',pd.DataFrame(res).query("family != 'sensitivity'")[['family','validation','model','AUC','balanced_accuracy','TN','FP','FN','TP']].to_string(index=False),flush=True)
