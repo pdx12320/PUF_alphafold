@@ -1,0 +1,14 @@
+{
+  "n_constructs": 22,
+  "n_prediction_rows": 14784,
+  "n_performance_rows": 672,
+  "all_metric_recomputations_match": true,
+  "max_metric_absolute_error": 1.1102230246251565e-16,
+  "all_train_test_members_disjoint": true,
+  "all_group_out_folds_disjoint_by_combination": true,
+  "P8_LOO_and_group_out_predictions_identical": true,
+  "n_figures": 18,
+  "local_window_boundaries_verified": true,
+  "full_task_complete": false,
+  "remaining_blocker": "complete C388 protein-protein matrices unavailable"
+}

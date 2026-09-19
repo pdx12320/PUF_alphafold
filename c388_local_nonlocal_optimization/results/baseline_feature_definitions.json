@@ -1,0 +1,51 @@
+{
+  "Total_CP": [
+    "delta_pr_cp_sum (existing total CP: protein-RNA sum)"
+  ],
+  "Interface_CP": [
+    "sqrt(sum((mutant PR - site-WT PR)^2)/(519*15)); legacy denominator"
+  ],
+  "CP3": [
+    "delta_pp_nonlocal4_high_per_res",
+    "delta_pp_nonlocal12_high_per_res",
+    "delta_pp_nonlocal24_high_per_res"
+  ],
+  "CP_summary": [
+    "delta_pp_nonlocal12_high_per_res",
+    "delta_pp_nonlocal4_per_res",
+    "delta_pp_nonlocal4_high_per_res",
+    "delta_pp_nonlocal12_per_res",
+    "delta_pp_nonlocal24_per_res",
+    "delta_pp_nonlocal24_high_per_res",
+    "delta_pr_cp_sum",
+    "delta_pr_cp_per_nt",
+    "delta_pr_top20_mean",
+    "delta_pr_rna_max_mean",
+    "delta_pr_rna_max_min",
+    "delta_pr_rna_coverage_05",
+    "delta_pr_protein_coverage_05",
+    "delta_pr_high_contacts_per_nt"
+  ],
+  "CP_Structure": [
+    "delta_pp_nonlocal4_high_per_res",
+    "delta_pp_nonlocal12_high_per_res",
+    "delta_pp_nonlocal24_high_per_res",
+    "delta_plddt_protein_mean",
+    "delta_pae_contact_weighted",
+    "delta_Rg_full_length_normalized",
+    "delta_plddt_core_mean",
+    "delta_core_anisotropy"
+  ],
+  "protein_RNA_CP": [
+    "delta_pr_cp_per_nt",
+    "delta_pr_rna_max_mean",
+    "delta_pr_rna_coverage_05",
+    "delta_pr_protein_coverage_05"
+  ],
+  "ContactSeek_Top3": [
+    "3 RNA-window means of per-residue delta Top3 on TRAIN-selected contacts"
+  ],
+  "ContactSeek_CCR": [
+    "up to 3 TRAIN-derived CCRs x 3 RNA-window means of delta Top3; zero-padded"
+  ]
+}

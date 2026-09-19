@@ -1,5 +1,19 @@
 # PUF AlphaFold CP analysis
 
+## C388 local / nonlocal 阶段性结果补充（2026-09-19）
+
+[结果、特征定义与限制](c388_local_nonlocal_optimization/README.md) · [原包报告](c388_local_nonlocal_optimization/SOURCE_README.md) · [比较指标摘录](c388_local_nonlocal_optimization/results/comparison_metrics.csv) · [关键方案逐样本预测](c388_local_nonlocal_optimization/results/key_predictions.csv) · [独立核验记录](c388_local_nonlocal_optimization/INTEGRATION_AUDIT.json)
+
+沿用原包22个work mutants，WT仅作参考；固定正类为 **ΔC388≥−15个百分点**，16 preserved / 6 strongly reduced。固定score=0.5的Interface_CP/RF_depth2：位置组合分组留出BA **93.75%**，留一BA **85.42%**，分组留出AUC **0.947917**。此为多候选探索性比较的阶段性候选。
+
+**Interface_CP实际表示protein–RNA矩阵相对WT的整体RMS变化，不能直接解读为protein–protein repeat界面或非局部通讯证据。** Total_CP/LR_C0.1的分组留出AUC同为0.947917；训练内选择特征族、模型与score阈值的nested_best_available分组BA为0.50，故不能只保留最高BA宣称泛化改善。完整PP矩阵相关分析仍待补齐，位置组合分组尚未严格隔离所有组成位置。
+
+本目录是可核验的**结果快照**：含原报告、24行比较指标摘录、132行关键预测、22个样本的标签/特征和核验脚本。完整94文件原ZIP未整体嵌入仓库，完整重跑需原包；提供SHA256核验恢复脚本。集成时已核对原包全部14,784条预测、672行指标及93个manifest条目，未重新训练或覆盖任何历史分析。
+
+```bash
+python c388_local_nonlocal_optimization/verify_results.py
+```
+
 ## 固定阈值模型保留与清理（2026-09-17）
 
 已删除C388固定50%标签下表现接近随机的三个权重：`RNA4_LR`、`RNA4_RF`、`Structure6_RF`。保留三密度Logistic、CP＋结构Logistic及其余有一定信号的候选；architecture模型和C295局部ΔCP继续保留。完整比较结果与失败记录仍可核查，动态阈值分析不变。

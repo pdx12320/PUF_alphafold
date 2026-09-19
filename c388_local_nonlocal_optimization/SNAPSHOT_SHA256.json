@@ -1,0 +1,17 @@
+{
+  "INTEGRATION_AUDIT.json": "e41d15bfda7107bf91198aa35dc527771f8dd4e10a3905360571aeb56d554375",
+  "README.md": "a2b9cdf78d5a4c8c7d15454a003ec6c0c4057c7556dac7c9e5e10f2326f1b7c4",
+  "SOURCE_README.md": "a8e76246e40e34e20a72d8a11570b30aa2f5d4846fa27130be4c57ddbb9498bf",
+  "import_source_archive.py": "3e977328b49e1c02099beb1c0f9459ed2be8581833e6594d5266504aa67e80d4",
+  "provenance.json": "830853bfb6ee19864511c17f369cc0491c682fb3126c8bcc2b28fbab1d835883",
+  "results/baseline_feature_definitions.json": "190a230e88d70b1a662551c805c881d398f949afef1480c0330c6ecea1d0a46d",
+  "results/baseline_scalar_features.csv": "b4f65204618b6b4d813ac13553e7a284b3bf6ced72d2acdba806a7b55729bc56",
+  "results/best_available_per_group_metrics.csv": "d799a773661da82130defd3038a62b044a952c7e69972eb52dbe81bf30d5e1f1",
+  "results/best_feature_set.csv": "d510fe0e98b95f3ffc95923fa9dea06be1b397773029db55fcf965bdc96997be",
+  "results/comparison_metrics.csv": "32062570f0bf73f49d2055fffb9ff524c992c8fec264ea613fdeb8d85b06bee6",
+  "results/frozen_cohort.csv": "f2d13e1ef1fb7e492317cf73c9f998fc6a20be6045176f3f4836d8a416ac51d2",
+  "results/input_audit.json": "524b1c3d8f28fbc63af32a7d6f49d60af89b9472ed1513613d8c71747b9175a5",
+  "results/key_predictions.csv": "9a6486ca1bec0650c2b01cb6fdca96a5d45edbf7d0cc1f2200e1846d57ccc4fd",
+  "results/validation_checks.json": "243a056045b0ed711cc8b66dc4bd6fad810ea53c03491141fb7e135706236746",
+  "verify_results.py": "21c64bc0364cdcb6d8db07e9c0cc2956d907e10def6648bd87c10069a86924eb"
+}

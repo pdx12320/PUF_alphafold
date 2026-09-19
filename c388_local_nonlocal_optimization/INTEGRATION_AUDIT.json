@@ -1,0 +1,22 @@
+{
+  "integration_date": "2026-09-19",
+  "source_archive": "c388_local_nonlocal_optimization_partial.zip",
+  "source_archive_sha256": "09d5bcf49429ab849f716420d131b600d618f90874158c5257a862fbda8095c3",
+  "source_archive_file_count": 94,
+  "source_manifest_entries_checked": 93,
+  "source_manifest_mismatches": [],
+  "source_prediction_rows_checked": 14784,
+  "source_performance_rows_checked": 672,
+  "n_constructs": 22,
+  "positive_class_n": 16,
+  "negative_class_n": 6,
+  "all_metric_recomputations_match": true,
+  "max_metric_absolute_error": 1.1102230246251565e-16,
+  "all_construct_train_test_disjoint": true,
+  "all_combination_group_folds_disjoint": true,
+  "strict_constituent_position_holdout_established": false,
+  "retrained_in_this_integration": false,
+  "new_PP_CP_analysis_performed": false,
+  "repository_package_scope": "Curated result snapshot; original 94-file archive is not embedded. See import_source_archive.py for verified restoration from the supplied ZIP.",
+  "repository_text_normalization": "CRLF converted to LF; source report text and numeric strings otherwise unchanged"
+}

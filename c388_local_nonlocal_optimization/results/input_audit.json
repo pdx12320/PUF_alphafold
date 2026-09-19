@@ -1,0 +1,21 @@
+{
+  "n": 22,
+  "positive": 16,
+  "negative": 6,
+  "work_membership_source": "supplied work_label, no re-selection",
+  "delta_threshold_pp": -15,
+  "WT_C388_pct": 72.561,
+  "max_total_cp_recalculation_error": 1.3211653993039363e-14,
+  "missing": [
+    "complete C388 protein-protein CP for WT and 22 constructs"
+  ],
+  "target_RNA_position_1based": 15,
+  "target_source": "user confirmation",
+  "RNA_sequence": "ACAUGGAGGACGUGC",
+  "candidate_C_positions_1based": [
+    2,
+    11,
+    15
+  ],
+  "original_archive_sha256": "da0638a5fa852b1e5dd4d75fd4d04ca260d3ba4db07223c7b1e17aaafdc8950f"
+}

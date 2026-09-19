@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/pdx12320/PUF_alphafold",
+  "repository_commit": "958de2cc3567671c8f9c452cf819aa2133b630d5",
+  "input_archive_name": "work_mutant_relative_classification.zip",
+  "input_archive_sha256": "da0638a5fa852b1e5dd4d75fd4d04ca260d3ba4db07223c7b1e17aaafdc8950f",
+  "target_RNA_position_1based": 15,
+  "target_mapping_source": "User confirmation in this task",
+  "original_repository_modified": false,
+  "original_archive_modified": false,
+  "status": "partial: all available baseline/local computations completed; full PP inputs missing"
+}
