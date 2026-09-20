@@ -1,7 +1,0 @@
-{
-  "file": "extended/final_summary_RF.joblib",
-  "reason": "Historical serialized RF was truncated and unreadable",
-  "replacement_source": "new_batch/restored_frozen_RF.joblib",
-  "original_preserved_at": "extended/legacy_corrupt_final_summary_RF.joblib.bin",
-  "max_abs_difference_vs_saved_new_batch_RF_scores": 6.245004513516506e-17
-}

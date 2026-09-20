@@ -1,49 +1,37 @@
-# 重现说明
+# 复现说明
 
-所有命令在仓库根目录、Python 3.12环境运行；依赖版本见requirements.txt。脚本是按分析阶段保存的研究代码；没有隐式自动提交或发布动作。
+所有命令从仓库根目录运行，建议Python 3.12及requirements.txt所列依赖。2026-09-20整理仅迁移必要输入与通用函数，未重训或更改现有主结果。退出当前目录的五轮基线、探索和质控见 [DBTL](DRY_LAB_DBTL.md)。
 
-## 已缓存数据重现（推荐）
+## 当前骨架结果
 
-`python tools/reproduce_current.py`读取以下已提供文件：
+```bash
+python tools/validate_snapshot.py
+python tools/reproduce_current.py
+```
 
-- architecture_validation/main_features.csv、all_features.csv
-- architecture_validation/all_arrays.npz、all_residue_mapping.csv
-- combined12/manifest.json
+后者按stats.py → models.py → plot_static.py → finish.py → write_report.py运行，读取architecture_validation的main_features/all_features/all_arrays/all_residue_mapping和combined12/manifest.json。无需先运行已删除阶段。运行会覆盖对应结果，建议独立checkout。
 
-这些数据足以重现精确置换、局部候选发现、三种验证、重要性、图表、报告与最简模型。固定随机种子2026。运行将覆盖相应结果文件，建议先在独立checkout运行。
+`python combined12/train.py`可从 `data/architecture_inputs/batch1_features.csv` 与 `new_batch/final_summary.csv` 重新训练24种PUF12模型。`architecture_validation/prepare.py`所需第一批矩阵和映射均在 `data/architecture_inputs/`；迁移前后SHA256见该目录provenance.json。
 
-主要统计定义：24个construct的C(24,4)=10,626种标签排列；保持architecture内成功数量的360种条件排列；BH提供家族与全局校正。核心minimum pLDDT为“残基先平均，再取核心最小值”；高置信CP阈值作用于聚合矩阵，原CP summary阈值则逐model计算。定义详见特征字典。
+## 当前分类结果
 
-## 其他分析阶段
+- 动态阈值：[独立输入与命令](../c388_threshold/REPRODUCE.md)。
+- WT相对分类：[完整过程](../wt_relative_classification/PROCESS.md)。
+- C295优化：[输入、严格位置验证与命令](../c295_optimization/README.md)。
+- C388 local/nonlocal：[快照核验与原包恢复](../c388_local_nonlocal_optimization/README.md)。仓库仅含摘录快照，完整重跑需要原始94文件ZIP；缺少的PP分析仍未完成。
 
-| 命令 | 用途 |
-|---|---|
-| `python combined12/train.py` | 从两批缓存特征重训24种PUF12固定模型 |
-| `python rf_tuning/tune.py` | 嵌套LOCO的RF参数搜索 |
-| `python rf_tuning/report.py` | 调参结果报告/对照表 |
-| `python architecture_validation/stats.py` | 精确置换、组内控制、CCR/contact分析 |
-| `python architecture_validation/models.py` | LOCO/整组留出及敏感性分析 |
+## 原始AF3输入和保留范围
 
-代码保留与当时结果的对应关系。旧模型或旧CCR结果的解释以最新报告为准。
+当前骨架原始提取入口为 `architecture_validation/extract.py`，共享CP函数为 `tools/cp_features.py`。需要upload目录的两份2026-09-07 ZIP及91–96 ZIP；第一批使用已验证的输入缓存。大型ZIP不随本仓库提供。
 
-## 原始AlphaFold输入
+`new_batch/map_repeats.py`使用迁移后的repeat模板。第二批历史冻结评分依赖已删除权重，其analyze.py、finish.py和旧RF副本同步退出；第二批已保存结果仍供合并分析读取，`report_plot.py`可由保留的评分和输入缓存生成对应第二批图表。需要完整重跑已退出的历史流程时，使用DBTL链接的清理前Git版本。
 
-原始ZIP不入Git，以免重复提交大型MSA/template。将输入放到原目录：
+原始文件清单仍见raw_input_inventory.json，其中曾记录的截断ZIP不可用于提取。先核验原始ZIP完整性，再运行耗时流程。此前N端范围、重复WT与RNA/seed独立性问题的诊断集中于DBTL Cycle 4。
 
-- inputs/folds_2026_09_06_03_44.zip
-- inputs/folds_2026_09_06_03_46.zip
-- upload/folds_2026_09_07_02_48.zip
-- upload/folds_2026_09_07_02_49.zip
-- upload/91-96.zip
+`dynamic_classification/sources/`和`wt_relative_classification/sources/`属于固定来源代码快照，保留原路径与字节供溯源；不作为仓库根目录可直接执行的命令。当前运行入口不得读取已删除的根目录。
 
-`docs/raw_input_inventory.json`标记当前文件大小、SHA256与ZIP有效性。原始03_46.zip当前本地副本曾被截断；最新分析复用了此前验证完成的14构建缓存。若重跑原始提取，应提供完整原ZIP，不能使用清单中zip_valid=false的截断副本。
+## 快照核验
 
-`extended/extract.py`用于初始批；`new_batch/analyze.py`与`new_batch/map_repeats.py`现已限定第二批日期文件名，避免意外读取TRM ZIP；`trm_validation/analyze.py`读取91–96；`architecture_validation/extract.py`读取新批和TRM，随后prepare.py与原14种缓存合并。
+`tools/validate_snapshot.py`校验当前文件清单SHA256、24个独立PUF12和4个成功标签、预测覆盖及等价分组。重跑浮点和序列化结果可受环境影响，快照SHA256用于已发布文件核验。
 
-`architecture_validation/prepare.py`中与旧CP特征的数值比对可验证衔接。不同repeat位置采用P1–P12编号，source采用R1–R8；不要将不同来源repeat的同一位置直接解释成相同残基。
-
-## 文件核验与安全读取
-
-`python tools/validate_snapshot.py`校验已归档文件的SHA256、主集标签及各验证预测覆盖范围。重现后浮点/序列化字节可能随环境变化，原SHA256用于已发布快照，不要求所有重跑二进制逐字节一致。
-
-joblib模型只能读取可信来源文件。模型加载审计是可读性验证；泛化指标来自heldout_predictions.csv，不来自重新拟合的训练评分。
+预测分数未校准。原始model/seed为技术预测重复，泛化性能来自构建级折外预测；全数据重拟合训练评分不能替代验证。模型文件仅从可信来源加载。

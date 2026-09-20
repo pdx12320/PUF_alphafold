@@ -1,9 +1,9 @@
 import os,sys,json,re,zipfile,io,collections
 import numpy as np,pandas as pd
 from Bio.PDB import MMCIFParser
-sys.path.insert(0,os.path.abspath('extended'));from score_new import get_features
-O='architecture_validation';base=pd.read_csv('combined12/training_data.csv');old=pd.read_csv('extended/all_construct_features.csv');labels=dict(zip(old.construct,old.success));labels.update(dict(zip(base.construct,base.success)));labels.update({'WT_PUF12-9':1,'P8-R6-GVE':1})
-t=pd.read_csv('extended/repeat_mapping.csv');templates={}
+sys.path.insert(0,os.path.abspath('tools'));from cp_features import get_features
+O='architecture_validation';base=pd.read_csv('combined12/training_data.csv');old=pd.read_csv('data/architecture_inputs/batch1_features.csv');labels=dict(zip(old.construct,old.success));labels.update(dict(zip(base.construct,base.success)));labels.update({'WT_PUF12-9':1,'P8-R6-GVE':1})
+t=pd.read_csv('data/architecture_inputs/repeat_templates.csv');templates={}
 for _,r in t.sort_values('source_identity_excluding_TRM',ascending=False).iterrows():templates.setdefault(int(r.source_repeat_inferred),r.core_sequence)
 acc={};raw=[];meta={};mappingrows=[];parser=MMCIFParser(QUIET=True)
 paths=['upload/folds_2026_09_07_02_49.zip','upload/folds_2026_09_07_02_48.zip','upload/91-96.zip']

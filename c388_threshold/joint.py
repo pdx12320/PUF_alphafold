@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
-O=pathlib.Path('c388_threshold');a=pd.read_csv('c388_analysis/training_data.csv');man=json.load(open('c388_analysis/manifest.json'));rate=a.C388_mean.to_numpy();n=len(a)
+O=pathlib.Path('c388_threshold');a=pd.read_csv('c388_threshold/inputs/training_data.csv');man=json.load(open('c388_threshold/inputs/manifest.json'));rate=a.C388_mean.to_numpy();n=len(a)
 def model(t):
  m=LogisticRegression(C=.1,class_weight='balanced',solver='liblinear',random_state=2026) if t=='LR' else RandomForestClassifier(n_estimators=100,max_depth=2,min_samples_leaf=3,max_features=1.,class_weight='balanced',random_state=2026,n_jobs=1)
  return make_pipeline(SimpleImputer(strategy='median'),StandardScaler(),m)

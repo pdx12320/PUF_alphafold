@@ -1,3 +1,0 @@
-subset,n,AUC,TN,FP,FN,TP
-exclude_WT,30,0.33333333333333337,1,8,7,14
-exclude_zero_records,29,0.4025974025974026,1,6,7,15

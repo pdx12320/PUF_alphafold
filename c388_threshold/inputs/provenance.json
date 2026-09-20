@@ -1,0 +1,24 @@
+{
+  "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+  "purpose": "Input features, experimental rates, grouping and definitions for retained dynamic-threshold analysis. No retired classifier weights.",
+  "files": [
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "c388_analysis/training_data.csv",
+      "path": "c388_threshold/inputs/training_data.csv",
+      "sha256": "313985f104e6bd5dcc41c5a2c52a57a18457af30f565356fcccbbd2537f86223"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "c388_analysis/manifest.json",
+      "path": "c388_threshold/inputs/manifest.json",
+      "sha256": "e07bf29930f8d6024514ae57a4ec46578b9020574659bb1424d4eae72da95a25"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "c388_analysis/raw_input_manifest.json",
+      "path": "c388_threshold/inputs/raw_input_manifest.json",
+      "sha256": "6713e145ec62e7dc21fa639c69fba5afb7daf7e4af7b0a9c4dc53e3f0c122daf"
+    }
+  ]
+}

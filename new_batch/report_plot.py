@@ -2,7 +2,7 @@ import os,json
 import numpy as np,pandas as pd,matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-O='new_batch';a=pd.read_csv(O+'/ranked_results.csv').sort_values('design_id');s=pd.read_csv(O+'/seed_scores.csv');old=pd.read_csv('extended/all_construct_features.csv');audit=json.load(open(O+'/architecture_audit.json'));mp=pd.read_csv(O+'/repeat_mapping.csv')
+O='new_batch';a=pd.read_csv(O+'/ranked_results.csv').sort_values('design_id');s=pd.read_csv(O+'/seed_scores.csv');old=pd.read_csv('data/architecture_inputs/batch1_features.csv');audit=json.load(open(O+'/architecture_audit.json'));mp=pd.read_csv(O+'/repeat_mapping.csv')
 a['design_id']=a.design_id.astype(int);a['domain']=a.design_id.map(lambda i:'15-repeat extrapolation' if i in [9,10,11] else ('new module order' if i>=12 else 'related 12-repeat'))
 with plt.rc_context({'font.family':'DejaVu Sans','font.size':10,'axes.spines.top':False,'axes.spines.right':False,'pdf.fonttype':42}):
  fig,axes=plt.subplots(1,3,figsize=(14,7.5),layout='constrained',sharey=True)

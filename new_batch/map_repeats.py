@@ -1,5 +1,5 @@
 import zipfile,glob,json,re,pandas as pd,numpy as np
-old=pd.read_csv('extended/repeat_mapping.csv');templates={}
+old=pd.read_csv('data/architecture_inputs/repeat_templates.csv');templates={}
 for _,r in old.sort_values('source_identity_excluding_TRM',ascending=False).iterrows():templates.setdefault(int(r.source_repeat_inferred),r.core_sequence)
 seen={};rows=[]
 for p in glob.glob('upload/folds_2026_09_07_02_*.zip'):

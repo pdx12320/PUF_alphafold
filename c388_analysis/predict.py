@@ -1,3 +1,0 @@
-"""Score construct-level C388 features. Output is uncalibrated; trained on C388 mean >=50%."""
-import argparse,json,pathlib,joblib,pandas as pd
-p=argparse.ArgumentParser();p.add_argument('--features',required=True);p.add_argument('--model',choices=['CP3','CP_Structure9'],default='CP3');p.add_argument('--out',required=True);args=p.parse_args();root=pathlib.Path(__file__).parent;manifest=json.load(open(root/'manifest.json'));f=pd.read_csv(args.features);cols=manifest['feature_sets'][args.model];assert not f[cols].isna().any().any();m=joblib.load(root/(args.model+'_LR.joblib'));f['C388_work_score_uncalibrated']=m.predict_proba(f[cols].to_numpy(float))[:,1];f['C388_work_prediction_05']=(f.C388_work_score_uncalibrated>=.5).astype(int);f.to_csv(args.out,index=False)

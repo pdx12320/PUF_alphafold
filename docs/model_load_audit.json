@@ -50,66 +50,6 @@
     "error": null
   },
   {
-    "path": "new_batch/restored_frozen_RF.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_formula4_LR.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_summary_RF.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_summary_XGB.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_full_XGB.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_summary_LR.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_full_LR.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "extended/final_full_RF.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "rf_tuning/RF_tuned_CP_summary14.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "rf_tuning/RF_tuned_joint.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "rf_tuning/RF_tuned_CP_density3.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
-    "path": "rf_tuning/RF_tuned_CP_structure17.joblib",
-    "status": "load_ok",
-    "error": null
-  },
-  {
     "path": "architecture_validation/S12_only_LR.joblib",
     "status": "load_ok",
     "error": null

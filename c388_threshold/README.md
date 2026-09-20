@@ -38,9 +38,9 @@
 - joint_threshold_results.csv：全部标签阈值 × 模型 × 验证方式 × 优化目标的最佳结果，含等价 C388 阈值区间。
 - joint_predictions.csv：所有外层留出构建的连续分数及真实标签。
 - joint_inner_threshold_validation.csv / joint_inner_threshold_predictions.csv：训练内选分类阈值的补充验证及逐构建结果。
-- frozen_joint_results.csv：历史冻结模型的探索性联合阈值扫描；不参与新模型最优推荐。
-- apparent_best_thresholds.csv / dynamic_threshold_validation.csv：固定 C388 50% 的前一轮结果。
-- joint.py、validate_joint.py、frozen_joint.py、thresholds.py：计算代码。
-- training_data.csv、manifest.json、predictions.csv：复现输入；代码默认从 c388_analysis 对应路径读取。
+- dynamic_threshold_validation.csv：固定实验标签50%时，训练内选择模型分数阈值的动态验证。
+- joint.py、validate_joint.py、thresholds.py：当前动态阈值代码。
+- inputs/training_data.csv、inputs/manifest.json：独立复现输入，迁移校验见inputs/provenance.json。
+- 已退出的固定标签基线与冻结迁移结果集中于 [Dry Lab DBTL](../docs/DRY_LAB_DBTL.md)。
 
 LR: C=0.1, class_weight=balanced, solver=liblinear；RF: 100 trees, max_depth=2, min_samples_leaf=3, max_features=1.0, class_weight=balanced。随机种子 2026。没有新增 RF 参数搜索。

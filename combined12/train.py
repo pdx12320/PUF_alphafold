@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import roc_auc_score,average_precision_score,balanced_accuracy_score,accuracy_score,confusion_matrix,precision_score,recall_score,f1_score
 from xgboost import XGBClassifier
-O='combined12';old=pd.read_csv('extended/all_construct_features.csv');old=old[~old.construct.str.startswith('puf_11')].copy();old['batch']='previous';old['design_id']=np.nan
+O='combined12';old=pd.read_csv('data/architecture_inputs/batch1_features.csv');old=old[~old.construct.str.startswith('puf_11')].copy();old['batch']='previous';old['design_id']=np.nan
 new=pd.read_csv('new_batch/final_summary.csv');new=new[new.repeat_count==12].copy();new['success']=(new.design_id==1).astype(int);new['batch']='new';new['protein_length']=new.length
 cp=[c for c in old if c.startswith(('pp_','pr_'))];struct=['plddt_protein_mean','pae_contact_weighted','Rg_full_length_normalized'];cols=['construct','batch','design_id','success','protein_length']+cp+struct
 a=pd.concat([old[cols],new[cols]],ignore_index=True);assert len(a)==24 and a.success.sum()==4 and len(new)==12 and len(old)==12;a.to_csv(O+'/training_data.csv',index=False);y=a.success.values

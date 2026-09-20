@@ -1,0 +1,48 @@
+{
+  "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+  "purpose": "Required input caches for retained architecture/combined analyses; retired models, reports and figures are not retained here.",
+  "files": [
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/all_construct_features.csv",
+      "path": "data/architecture_inputs/batch1_features.csv",
+      "sha256": "3874c3b585daff35ba6c926f0e729cc7ecc02ea1143c555141a4ec72000c40c0"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/construct_arrays.npz",
+      "path": "data/architecture_inputs/batch1_arrays.npz",
+      "sha256": "f2b70524abe42a03bdde4695dfcd7aa06e11303770ecc865b4c611f471cebd17"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/core_mapping.json",
+      "path": "data/architecture_inputs/batch1_core_mapping.json",
+      "sha256": "a00c8366bd6f224696563e787f682bec804ce3373ca124e25f747fb19865fe3d"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/architecture_groups.json",
+      "path": "data/architecture_inputs/batch1_groups.json",
+      "sha256": "40bcc6705b8ecb8dcf754024ccc56dca3d9062ff985849fae6a00fd9a5f0efdb"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/residue_mapping_all_constructs.csv",
+      "path": "data/architecture_inputs/batch1_residue_mapping.csv",
+      "sha256": "080b781ea88d7b84a0cfd0fd0498bd633a2860abd61945a7d69e7e8c086f04a9"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "extended/repeat_mapping.csv",
+      "path": "data/architecture_inputs/repeat_templates.csv",
+      "sha256": "bc7223db052f193f28a0f2bc0e25a6a085ce942838a8a89e8fe228e5d481c048"
+    },
+    {
+      "source_commit": "fc06206d9c576079dd48c3790acb78db54430134",
+      "source_path": "previous/results/sequences.json",
+      "path": "data/architecture_inputs/batch1_sequences.json",
+      "sha256": "c0f1ae1ebf80bbc9b56f11be4b59c04c54af78bffe42e653cb961fb0619424f5"
+    }
+  ]
+}
