@@ -1,0 +1,35 @@
+{
+  "commit": "294e8a4504aac6d6da1e1f530ee8e092d0ad31e8",
+  "inputs": {
+    "construct_site_summary.csv": {
+      "source_path": "c295_optimization/inputs/construct_site_summary.csv",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/c295_optimization/inputs/construct_site_summary.csv",
+      "sha256": "390d6b315e5a004abc8f6a0f85df73a10f1ca247e46a32d63e9b1635d4297c2c"
+    },
+    "pr_by_seed.npz": {
+      "source_path": "c295_optimization/inputs/pr_by_seed.npz",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/c295_optimization/inputs/pr_by_seed.npz",
+      "sha256": "700705a3c00a617b26367a27ec8227d7aaa1dcab68f1c41222474054053cc8f2"
+    },
+    "sequences.json": {
+      "source_path": "c295_optimization/inputs/sequences.json",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/c295_optimization/inputs/sequences.json",
+      "sha256": "d81e3da799ddbfe78318efd21e281a75454c4e9a36aee923d64b96cfe3d4dd60"
+    },
+    "repository_features.csv": {
+      "source_path": "c295_optimization/inputs/repository_features.csv",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/c295_optimization/inputs/repository_features.csv",
+      "sha256": "155c7e0d0fb5a8e505f5f3a2efdd4a230fddd7ddd1f1a405cb76f03cf1936be6"
+    },
+    "experimental_replicates.csv": {
+      "source_path": "wt_relative_classification/inputs/experimental_replicates.csv",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/wt_relative_classification/inputs/experimental_replicates.csv",
+      "sha256": "49bc461e3ce69a5a6e45feaac6b8bedc4b877e7a218678e0ad556570469e6012"
+    },
+    "frozen_cohort.csv": {
+      "source_path": "c388_local_nonlocal_optimization/results/frozen_cohort.csv",
+      "source_url": "https://github.com/pdx12320/PUF_alphafold/blob/294e8a4504aac6d6da1e1f530ee8e092d0ad31e8/c388_local_nonlocal_optimization/results/frozen_cohort.csv",
+      "sha256": "f2d13e1ef1fb7e492317cf73c9f998fc6a20be6045176f3f4836d8a416ac51d2"
+    }
+  }
+}

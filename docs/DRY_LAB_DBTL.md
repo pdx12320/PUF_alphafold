@@ -9,7 +9,7 @@
 | 研究线 | 设计变量 | 实验终点 | 当前保留入口 |
 |---|---|---|---|
 | 骨架 | repeat 来源、顺序和 loop 插入 | 构建 success/failure | [跨排列验证](../architecture_validation/PUF_architecture_validation_report.md) |
-| TRM 与功能 | 同一骨架上的 TRM 变化 | C388 活性保留；C295/C871 编辑下降 | [WT 相对分类](../wt_relative_classification/PROCESS.md)、[C295 优化](../c295_optimization/README.md)、[C388 优化](../c388_local_nonlocal_optimization/README.md) |
+| TRM 与功能 | 同一骨架上的 TRM 变化 | C388 活性保留；C295/C871 编辑下降 | [22突变体C871/C295动态分类](../trm22_offtarget/REPORT.md)、[C388 优化](../c388_local_nonlocal_optimization/README.md) |
 
 统一的实验单位是 construct。AF3 的多个 model 先在 seed 内汇总，再对 seed 等权汇总。同一蛋白的不同 RNA 背景、seed 和 model 不增加独立蛋白数。下文 BA 为两类召回率的平均值，pp 为百分点；AUC 描述排序，固定阈值分类结果需结合 TP/FP/FN/TN 阅读。
 
@@ -156,15 +156,17 @@
 | 当前方向 | 已完成的Test | Learn | 下一轮Design（尚未执行） |
 |---|---|---|---|
 | 骨架跨排列 | 24个PUF12；三密度RF跨排列AUC0.869；CP＋结构RF0.938 | 非局部CP与排列背景均有贡献；仅4个阳性 | 固定方案，在新排列、更多阳性构建上验证 |
-| WT相对C871 | Δ分界−25 pp，CCR RF；留一/位置组合BA78.5%/79.4% | 下降超过25 pp类别的组留出召回仅58.8% | 补充该目标类别及新位置验证 |
-| WT相对C295 | 固定Δ<−20 pp；局部ΔCP严格位置BA67.5%，旧CCR43.8% | 局部ΔCP较好；precision43.5%，P4/P5组内区分不足 | 增加各位置正负构建及seed，冻结特征比较 |
+| 22入组C871 | 位置组合选出−20 pp、Repository RF；组留出BA87.5% | 同一候选严格位置BA80.8%；全流程动态选择仍不稳定 | 冻结标签/特征/模型，用新构建验证 |
+| 22入组C295 | 位置组合选出−10 pp、局部ΔCP LR；组留出BA73.2% | 同一候选严格位置BA43.8%；严格位置事后最佳候选存在选择偏差 | 增加各位置正负构建及seed，再做预注册比较 |
 | C388活性保留 | 22个入组突变体，Δ≥−15 pp；Interface_CP RF固定0.5，组留出BA93.75%、留一85.42% | 多候选探索有选择偏差；训练内联合选择的组留出BA仅50% | 冻结候选，补完整PP矩阵并用新构建验证 |
 
 C388的Interface_CP表示全蛋白–RNA矩阵相对WT的RMS变化；Total_CP也来自蛋白–RNA矩阵。现有结果不能作为repeat间蛋白通讯的直接证据。mutation-centered/nonlocal/coupling所需的完整PP矩阵和映射尚未补齐。当前尚未完成“保留C388并同时降低C295/C871”的独立联合验证。
 
 ## 本次仓库整理与可追溯性
 
-本次仅整理文件、依赖与叙述，没有重训或修改现有主结果。用户指定退出当前快照的五个目录为 `previous/`、`extended/`、`rf_tuning/`、`trm_validation/`、`c388_analysis/`。其历史内容以本文为统一叙述入口，不另建旧报告归档目录。
+原2026-09-20整理仅整理文件、依赖与叙述，没有重训或修改当时主结果。用户指定退出当前快照的五个目录为 `previous/`、`extended/`、`rf_tuning/`、`trm_validation/`、`c388_analysis/`。其历史内容以本文为统一叙述入口，不另建旧报告归档目录。
+
+随后C871/C295主分析改为C388阶段冻结的22个入组突变体，旧的30突变体 `dynamic_classification/`、`wt_relative_classification/` 和 `c295_optimization/` 从当前快照移除。新分析的输入来源、固定提交和SHA256见 [`trm22_offtarget/SOURCE_MANIFEST.json`](../trm22_offtarget/SOURCE_MANIFEST.json)；旧指标与新指标不视为同一任务的直接提升。
 
 必要的输入数据迁移保留原字节和SHA256，见 [骨架输入来源](../data/architecture_inputs/provenance.json) 与 [动态阈值输入来源](../c388_threshold/inputs/provenance.json)。`new_batch`中依赖旧权重的两个重评分/修复脚本及旧RF副本同时移除；已保存的第二批数据、结果和映射仍可供合并流程读取。第三方及来源代码的 `sources/` 快照保留原字节用于溯源，不作为当前执行入口。
 
