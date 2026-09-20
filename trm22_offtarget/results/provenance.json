@@ -1,0 +1,36 @@
+{
+  "source_commit": "294e8a4504aac6d6da1e1f530ee8e092d0ad31e8",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "sklearn": "1.8.0",
+  "seed": 2026,
+  "models": [
+    "LR_0.01",
+    "LR_0.1",
+    "LR_1",
+    "RF_depth1",
+    "RF_depth2",
+    "ExtraTrees_depth2",
+    "LDA_shrinkage",
+    "GaussianNB",
+    "SVM_RBF"
+  ],
+  "families": [
+    "Total_CP",
+    "Interface_RMS",
+    "CP_summary",
+    "Repository",
+    "Local_deltaCP",
+    "Sequence",
+    "Sequence_Local",
+    "ContactSeek_CCR"
+  ],
+  "inputs": {
+    "construct_site_summary.csv": "390d6b315e5a004abc8f6a0f85df73a10f1ca247e46a32d63e9b1635d4297c2c",
+    "pr_by_seed.npz": "700705a3c00a617b26367a27ec8227d7aaa1dcab68f1c41222474054053cc8f2",
+    "sequences.json": "d81e3da799ddbfe78318efd21e281a75454c4e9a36aee923d64b96cfe3d4dd60",
+    "repository_features.csv": "155c7e0d0fb5a8e505f5f3a2efdd4a230fddd7ddd1f1a405cb76f03cf1936be6",
+    "experimental_replicates.csv": "49bc461e3ce69a5a6e45feaac6b8bedc4b877e7a218678e0ad556570469e6012",
+    "frozen_cohort.csv": "f2d13e1ef1fb7e492317cf73c9f998fc6a20be6045176f3f4836d8a416ac51d2"
+  }
+}

@@ -1,0 +1,538 @@
+[
+  {
+    "construct": "p4_r5_she",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      161
+    ],
+    "positions": [
+      4
+    ]
+  },
+  {
+    "construct": "p4_r5_she_plus_p7_r5_she",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_sne",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      161
+    ],
+    "positions": [
+      4
+    ]
+  },
+  {
+    "construct": "p4_r5_sne_plus_p7_r5_sne",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_swd_plus_p7_r5_swd",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      164,
+      269,
+      272
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_the_plus_p7_r5_the",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      160,
+      161,
+      268,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p5_r6_aye",
+    "site": "C871",
+    "seeds": 2,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_nye",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_sfe",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      197
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_swd",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_syq",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_thn",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_twd",
+    "site": "C871",
+    "seeds": 2,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_tye",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_vfn",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p6_r7_qfw",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_qrw",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_trq",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      232
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_wfd",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_wfq",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p7_r5_syvirr",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      272
+    ],
+    "positions": [
+      7
+    ]
+  },
+  {
+    "construct": "p8_r6_gve",
+    "site": "C871",
+    "seeds": 1,
+    "mutation_residues": [
+      304,
+      305
+    ],
+    "positions": [
+      8
+    ]
+  },
+  {
+    "construct": "p4_r5_she",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      161
+    ],
+    "positions": [
+      4
+    ]
+  },
+  {
+    "construct": "p4_r5_she_plus_p7_r5_she",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_sne",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      161
+    ],
+    "positions": [
+      4
+    ]
+  },
+  {
+    "construct": "p4_r5_sne_plus_p7_r5_sne",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_swd_plus_p7_r5_swd",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      161,
+      164,
+      269,
+      272
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p4_r5_the_plus_p7_r5_the",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      160,
+      161,
+      268,
+      269
+    ],
+    "positions": [
+      4,
+      7
+    ]
+  },
+  {
+    "construct": "p5_r6_aye",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_nye",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_sfe",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      197
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_swd",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_syq",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_thn",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_twd",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_tye",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p5_r6_vfn",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      196,
+      197,
+      200
+    ],
+    "positions": [
+      5
+    ]
+  },
+  {
+    "construct": "p6_r7_qfw",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_qrw",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_trq",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      232
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_wfd",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233,
+      236
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p6_r7_wfq",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      232,
+      233
+    ],
+    "positions": [
+      6
+    ]
+  },
+  {
+    "construct": "p7_r5_syvirr",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      272
+    ],
+    "positions": [
+      7
+    ]
+  },
+  {
+    "construct": "p8_r6_gve",
+    "site": "C295",
+    "seeds": 1,
+    "mutation_residues": [
+      304,
+      305
+    ],
+    "positions": [
+      8
+    ]
+  }
+]

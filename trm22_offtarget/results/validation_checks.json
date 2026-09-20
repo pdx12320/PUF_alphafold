@@ -1,0 +1,10 @@
+{
+  "unique_constructs": 22,
+  "prediction_rows": 119350,
+  "metric_rows": 5115,
+  "all_splits_disjoint": true,
+  "labels_recomputed_from_experiment": true,
+  "all_score_decisions_verified": true,
+  "max_metric_error": 1.1102230246251565e-16,
+  "no_new_experiments": true
+}

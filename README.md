@@ -10,8 +10,7 @@
 |---|---|---|
 | 骨架跨排列验证 | 24个PUF12，4成功/20失败；三密度RF跨排列AUC0.86875，CP＋结构RF0.9375 | [报告](architecture_validation/PUF_architecture_validation_report.md) |
 | C388联合动态阈值 | 31构建；40%标签、CP＋结构LR，训练内选分数阈值的组留出BA80.7%，LOCO67.9% | [报告](c388_threshold/README.md) |
-| 三位点相对WT分类 | 30突变体；C388/C871/C295位置组合BA78.0%/79.4%/52.5% | [过程](wt_relative_classification/PROCESS.md) |
-| C295局部ΔCP优化 | 固定ΔC295<−20 pp；严格位置BA67.5%，precision43.5% | [报告](c295_optimization/README.md) |
+| C871/C295动态标签分类 | 固定入组22突变体；位置组合选出候选的组留出BA为87.5%/73.2% | [报告](trm22_offtarget/REPORT.md) |
 | C388活性保留 | 22入组突变体，ΔC388≥−15 pp；Interface_CP浅层RF固定0.5，位置组合BA93.75%、留一85.42% | [阶段性结果](c388_local_nonlocal_optimization/README.md) |
 
 不同任务的样本范围、标签和验证方式见各报告。BA为平衡准确率。所有模型仍为研究候选，尚无独立新构建验证的最终联合筛选器。
@@ -28,7 +27,7 @@ CP＋结构RF跨排列AUC0.9375，但默认0.5阈值仅检出2/4成功。仅结�
 
 ## 编辑功能分析
 
-WT相对标签使用突变体编辑率减去同位点WT编辑率，单位为百分点。动态扫描所选负分界主要区分下降程度，不能将较高类别统一称为编辑增强。C295严格位置验证比位置组合留出更严格，其结果单独报告。
+WT相对标签使用突变体编辑率减去同位点WT编辑率，单位为百分点。C871/C295当前分析固定使用C388阶段的22个入组突变体，扫描下降幅度标签，并分别报告留一构建、位置组合留出和严格位置留出。不同标签定义与验证方式下的最佳值均属探索性结果。
 
 最新C388候选的Interface_CP实际为全蛋白–RNA CP矩阵相对WT的RMS变化。固定阈值组留出BA93.75%来自多候选探索；训练内联合选择特征、模型与分数阈值时BA为50%。该结果尚未确立稳定泛化。完整protein–protein CP相关的nonlocal/coupling工作仍待补齐输入。
 
@@ -42,13 +41,11 @@ WT相对标签使用突变体编辑率减去同位点WT编辑率，单位为百�
 | `combined12/` | 两批PUF12合并训练、跨批次比较 |
 | `new_batch/` | 第二批输入、映射与已保存结果 |
 | `c388_threshold/` | 动态阈值流程，使用自身inputs缓存 |
-| `wt_relative_classification/` | WT相对分类主版本 |
-| `dynamic_classification/` | 尚保留的绝对阈值对照；优先引用WT相对版本 |
-| `c295_optimization/` | C295局部ΔCP与严格位置验证 |
+| `trm22_offtarget/` | 22个固定入组突变体的C871/C295动态标签、多特征方法与三类验证 |
 | `c388_local_nonlocal_optimization/` | C388阶段性结果快照，完整重跑仍需原ZIP |
 | `data/architecture_inputs/` | 当前流程必需的序列、矩阵、特征与映射 |
 
-初始CP、扩展结构、RF调参、TRM迁移检查和C388固定50%独立分析目录已按2026-09-20整理要求删除。相关基线、失败探索及质控结论集中于 [Dry Lab DBTL](docs/DRY_LAB_DBTL.md)，并链接清理前固定Git版本以便追溯。
+初始CP、扩展结构、RF调参、TRM迁移检查和C388固定50%独立分析目录已按2026-09-20整理要求删除。旧的30突变体C871/C295动态、WT相对及C295优化阶段也已由22个固定入组的新分析取代。相关基线、失败探索及质控结论集中于 [Dry Lab DBTL](docs/DRY_LAB_DBTL.md)，并链接清理前固定Git版本以便追溯。
 
 ## 使用与核验
 

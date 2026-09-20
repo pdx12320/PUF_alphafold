@@ -15,9 +15,8 @@ python tools/reproduce_current.py
 
 ## 当前分类结果
 
-- 动态阈值：[独立输入与命令](../c388_threshold/REPRODUCE.md)。
-- WT相对分类：[完整过程](../wt_relative_classification/PROCESS.md)。
-- C295优化：[输入、严格位置验证与命令](../c295_optimization/README.md)。
+- C388动态阈值：[独立输入与命令](../c388_threshold/REPRODUCE.md)。
+- C871/C295：[22个固定入组突变体的报告](../trm22_offtarget/REPORT.md)与[复现命令](../trm22_offtarget/README.md)。
 - C388 local/nonlocal：[快照核验与原包恢复](../c388_local_nonlocal_optimization/README.md)。仓库仅含摘录快照，完整重跑需要原始94文件ZIP；缺少的PP分析仍未完成。
 
 ## 原始AF3输入和保留范围
@@ -28,7 +27,7 @@ python tools/reproduce_current.py
 
 原始文件清单仍见raw_input_inventory.json，其中曾记录的截断ZIP不可用于提取。先核验原始ZIP完整性，再运行耗时流程。此前N端范围、重复WT与RNA/seed独立性问题的诊断集中于DBTL Cycle 4。
 
-`dynamic_classification/sources/`和`wt_relative_classification/sources/`属于固定来源代码快照，保留原路径与字节供溯源；不作为仓库根目录可直接执行的命令。当前运行入口不得读取已删除的根目录。
+`trm22_offtarget/` 使用自包含输入缓存，`SOURCE_MANIFEST.json` 记录输入在固定Git提交中的路径与SHA256，`sources/` 保留ContactSeek来源代码和许可证。旧的30突变体C871/C295目录不再作为当前执行入口。
 
 ## 快照核验
 
