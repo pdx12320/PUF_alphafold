@@ -69,19 +69,7 @@ The four-construct case study reuses the previously frozen second-batch panel: i
 **Design 1 is a positive held-out agreement case:** the model predicts work and the excluded wet-lab record documents work. Design 7 is an important counterexample: strong contact-density scores alone do not guarantee the recorded functional outcome. Adding structural summaries corrects Design 8 but leaves Design 7 unresolved.
 
 ## 5. What this module contributes to the engineering cycle
-
-```mermaid
-flowchart LR
- W[Wet-lab scaffold labels] --> F[CP and structural features]
- F --> M[Fixed shallow random forests]
- M --> H[Construct and arrangement holdouts]
- H --> A[Agreement with existing measurements]
- H --> E[False-positive and false-negative analysis]
- A --> N[Prioritize future blinded experiments]
- E --> N
- N -. future data .-> W
-```
-
+\n
 This module provides an interpretable scaffold prioritization signal and identifies cases requiring experimental investigation. The early RF achieves perfect initial-batch classification, while expanded evaluation defines its limits. All 24 main scaffolds retain a shared front R123 background; transfer beyond that design space remains untested. The specificity of reporter editing is assessed separately in the TRM module.
 
 For the next wet-lab cycle, the relevant output is a candidate and a structural hypothesis, accompanied by uncertainty and failure cases. A prospective claim requires predictions to be frozen before new measurements are generated.
