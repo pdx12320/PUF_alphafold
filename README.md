@@ -1,65 +1,56 @@
-# PUF AlphaFold CP analysis
+# PUF–APOBEC Structure-Guided Engineering
 
-利用 AlphaFold 接触概率、结构置信度和几何特征，研究 PUF repeat 排列的构建成败与 TRM 变化后的位点编辑表现。骨架功能、C388活性及C295/C871旁观者编辑分别评估。
+Computational design and validation framework for PUF–APOBEC RNA editing. The repository connects protein structure, TRM editing measurements and AI-guided non-TRM mutation design.
 
-## 2026-09-22 更新（二）：AiCE × MPNN 反向折叠筛选
+## Project entry points
 
-**[AiCE × PUF12 模块](aice_mpnn_20260922/README.md)**：模仿 AiCE 框架，用 ProteinMPNN/LigandMPNN 对 PUF12 全蛋白 493 位点做单突变扫描（各 10,000 条采样），提名 81 个突变（17 个双模型共识、识别位点 0 提名）。与两批 84 条湿实验记录回顾性对照：模型频率与 C388 保留率基本无相关（LigandMPNN ρ=0.013），湿实验赢家（P8-R6-GVE 等）模型频率全为 0——**识别三联体归湿实验+密码表，非识别位点归 AiCE**。含第三代 11 个构建清单（G0–G10，赢家骨架×共识突变叠加）。回顾性分析，无独立新实验确证。
+| Module | Question | Main outcome | Documentation |
+|---|---|---|---|
+| **Model 1 — PUF scaffold function** | Which repeat arrangements retain scaffold function? | Contact-probability and structural features prioritize work/non-work PUF designs; predictions were assessed with wet-lab function measurements. | [Model 1](docs/wiki/PUF_Module1_EN.md) |
+| **Model 2 — TRM-dependent editing** | Which TRM changes retain C388 editing and reduce C295/C871 bystanders? | Candidate TRMs were predicted and assessed using reporter editing measurements. | [Full Model page](docs/wiki/PUF_Model_EN.md#model-2-trm-dependent-reporter-editing) |
+| **Model 3 — AI-guided non-TRM design** | Which residues outside the recognition code should be modified next? | AiCE-inspired ProteinMPNN/LigandMPNN scanning defines core, geometry and interface mutations for the next wet-lab design round. | [Full Model page](docs/wiki/PUF_Model_EN.md#model-3-ai-guided-puf-design-outside-trm-positions) · [AiCE–MPNN workflow](aice_mpnn_20260922/README.md) |
 
-## 2026-09-22 更新
+## Key experimental design backbones
 
-**[最新结果总览](results_20260922/README.md)** · **[第一模块 Wiki 中文](docs/wiki/PUF_Module1_ZH.md)** · **[English Wiki module](docs/wiki/PUF_Module1_EN.md)**
+- **P8-GVE**: low C871 editing with retained C388 editing.
+- **P9-NTQ, P9-NPS and P9-GNS**: complementary P9 TRM backbones with retained target editing.
+- **P4-R5-SNE+P7-R5-SNE**: increased C388 editing with reductions at C295 and C871.
+- **P7-SYVIRR**: high-C388 backbone for non-TRM AI-guided combinations.
 
-| 本次发布内容 | 结果与范围 | 文件 |
+## Current results
+
+| Analysis | Result | Files |
 |---|---|---|
-| 新补随机森林：初始骨架 | 初始14个留一验证14/14正确；仅12个PUF12为12/12 | [RF结果](results_20260922/scaffold_RF/results/metrics.csv) |
-| 新补随机森林：扩展24骨架 | CP＋结构RF留一22/24正确；排列留出AUC0.9375、BA0.75 | [第一模块](docs/wiki/PUF_Module1_ZH.md) |
-| v4动态阈值、全/非局部/界面CP | 全81个PR可用TRM留一：C295 57/81、C388 36/81、C871 49/81正确 | [全部81构建](results_20260922/v4/all81_LOCO.csv) |
-| 指定五构建分别留出 | 保留同P其他构建；三个C共13/15命中 | [五构建结果](results_20260922/five_construct_holdout/predictions.csv) |
-| 十构建同时留出 | 五候选＋五中等表现比较构建；预测Top5含3候选，综合Spearman 0.103 | [完整排名](results_20260922/ten_construct_holdout/ranking.csv) |
-| 固定旧配方的两批TRM对比 | 同一十构建测试集，加入第二批没有使每个终点都改善 | [独立分析结果](results_20260922/wiki_two_batch/TRM_heldout_metrics.csv) |
+| Initial scaffold Random Forest | 14/14 correct construct-level predictions | [Results](results_20260922/scaffold_RF/results/metrics.csv) |
+| Expanded scaffold assessment | CP + structure Random Forest: 22/24 correct | [Results](results_20260922/scaffold_RF/results/metrics.csv) |
+| Five candidate TRM panel | 13/15 site-level predictions | [Predictions](results_20260922/five_construct_holdout/predictions.csv) |
+| Ten-construct comparison panel | Prediction and experimental rankings | [Ranking](results_20260922/ten_construct_holdout/ranking.csv) |
+| AiCE–MPNN non-TRM design | 17 dual-model consensus substitutions; G0–G10 design set | [Workflow and designs](aice_mpnn_20260922/README.md) |
 
-这些都是既有实验记录上的回顾性验证。早期RF的100%限于初始数据；五构建13/15不能代替全体或十构建同时留出的成绩。不同标签、队列和验证协议的最高值不作为同一个“最佳模型”。v4非局部分支的高分另配[其自身动态阈值的多数类基线](results_20260922/v4/nonlocal_own_threshold_baseline.csv)。
+## Repository map
 
-本次补跑的代码和完整小型特征输入已发布；原始大体积AF/CP ZIP未直接入Git，见[来源清单与恢复方式](results_20260922/README.md#what-is-actually-included)。未删除下方历史分析。
+```text
+docs/
+  wiki/                   Model pages and Wiki-ready narrative
+  REPOSITORY_GUIDE.md     Detailed directory guide
+results_20260922/         Current reproducible model outputs and split manifests
+aice_mpnn_20260922/       Model 3: AF3 complex, MPNN workflow and G0–G10 designs
+architecture_validation/  Scaffold validation analysis
+data/                     Input tables and registries
+tools/                    Reproducibility and validation utilities
 
-## 2026-09-20 历史分析入口
-
-[干实验 DBTL：设计、构建、测试与学习](docs/DRY_LAB_DBTL.md) · [历史复现说明](docs/REPRODUCIBILITY.md)
-
-| 任务 | 历史数据与结果 | 入口 |
-|---|---|---|
-| 骨架跨排列验证 | 24个PUF12，4成功/20失败；三密度RF跨排列AUC0.86875，CP＋结构RF0.9375 | [报告](architecture_validation/PUF_architecture_validation_report.md) |
-| C388联合动态阈值 | 31构建；40%标签、CP＋结构LR；组留出BA80.7%，LOCO67.9% | [报告](c388_threshold/README.md) |
-| C871/C295动态标签分类 | 固定22突变体；位置组合选出候选BA87.5%/73.2%，含探索性选择偏差 | [报告](trm22_offtarget/REPORT.md) |
-| C388活性保留 | 22突变体、ΔC388≥−15pp；固定候选组留出BA93.75%，完整自适应选择BA50% | [阶段性报告](c388_local_nonlocal_optimization/README.md) |
-
-历史和新结果的样本、任务与验证方式见各自报告。当前仍无独立新实验确证的通用联合筛选器。骨架模型共享前部R123设计背景；功能标签也不等同于编辑特异性。
-
-## 复现
-
-新增RF分类器从小型特征表复现：
-
-```bash
-python results_20260922/scaffold_RF/retrain.py
+c388_threshold/
+c388_local_nonlocal_optimization/
+trm22_offtarget/
+combined12/
+new_batch/                Earlier analysis snapshots retained for provenance
 ```
 
-历史检查命令保留：
+## Reproduce
 
 ```bash
 python -m pip install -r requirements.txt
-python tools/validate_snapshot.py
-python c388_local_nonlocal_optimization/verify_results.py
+python results_20260922/scaffold_RF/retrain.py
 ```
 
-历史三密度骨架评分：
-
-```bash
-python architecture_validation/predict.py --features new_construct_features.csv --out new_construct_scores.csv
-```
-
-输入需要按同一蛋白范围和model→seed→construct规则得到的 `pp_nonlocal4_high_per_res`、`pp_nonlocal12_high_per_res`、`pp_nonlocal24_high_per_res`。分数未校准。
-
-[历史全部骨架指标](architecture_validation/validation_metrics.csv) · [历史折外预测](architecture_validation/heldout_predictions.csv) · [构建标签](architecture_validation/construct_registry.csv) · [特征定义](architecture_validation/CP_summary_dictionary.csv)
-
-从缓存重现旧统计和图表的 `python tools/reproduce_current.py` 会覆盖旧输出，应在独立checkout中运行。初始阶段曾按2026-09-20整理要求删除的目录仍可从固定历史commit追溯；[原始输入清单](docs/raw_input_inventory.json)与新的[上传ZIP哈希](results_20260922/source_archives.json)分别保留其来源。
+See [the repository guide](docs/REPOSITORY_GUIDE.md) for the role of each analysis directory and direct links to the current model outputs.
