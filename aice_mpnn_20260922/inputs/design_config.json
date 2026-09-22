@@ -1,0 +1,148 @@
+{
+  "puf12_length": 493,
+  "n_repeats": 12,
+  "repeats": [
+    {
+      "repeat": 1,
+      "triplet": "SYE",
+      "base": "G",
+      "pos12": 35,
+      "pos13": 36,
+      "pos16": 39
+    },
+    {
+      "repeat": 2,
+      "triplet": "SYR",
+      "base": "C",
+      "pos12": 71,
+      "pos13": 72,
+      "pos16": 75
+    },
+    {
+      "repeat": 3,
+      "triplet": "CRQ",
+      "base": "A",
+      "pos12": 107,
+      "pos13": 108,
+      "pos16": 111
+    },
+    {
+      "repeat": 4,
+      "triplet": "SYE",
+      "base": "G",
+      "pos12": 143,
+      "pos13": 144,
+      "pos16": 147
+    },
+    {
+      "repeat": 5,
+      "triplet": "SYE",
+      "base": "G",
+      "pos12": 179,
+      "pos13": 180,
+      "pos16": 183
+    },
+    {
+      "repeat": 6,
+      "triplet": "CRQ",
+      "base": "A",
+      "pos12": 215,
+      "pos13": 216,
+      "pos16": 219
+    },
+    {
+      "repeat": 7,
+      "triplet": "SYE",
+      "base": "G",
+      "pos12": 251,
+      "pos13": 252,
+      "pos16": 255
+    },
+    {
+      "repeat": 8,
+      "triplet": "SYE",
+      "base": "G",
+      "pos12": 287,
+      "pos13": 288,
+      "pos16": 291
+    },
+    {
+      "repeat": 9,
+      "triplet": "NYQ",
+      "base": "U",
+      "pos12": 323,
+      "pos13": 324,
+      "pos16": 327
+    },
+    {
+      "repeat": 10,
+      "triplet": "CRQ",
+      "base": "A",
+      "pos12": 359,
+      "pos13": 360,
+      "pos16": 363
+    },
+    {
+      "repeat": 11,
+      "triplet": "SYR",
+      "base": "C",
+      "pos12": 395,
+      "pos13": 396,
+      "pos16": 399
+    },
+    {
+      "repeat": 12,
+      "triplet": "CRQ",
+      "base": "A",
+      "pos12": 438,
+      "pos13": 439,
+      "pos16": 442
+    }
+  ],
+  "rna_target_5to3": "ACAUGGAGGACG",
+  "rna_context_17nt": "ACAUGGAGGACGUGCGC",
+  "c388_nucleotide_index": 15,
+  "c388_zone_1based": [
+    1,
+    45
+  ],
+  "mrna_1based_start": 374,
+  "specificity_positions_0based": [
+    35,
+    36,
+    39,
+    71,
+    72,
+    75,
+    107,
+    108,
+    111,
+    143,
+    144,
+    147,
+    179,
+    180,
+    183,
+    215,
+    216,
+    219,
+    251,
+    252,
+    255,
+    287,
+    288,
+    291,
+    323,
+    324,
+    327,
+    359,
+    360,
+    363,
+    395,
+    396,
+    399,
+    438,
+    439,
+    442
+  ]
+}

@@ -2,6 +2,10 @@
 
 利用 AlphaFold 接触概率、结构置信度和几何特征，研究 PUF repeat 排列的构建成败与 TRM 变化后的位点编辑表现。骨架功能、C388活性及C295/C871旁观者编辑分别评估。
 
+## 2026-09-22 更新（二）：AiCE × MPNN 反向折叠筛选
+
+**[AiCE × PUF12 模块](aice_mpnn_20260922/README.md)**：模仿 AiCE 框架，用 ProteinMPNN/LigandMPNN 对 PUF12 全蛋白 493 位点做单突变扫描（各 10,000 条采样），提名 81 个突变（17 个双模型共识、识别位点 0 提名）。与两批 84 条湿实验记录回顾性对照：模型频率与 C388 保留率基本无相关（LigandMPNN ρ=0.013），湿实验赢家（P8-R6-GVE 等）模型频率全为 0——**识别三联体归湿实验+密码表，非识别位点归 AiCE**。含第三代 11 个构建清单（G0–G10，赢家骨架×共识突变叠加）。回顾性分析，无独立新实验确证。
+
 ## 2026-09-22 更新
 
 **[最新结果总览](results_20260922/README.md)** · **[第一模块 Wiki 中文](docs/wiki/PUF_Module1_ZH.md)** · **[English Wiki module](docs/wiki/PUF_Module1_EN.md)**
