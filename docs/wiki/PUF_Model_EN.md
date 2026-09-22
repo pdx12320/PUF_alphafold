@@ -58,40 +58,20 @@ The experimental characterization panel comprised P9-GNS, P9-NPS, P9-NTQ, P8-GVE
 
 P9-NTQ combined 62.98% C388 editing with 18.46% C871 editing. P8-GVE produced the lowest C871 editing in the panel, 10.23%, while retaining 65.86% C388 editing. The double-SNE construct reached 80.34% C388 editing and reduced C295 and C871 by 13.15 and 34.90 percentage points, respectively. These profiles provided complementary starting points for the next engineering round.[^candidates]
 
-### Important PUF repeats identified from experimental editing data
+## Model 3. AI-guided PUF design outside TRM positions
 
-We next used the complete set of 84 construct-level wet-lab records to identify repeat positions that consistently informed TRM design. P8, P9 and P7 emerged as the principal selectivity-design positions. P8-GVE gave the lowest C871/C388 ratio (0.153) in the collection, whereas P9-NTQ, P9-NPS and P9-GNS retained high C388 editing. P7-SYVIRR also retained substantial target activity. These positions therefore provide the main sequence-design space for maintaining C388 editing while reducing bystander editing.
+Models 1 and 2 were evaluated against wet-lab measurements of scaffold function and reporter editing, respectively. Model 3 extends this work to protein residues outside the TRM recognition positions and provides mutation guidance for the next wet-lab design round.
 
-P3 acted as a useful C295 control point. TRM changes at this repeat reduced median C295 editing to zero and included the selective VFQ profile, although target retention varied more widely. In contrast, P2 and P5 were sensitive positions: their variants showed lower median C388 retention and contributed few favourable C871/C388 profiles. P1, P4, P6, P10 and P11 were generally tolerated but produced fewer selectivity gains. P12 has not yet been represented in the experimental dataset and will be added to the next design cycle.[^aice]
+We used an AiCE-inspired inverse-folding workflow on the AlphaFold 3 PUF12–APOE4 mRNA complex. ProteinMPNN and LigandMPNN each sampled 10,000 sequences while retaining the RNA context. A 493-position scan nominated 17 substitutions supported by both models. The wet-lab dataset identified P8, P9 and P7 as the main TRM positions for selectivity design, including the P8-GVE, P9-NTQ, P9-NPS, P9-GNS and P7-SYVIRR backbones. Model 3 therefore keeps these experimentally validated TRMs and introduces additional mutations only outside the recognition code.[^aice]
 
-| Design role | Repeat positions | Experimental design use |
+| Structural design class | Priority residues | Design purpose |
 |---|---|---|
-| Primary selectivity positions | P8, P9, P7 | Prioritize TRM exploration and combined designs |
-| C295 modulation position | P3 | Test selective C295 reduction with C388 retention monitoring |
-| Sensitive positions | P2, P5 | Retain the native recognition code unless a targeted rationale is available |
-| Tolerated positions | P1, P4, P6, P10, P11 | Use as secondary design positions |
-| Unexplored position | P12 | Add systematic TRM coverage in the next round |
+| Core stability and packing | T350V, D374E, V294I, M458L, L274I, T278I, L166I, V366I, R93K, E351L, R462L | Improve scaffold packing on favourable TRM backbones |
+| C388-proximal fusion-end geometry | R45T, S30A, L41R, N12S | Tune the geometry near the deaminase fusion |
+| Protein–RNA interface | A438G, H392D | Refine RNA-interface packing |
+| Conserved scaffold hinges | G35, G71, G107, G179, G251, G287, V290, V362, P348, L101 | Preserve the native scaffold framework |
 
-### AI-guided PUF design beyond TRM substitutions
-
-To extend Model 2 beyond the recognition code, we established an AiCE-inspired inverse-folding workflow on the AlphaFold 3 PUF12–APOE4 mRNA complex. The input complex contained the 493-residue PUF12 protein and a 17-nt APOE4 RNA context centred on C388. ProteinMPNN and LigandMPNN each generated 10,000 sequences while the RNA context was retained during design. For every protein position, we compared the sampled frequency of the wild-type residue with that of the most frequent substitution. A site was nominated when the sampled substitution was favoured over the wild-type residue. The two models jointly nominated 17 consensus substitutions from a 493-position scan.[^aice]
-
-The workflow separates two design layers. The experimental TRM analysis defines recognition-code substitutions at repeat positions P8, P9, P7 and P3. The inverse-folding scan supplies orthogonal non-recognition substitutions that can be combined with these experimentally favourable TRMs. This division preserves the successful C388 and bystander-editing profiles while expanding the design space toward protein stability, RNA-interface packing and fusion-end geometry.
-
-| Structural design class | Priority residues | Intended use |
-|---|---|---|
-| Core stability and packing | T350V, D374E, V294I, M458L, L274I, T278I, L166I, V366I, R93K, E351L, R462L | Test additive stabilization on favourable TRM backbones |
-| C388-proximal fusion-end geometry | R45T; S30A, L41R and N12S | Modify the N-terminal geometry facing the deaminase fusion |
-| Protein–RNA interface | A438G, H392D | Tune RNA-interface packing on P8-GVE and P9-NTQ backbones |
-| Conserved scaffold hinges | G35, G71, G107, G179, G251, G287, V290, V362, P348 and L101 | Preserve the native residues during combinatorial design |
-
-The experimental comparison defined how these predictions should be used. Recognition-triplet residues at repeat positions 12, 13 and 16 were not advanced from inverse-folding frequency alone. The experimentally favourable TRMs, including GVE, NTQ, NPS, GNS and SYVIRR, were selected from the editing dataset and PUF recognition code. The AI scan instead nominated non-recognition residues for combination with these TRM backbones. This strategy directly links position-resolved wet-lab selection with structure-guided protein optimization.[^aice]
-
-### Next PUF design set
-
-We assembled eleven third-generation constructs that combine the P8-GVE or P9-NTQ experimental backbones with the AI-guided substitutions. G0 retains P8-GVE as the reference. G1 adds R45T, G2 adds the core-stability package, G3 combines R45T with the core package, G4 adds A438G and H392D, and G5 adds the N-terminal geometry package. G6 combines all design layers. G7 and G8 introduce the core and interface packages into P9-NTQ. G9 combines P8-GVE, P9-NTQ and the core package, and G10 adds the core package to the high-C388 SYVIRR backbone.[^aice]
-
-The next wet-lab cycle will quantify C295, C388 and C871 editing for G0–G10. These measurements will test whether the experimentally selected recognition layer and the AI-guided non-recognition layer act additively, while expanding coverage at P8 and P12.
+Eleven third-generation constructs, G0–G10, combine P8-GVE, P9-NTQ or P7-SYVIRR with the AI-guided core, geometry and interface substitutions. This set will be tested by measuring C295, C388 and C871 editing, providing direct experimental validation of non-TRM residue guidance.
 
 ## Conclusions
 
