@@ -1,0 +1,17 @@
+{
+  "source_commit": "0d68259e15c3d8d26b308bd938ef8acde16083f5",
+  "historical_commit": "958de2cc3567671c8f9c452cf819aa2133b630d5",
+  "random_state": 2026,
+  "labels": "historical scaffold success, not TRM activity",
+  "CP3": ["pp_nonlocal4_high_per_res", "pp_nonlocal12_high_per_res", "pp_nonlocal24_high_per_res"],
+  "CP_structure9": ["pp_nonlocal4_high_per_res", "pp_nonlocal12_high_per_res", "pp_nonlocal24_high_per_res", "plddt_core_mean", "plddt_core_min", "global_core_PAE", "pae_contact_weighted", "Rg_full_length_normalized", "anisotropy"],
+  "RF": {"n_estimators": 300, "max_depth": 2, "min_samples_leaf": 2, "max_features": "sqrt", "class_weight": "balanced", "random_state": 2026, "n_jobs": 1},
+  "cutoff": 0.5,
+  "fixed4": ["1_130_r123_r567_r567_r67_no_loop_8", "3_130_r123_r567_r56loop7_r678", "7_130_r123_r567_r567_rloop67loop8", "8_130_r123_r567_r567_r6loop7loop8"],
+  "selection": "Reuse frozen four from previous Wiki; no resampling",
+  "frozen_before_training": true,
+  "no_new_wetlab": true,
+  "RF_S12_sensitivity": {"features": ["pp_nonlocal12_high_per_res"], "max_depth": 1, "min_samples_leaf": 1, "max_features": 1.0},
+  "early14_source": "12 old PUF12 rows plus two PUF11 CP3 records from pinned historical construct_features.csv",
+  "policy": "Fixed RF recipes, no selection from test scores; S12 sensitivity inherits historical feature-selection exposure."
+}

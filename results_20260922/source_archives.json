@@ -1,0 +1,10 @@
+[
+{"file":"PUF_CP_results_20260921.zip","bytes":18989172,"sha256":"b5bbbf385a7cffc37c5a82ee0d13d94b1ad5135008ad18d338b4e4140364dcc9","included_in_git":false},
+{"file":"PUF_retrain_20260921_complete.zip","bytes":58694350,"sha256":"eb5b9989ad878835b71b3d278a5e610c0e58bab2ba004ac7936d933e9d2657ab","included_in_git":false},
+{"file":"PUF_classification_v2_20260921_complete.zip","bytes":100409408,"sha256":"b1920c24980c2ecb5f45412c89cbb049778f940c313f47428bbb93c999f43027","included_in_git":false},
+{"file":"PUF_classification_v3_20260921_complete.zip","bytes":158290391,"sha256":"ca5fb83dbbf3ec26b7dcbc1e802488066a182334cce7bdf0abfc65ec3bb052e1","included_in_git":false},
+{"file":"PUF_classification_v4_dynamic_fullCP_20260921_complete.zip","bytes":227305358,"sha256":"edef57e4cebfb9712c7dc66805593677fed8999d4fea194292e99d78932ae51a","included_in_git":false},
+{"file":"designated_five_construct_held_out_20260922.zip","bytes":2410603,"sha256":"9c0af77d4c939a82c1703f1f7c40ebe2724e3581ec5298f4c6f84090b014808e","included_in_git":false},
+{"file":"retrospective_ten_construct_holdout_20260922_results.zip","bytes":4317555,"sha256":"d849070936401313454136e81bac07da30aa787f7f6689ff8b8ffcccc2afe2ed","included_in_git":false},
+{"file":"PUF_Dry_Lab_Wiki_and_Retraining_20260922.zip","bytes":1100193,"sha256":"f8b63b4901f3ce966ac827300add3f9fda7d8d8feda3aa1d2b839f394198fbfd","included_in_git":false}
+]

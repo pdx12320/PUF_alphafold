@@ -1,0 +1,5 @@
+phase,n,composite_Spearman,descriptive_p,designated_in_predicted_top5,all3_correct
+first_batch,10,0.19999999999999998,0.5795840000000002,3.0,1
+two_batches,10,-0.43030303030303024,0.21449233253280775,2.0,2
+curated_first_sensitivity,10,-0.05454545454545454,0.8810361811618526,3.0,3
+curated_two_sensitivity,10,-0.4666666666666666,0.17393859716506654,2.0,2
