@@ -42,21 +42,36 @@ The TRM module used an experimental collection of 81 variants. Each editing meas
 
 We defined three endpoint-specific classification tasks. The C295 classifier identified reductions greater than 10 percentage points, using balanced logistic regression with regularization parameter C = 0.01 and 110 protein–RNA contact-change descriptors. The C388 classifier identified retention of target activity, defined as a decrease of no more than 15 percentage points. It used a depth-two balanced random forest and the root-mean-square change in the whole protein–RNA CP matrix. The C871 classifier identified reductions greater than 20 percentage points, using a depth-one balanced random forest and nineteen contact, confidence and geometry descriptors.[^trmprotocol]
 
-### Candidate prediction and experimental characterization
+### Prediction–experiment comparison
 
-The models were fitted to 71 variants and applied to a ten-construct panel containing five designated candidates and five comparison constructs. The C295, C388 and C871 predictions agreed with 7/10, 5/10 and 5/10 experimental classes, respectively. Target-activity retention was correctly identified for P9-NTQ and P8-GVE, and C871 reduction was correctly identified for P9-NPS.[^trmresults]
+The models were fitted to 71 variants and applied to a ten-construct panel containing five designated candidates and five comparison constructs. The C295, C388 and C871 predictions agreed with 7/10, 5/10 and 5/10 experimental classes, respectively. The table below compares the predictions for the five designated candidates with the classes subsequently obtained by wet-lab measurement.[^trmresults]
 
-The experimental characterization panel comprised P9-GNS, P9-NPS, P9-NTQ, P8-GVE and P4-R5-SNE+P7-R5-SNE. The P9 variants compared different TRMs at the same repeat position. P8-GVE provided a distinct positional context, while the double-SNE construct combined substitutions at P4 and P7.
+| Candidate | C295 predicted / measured | C388 predicted / measured | C871 predicted / measured | Correct endpoints |
+|---|---|---|---|---:|
+| P9-GNS | No decrease / No decrease | Retained / Retained | No decrease / Decrease | 2/3 |
+| P9-NPS | No decrease / No decrease | Decrease / Retained | No decrease / Decrease | 1/3 |
+| P9-NTQ | No decrease / No decrease | Retained / Retained | No decrease / Decrease | 2/3 |
+| P8-GVE | Decrease / No decrease | Retained / Retained | Decrease / Decrease | 2/3 |
+| P4-R5-SNE+P7-R5-SNE | No decrease / No decrease | Increase / Increase | Decrease / Decrease | 3/3 |
 
-| Construct | C295 editing | C388 editing | C871 editing |
-|---|---:|---:|---:|
-| P9-GNS | 30.55% | 62.68% | 26.37% |
-| P9-NPS | 25.52% | 60.46% | 20.39% |
-| P9-NTQ | 23.03% | 62.98% | 18.46% |
-| P8-GVE | 25.22% | 65.86% | 10.23% |
-| P4-R5-SNE+P7-R5-SNE | 19.80% | 80.34% | 32.60% |
+### Candidate-ranking performance
 
-P9-NTQ combined 62.98% C388 editing with 18.46% C871 editing. P8-GVE produced the lowest C871 editing in the panel, 10.23%, while retaining 65.86% C388 editing. The double-SNE construct reached 80.34% C388 editing and reduced C295 and C871 by 13.15 and 34.90 percentage points, respectively. These profiles provided complementary starting points for the next engineering round.[^candidates]
+The three endpoint scores were combined into a single prediction score, with higher values representing stronger predicted C295/C871 reduction and better C388 retention. The same frozen score definition was applied to all ten constructs. The predicted top five contained three designated candidates: P9-GNS, P9-NTQ and P8-GVE. All five designated candidates appeared consecutively between predicted ranks 3 and 7.[^trmresults]
+
+| Predicted rank | Construct | Group | Experimental rank |
+|---:|---|---|---:|
+| 1 | P4-R5-SWD+P7-R5-SWD | Comparison | 8 |
+| 2 | P2-SFK | Comparison | 7 |
+| 3 | P9-GNS | Candidate | 5 |
+| 4 | P9-NTQ | Candidate | 3 |
+| 5 | P8-GVE | Candidate | 2 |
+| 6 | P9-NPS | Candidate | 4 |
+| 7 | P4-R5-SNE+P7-R5-SNE | Candidate | 1 |
+| 8 | P4-R5-SHE | Comparison | 10 |
+| 9 | P6-R7-WFD | Comparison | 9 |
+| 10 | P1-GVD | Comparison | 6 |
+
+The ranking recovered three candidates in the predicted top five and placed P8-GVE, P9-NTQ and P9-GNS close to their experimental positions. The double-SNE construct showed the largest candidate-level difference, ranking seventh computationally and first experimentally. The five experimentally supported candidates were retained for subsequent PUF engineering.
 
 ## Model 3. AI-guided PUF design outside TRM positions
 
