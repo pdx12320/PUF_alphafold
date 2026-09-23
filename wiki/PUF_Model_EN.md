@@ -101,50 +101,76 @@ For reproducibility, the test outcome fields were masked throughout the new trai
 | Endpoint | Training-selected representation | Final classifier | Fixed experimental class boundaries |
 |---|---|---|---|
 | C295 | full_PR | RF | Decrease: ΔE ≤ −15 pp; otherwise no decrease |
-| C388 | full_PR | LinearSVM | Decrease: ΔE ≤ −12.5 pp; interval: −12.5 < ΔE < +2.5 pp; increase: ΔE ≥ +2.5 pp |
+| C388 | WT-relative protein–RNA CP; 876 eligible entries | Ridge (α = 1, balanced class weights) | Decrease: ΔE < −5 pp; unchanged: ΔE ≥ −5 pp, including increases |
 | C871 | full_PR | Ridge | Decrease: ΔE ≤ −7.5 pp; otherwise no decrease |
 
-### Subsequent wet-lab testing and prediction agreement
+### C388 revision: a binary target-retention task
 
-The five candidates were tested experimentally after prediction in the project workflow. The fixed-panel reconstruction compares one set of predictions with their measured C295, C388 and C871 editing outcomes. Agreement is **11/15 endpoint calls**: **5/5 at C295, 3/5 at C388 and 3/5 at C871**.
+We replaced the previous C388 decrease/interval/increase task with two classes. “Unchanged” denotes a change at or above the selected boundary, including increases; it does not establish statistical equivalence to the control.
+
+Both batches contributed protein–RNA CP matrices: 30 constructs from the first batch and 51 from the second. The five test constructs remained excluded, leaving 76 for training. We compared RNA–protein interface CP, high-variance CP and all eligible protein–RNA CP, using raw and WT-relative representations. Missing protein–protein and RNA–RNA blocks were not imputed.
+
+Training-only grouped validation selected the biological threshold, representation and classifier. The fixed-panel model selected −5 pp and Ridge with α = 1 and balanced class weights. Although the candidate requested the 1,000 highest-variance entries, only 876 entries remained eligible in the final training set. It therefore retained all eligible entries and did not demonstrate an advantage over full protein–RNA CP. This model uses no TRM sequence descriptors.
+
+This binary model is a computational reanalysis of the recorded measurements, not a newly recovered pre-assay prediction. C295 and C871 below retain the original fixed-panel models; their separate later reruns are not substituted here.
+
+### Fixed-panel reconstruction and prediction agreement
+
+The original project workflow predicted candidates before wet-lab testing. The table combines the retained C295/C871 reconstruction with the new C388 binary reanalysis. Agreement remains **11/15 endpoint calls**: **5/5 at C295, 3/5 at C388 and 3/5 at C871**. These correlated calls span different endpoint labels and are not a pooled generalization estimate.
 
 | Endpoint | Correct test predictions | Majority-class reference from training |
 |---|---:|---:|
 | C295 | 5/5 | 5/5 |
-| C388 | 3/5 | 0/5 |
+| C388 (binary) | 3/5 | 2/5 |
 | C871 | 3/5 | 5/5 |
 
-For C388, the model predicts the selected interval correctly for P9-GNS, P9-NPS and P9-NTQ. It predicts a decrease for P8-GVE, whose measured change falls within the interval, and predicts the interval for P4-R5-SNE+P7-R5-SNE, whose editing increases. For C871, the missed decreases occur in P9-NPS and the P4/P7 dual variant.
+For binary C388, the model correctly identifies decreases in P9-NPS and P8-GVE and the unchanged class in P4-R5-SNE+P7-R5-SNE. It incorrectly predicts decreases for P9-GNS and P9-NTQ. Fixed-panel balanced accuracy is **66.7%**, compared with **50.0%** for the training-majority reference. The 3/5 versus 2/5 agreement difference is too small to establish a robust advantage. For the retained C871 model, the missed decreases remain P9-NPS and the P4/P7 dual variant.
 
 All five C295 measurements fall in the no-decrease class under the training-selected −15 pp boundary, and all five C871 measurements fall in the decrease class under the −7.5 pp boundary. These small single-class panels support an exact agreement count; they do not characterize both classes equally. The majority-class reference provides context for the endpoint-specific results.
 
-![Five fixed test constructs](figures/fixed5_endpoint_test.png)
+| C388 construct | Measured ΔE (pp) | Binary observed class | Binary prediction |
+|---|---:|---|---|
+| P9-GNS | −4.4015 | Unchanged | Decrease |
+| P9-NPS | −6.6210 | Decrease | Decrease |
+| P9-NTQ | −4.1025 | Unchanged | Decrease |
+| P4-R5-SNE+P7-R5-SNE | +7.7740 | Unchanged | Unchanged |
+| P8-GVE | −6.7045 | Decrease | Decrease |
+
+### Nested leave-one-construct-out validation of binary C388
+
+We separately evaluated the complete selection procedure across the 76 training constructs, leaving out each sequence identity in turn. The five fixed-test constructs remained excluded throughout. Each outer training fold reselected the threshold, features and model without the held-out outcome.
+
+The binary procedure classified **48/76 constructs correctly (63.2%)**, with **60.4% balanced accuracy** and **0.6042 macro F1**. Its matched training-majority reference achieved **50/76 (65.8%)** and **61.8% balanced accuracy**. The procedure therefore did not outperform this baseline in nested leave-one-out validation.
+
+Selected boundaries ranged from −2.5 to −20 pp, including −5 in 26 folds and −20 in 20 folds. These metrics evaluate an adaptive-threshold procedure, not a common fixed −5 pp endpoint. A conditional full-CP comparison reached 67.6% balanced accuracy, but choosing that input after this comparison would require fresh validation.
 
 
 ### Which repeats and residues drive the predictions?
 
-We traced the fitted models back to their protein–RNA contact features, without refitting or using the test outcomes to select residues. Random-forest importance was calculated from impurity reduction; linear-model coefficients were mapped back to standardized original features. We then summed contact importance by protein residue and repeat P. Each endpoint was normalized separately.
+We retained attribution of the original C295 and C871 classifiers, without using test outcomes to select residues. Attribution of the revised binary C388 classifier has not yet been computed. Random-forest importance was calculated from impurity reduction; linear-model coefficients were mapped back to standardized original features. We then summed contact importance by protein residue and repeat P. Each endpoint was normalized separately.
 
 | Endpoint | Leading repeat cores: share of CP importance | Leading contact-associated residues |
 |---|---|---|
 | C295 | **P3 17.4%, P5 16.4%, P2 15.9%**; P4 15.2% | **R109 (P3), Y181 (P5), Y73 (P2), Y145 (P4)** |
-| C388 | **P3 12.1%, P4 11.3%, P7 8.5%** | **C108 (P3), Y145 and P141 (P4), P249 (P7)** |
+| C388 (binary) | Not re-estimated for this model | Previous three-class attributions are not transferred |
 | C871 | **P1 13.7%, P10 10.4%, P11 8.1%** | **R361 and Q364 (P10), Y397 (P11)**; E7 outside repeat cores |
 
-For C871, residues outside canonical repeat cores collectively account for a further **19.3%** of CP importance. C388 uses both contact and sequence descriptors: the CP block contributes **43.6%** of total absolute standardized coefficient weight. Its leading sequence terms include TRM12 residue-size and amino-acid indicators and TRM16 charge-change descriptors; the table above describes its contact block.
+For C871, residues outside canonical repeat cores collectively account for a further **19.3%** of CP importance. The former C388 contact-plus-sequence attribution belongs to the archived three-class model. It is not an explanation of the new CP-only binary Ridge model.
 
-![Repeat-level importance in the fixed Model 2 classifiers](figures/model2_repeat_importance.png)
+[Archived repeat-importance figure (C388 panel is the previous three-class model)](figures/model2_repeat_importance.png)
 
 
-These results prioritize **P3/P4 for C388-focused mechanistic follow-up**, **P2/P3/P5 for C295-associated contacts**, and **P1/P10/P11 plus terminal regions for C871-associated contacts**. Importance identifies features used by the fitted classifier; the direction and benefit of a particular substitution require experimental testing. Summed importance can depend on the number of selected contacts, so the [complete residue and repeat tables](../research/model_interpretation_20260923/) also report contact counts and mean per-contact importance.
+The retained attributions prioritize **P2/P3/P5 for C295-associated contacts** and **P1/P10/P11 plus terminal regions for C871-associated contacts**. C388 residue-level priorities require attribution of the new binary model before mechanistic interpretation. Importance identifies features used by the fitted classifier; the direction and benefit of a particular substitution require experimental testing. Summed importance can depend on the number of selected contacts, so the [complete residue and repeat tables](../research/model_interpretation_20260923/) also report contact counts and mean per-contact importance.
 
 All residue labels in this section use the **493-residue reference shared with Model 3**. The earlier Model 2 reference numbering is larger by 16; the [verified crosswalk](../research/model_interpretation_20260923/reference_crosswalk.csv) retains both conventions.
+
+Current C388 evidence: [binary fixed-panel results and nested leave-one-out records](../research/c388_binary/), including protocols, per-construct predictions, selected CP coordinates and the fitted model.
 
 ### Experimental feedback for the next design
 
 The measured editing profiles identify backgrounds for subsequent non-TRM engineering. Prediction errors identify endpoint behaviours to address in the next model iteration. The five test outcomes remain separate from this fitted model; using them in a future update would require a new independent test set.
 
-Source records: [fixed-panel protocol and reconstruction](../research/fixed_test_20260923/README.md), [all fifteen test predictions](../research/fixed_test_20260923/model2/predictions.csv), and endpoint-specific training splits and selected models in the [result directory](../research/fixed_test_20260923/model2/). Earlier individual-construct cross-validation outputs are retained in the archive and are not used for the test metrics shown here.
+Source records: [fixed-panel protocol and reconstruction](../research/fixed_test_20260923/README.md), [all fifteen test predictions](../research/fixed_test_20260923/model2/predictions.csv), and endpoint-specific training splits and selected models in the [result directory](../research/fixed_test_20260923/model2/). Those source files retain the historical three-class C388 predictions. Current binary C388 predictions and nested validation are linked separately above; the original files remain unchanged.
 
 ## Model 3. Exploring non-TRM sequence space with AiCE
 
@@ -251,7 +277,7 @@ The standalone [Module 2 DBTL record](../research/docs/DRY_LAB_DBTL.md) traces t
 
 GitHub repository: [pdx12320/PUF_alphafold](https://github.com/pdx12320/PUF_alphafold).
 
-Models 1 and 2 were rerun with fixed test membership, and the displayed test predictions come from those runs. Original wet-lab values were preserved. Model 2 class boundaries were selected using training data only, so its test classes follow the newly selected common endpoint thresholds. Confusion matrices use the fixed-panel predictions and retain every error within the displayed panels.
+Models 1 and 2 were rerun with fixed test membership, and the displayed test predictions come from those runs. Original wet-lab values were preserved. Model 2 class boundaries were selected using training data only, so its test classes follow the newly selected common endpoint thresholds. The current C388 table reports every binary fixed-panel error. Archived figures retain the former three-class C388 analysis and are not updated binary evidence.
 
 The [fixed-test figure script](scripts/make_fixed_test_figures.py) and [non-TRM figure script](scripts/make_figures.py), [figure source data](figure_data) and [vector exports](figures) accompany this page. The [results index](../research/results_20260922/README.md) distinguishes the scaffold, five-construct, ten-construct and full-cohort evaluation protocols. Historical analyses remain available through the [engineering record](../research/docs/DRY_LAB_DBTL.md).
 

@@ -1,0 +1,6 @@
+construct_id,predicted_class,scores,score_kind,true_class,delta_pp,correct
+25_p9_gns,decrease,"[0.1930959931452113, -0.1930959931452113]",native_margin_not_probability,unchanged,-4.4014999999999915,False
+30_p9_nps,decrease,"[1.062057977791409, -1.062057977791409]",native_margin_not_probability,decrease,-6.620999999999988,True
+32_p9_ntq,decrease,"[0.20282224374702945, -0.20282224374702945]",native_margin_not_probability,unchanged,-4.102499999999987,False
+p4_r5_sne_plus_p7_r5_sne,unchanged,"[-0.5220461478815023, 0.5220461478815023]",native_margin_not_probability,unchanged,7.773999999999992,True
+p8_r6_gve,decrease,"[0.08908638421143003, -0.08908638421143003]",native_margin_not_probability,decrease,-6.704500000000014,True

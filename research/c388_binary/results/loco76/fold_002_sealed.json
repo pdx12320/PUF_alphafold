@@ -1,0 +1,74 @@
+[
+  {
+    "fold": 2,
+    "version": "primary",
+    "construct_id": "50_p11_tfr",
+    "batch": "new_TRM",
+    "threshold_pp": -5,
+    "prediction": 0,
+    "predicted_class": "decrease",
+    "scores": [
+      0.21765720902776725,
+      -0.21765720902776725
+    ],
+    "score_kind": "native_margin_not_probability",
+    "algorithm": "Ridge",
+    "family": "RNA_protein_interface",
+    "actual_features": 100,
+    "majority_prediction": 0
+  },
+  {
+    "fold": 2,
+    "version": "matched_RNA_protein_interface",
+    "construct_id": "50_p11_tfr",
+    "batch": "new_TRM",
+    "threshold_pp": -5,
+    "prediction": 0,
+    "predicted_class": "decrease",
+    "scores": [
+      0.21765720902776725,
+      -0.21765720902776725
+    ],
+    "score_kind": "native_margin_not_probability",
+    "algorithm": "Ridge",
+    "family": "RNA_protein_interface",
+    "actual_features": 100,
+    "majority_prediction": 0
+  },
+  {
+    "fold": 2,
+    "version": "matched_all_PR",
+    "construct_id": "50_p11_tfr",
+    "batch": "new_TRM",
+    "threshold_pp": -5,
+    "prediction": 0,
+    "predicted_class": "decrease",
+    "scores": [
+      0.17425053431304902,
+      -0.17425053431304902
+    ],
+    "score_kind": "native_margin_not_probability",
+    "algorithm": "Ridge",
+    "family": "all_PR",
+    "actual_features": 876,
+    "majority_prediction": 0
+  },
+  {
+    "fold": 2,
+    "version": "matched_high_variance_PR",
+    "construct_id": "50_p11_tfr",
+    "batch": "new_TRM",
+    "threshold_pp": -5,
+    "prediction": 0,
+    "predicted_class": "decrease",
+    "scores": [
+      0.21765720902776725,
+      -0.21765720902776725
+    ],
+    "score_kind": "native_margin_not_probability",
+    "algorithm": "Ridge",
+    "family": "high_variance_PR",
+    "actual_features": 100,
+    "majority_prediction": 0
+  }
+]

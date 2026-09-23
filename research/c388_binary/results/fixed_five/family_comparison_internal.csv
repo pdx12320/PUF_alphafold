@@ -1,0 +1,4 @@
+family,algorithm,model,threshold_pp,representation,actual_inner_features,inner_accuracy,inner_macro_F1,inner_balanced_accuracy
+RNA_protein_interface,Ridge,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",-5,PR_train_union_interface|delta|100|0|variance|0.2|False,"[100, 100, 100]",0.7236842105263158,0.6493078444297957,0.6754735792622133
+all_PR,Ridge,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",-5,full_PR|delta|all|0|variance|0|False,"[807, 857, 694]",0.7631578947368421,0.6590229312063809,0.6590229312063809
+high_variance_PR,Ridge,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",-5,full_PR|delta|1000|0|variance|0|False,"[807, 857, 694]",0.7631578947368421,0.6590229312063809,0.6590229312063809

@@ -1,0 +1,47 @@
+[
+  {
+    "construct_id": "25_p9_gns",
+    "predicted_class": "decrease",
+    "scores": [
+      0.1930959931452113,
+      -0.1930959931452113
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "30_p9_nps",
+    "predicted_class": "decrease",
+    "scores": [
+      1.062057977791409,
+      -1.062057977791409
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "32_p9_ntq",
+    "predicted_class": "decrease",
+    "scores": [
+      0.20282224374702945,
+      -0.20282224374702945
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "p4_r5_sne_plus_p7_r5_sne",
+    "predicted_class": "unchanged",
+    "scores": [
+      -0.5220461478815023,
+      0.5220461478815023
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "p8_r6_gve",
+    "predicted_class": "decrease",
+    "scores": [
+      0.08908638421143003,
+      -0.08908638421143003
+    ],
+    "score_kind": "native_margin_not_probability"
+  }
+]

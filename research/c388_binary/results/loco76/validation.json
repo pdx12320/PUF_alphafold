@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "outer_folds": 76,
+  "unique_primary_predictions": 76,
+  "fixed_five_excluded_everywhere": true,
+  "inner_identity_disjoint": true,
+  "sealed_predictions_verified": true,
+  "metrics_recomputed": true,
+  "candidates_evaluated": 29488,
+  "invalid_candidates": 296
+}

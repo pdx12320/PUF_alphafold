@@ -94,13 +94,19 @@ Scaffold functionality left the target–bystander trade-off unresolved. A recog
 
 We trained endpoint-specific classifiers using protein–RNA contact features and, where selected, recognition-motif sequence descriptors. P9-GNS, P9-NPS, P9-NTQ, P8-GVE and P4-SNE + P7-SNE formed a fixed test panel. All five constructs and identical sequences were excluded together before preprocessing, feature selection, threshold selection and fitting. The remaining 76 constructs supplied the training data.
 
-The project workflow trained models, predicted these candidates and then obtained their wet-lab measurements. The current reproducible evaluation reconstructs that separation with one frozen classifier and one training-selected threshold set per endpoint. Test outcomes were not used to select the models or thresholds.
+The original project workflow trained models and predicted candidates before obtaining their wet-lab measurements. We subsequently revised C388 as a binary computational reanalysis, retaining the original five-construct exclusion. This rerun does not establish new pre-assay predictions. C295 and C871 retain their original fixed-panel models here.
 
-We also extracted feature importance from the fitted classifiers. Contact importance was aggregated by residue and repeat, using random-forest impurity importance or absolute standardized linear coefficients, depending on the endpoint model.
+For C388, we combined protein–RNA CP from both batches and compared interface, high-variance and full-CP representations. Training-only selection used seven candidate boundaries from −2.5 to −20 pp. The final Ridge classifier selected −5 pp: lower changes were labelled decrease, while changes at or above the boundary were labelled unchanged, including increases. The model used 876 eligible CP entries and no sequence descriptors. Its nominal top-1,000 variance configuration retained every eligible entry, so it did not establish a feature-selection advantage.
+
+For the retained C295 and C871 classifiers, contact importance was aggregated by residue and repeat using impurity importance or absolute standardized coefficients. C388 binary attribution has not yet been recomputed.
 
 ### Test
 
-Predictions agreed with **11 of 15** experimental endpoint classes: **5/5 at C295, 3/5 at C388 and 3/5 at C871**. These figures come from the simultaneous five-construct exclusion. The C295 test panel contained only the no-decrease class, so its agreement does not establish sensitivity to decreases.
+With binary C388 and the retained C295/C871 models, predictions agreed with **11 of 15** endpoint classes: **5/5 at C295, 3/5 at C388 and 3/5 at C871**. The five constructs were excluded together for each model. The C295 test panel contained only the no-decrease class, so its agreement does not establish sensitivity to decreases.
+
+Binary C388 correctly classified P9-NPS and P8-GVE as decreases and P4-SNE + P7-SNE as unchanged. P9-GNS and P9-NTQ were incorrectly classified as decreases. Its 3/5 agreement exceeded the training-majority count of 2/5; balanced accuracy was 66.7% versus 50.0%. This small difference did not establish a robust advantage.
+
+Nested leave-one-identity-out validation across the 76 development constructs gave **48/76 correct (63.2%)** and **60.4% balanced accuracy**. The matched majority baseline achieved **50/76 (65.8%)** and **61.8% balanced accuracy**. Thresholds, features and classifiers were reselected within each outer training fold, while the five fixed tests remained excluded. Selected thresholds ranged from −2.5 to −20 pp. Thus, the complete automatic selection procedure did not outperform the baseline, despite the higher count on the fixed panel.
 
 The measured profiles nevertheless identified useful engineering backgrounds. P4-SNE + P7-SNE increased C388 editing by **7.77 percentage points** relative to its matched control, while reducing C295 and C871 editing by **13.15 and 34.90 points**, respectively. These continuous changes provide information beyond the thresholded prediction classes.
 
@@ -109,16 +115,18 @@ Contact attribution highlighted different repeat regions at each endpoint. The t
 | Endpoint | Leading repeat regions | Representative high-importance residues |
 |---|---|---|
 | C295 | P3, P5, P2 and P4 | R109, Y181, Y73 and Y145 |
-| C388 | P3, P4 and P7 | C108, Y145, P141 and P249 |
+| C388 (binary) | Not re-estimated | Previous three-class residue priorities are not transferred |
 | C871 | P1, P10 and P11, with additional signal outside repeat cores | R361, Q364 and Y397; E7 outside repeat cores |
 
 Earlier retrospective ranking tests exposed a separate problem: the P4/P7-SNE combination ranked seventh computationally but first experimentally in a ten-construct panel. That historical comparison used a different split and evaluated overall ordering. It remains evidence that endpoint classification and candidate ranking require separate assessment.
 
 ### Learn
 
-We used the three-site experimental profiles to identify useful TRM backgrounds and model attribution to identify regions for further investigation. Importance indicates associations within a fitted model; it does not establish that changing a highlighted residue will improve editing.
+We used the three-site experimental profiles to identify useful TRM backgrounds and retained C295/C871 attribution to guide regional hypotheses. C388 binary attribution has not been re-estimated. Its nested validation did not establish a baseline advantage, so experimental profiles remain essential for candidate selection. Importance describes model associations rather than evidence that a substitution improves editing.
 
 **Decision carried forward:** preserve favourable experimental backgrounds, inspect endpoint-specific errors and test residue-level hypotheses on matched backgrounds. The resulting handoff includes a named construct, its measured editing profile and candidate regions for additional design.
+
+The [C388 binary results and validation records](../c388_binary/) preserve both evaluations and their matched baselines. The former three-class results remain available as historical development evidence.
 
 ## Cycle 5 | Redirecting inverse folding after disagreement with experimental TRM results
 

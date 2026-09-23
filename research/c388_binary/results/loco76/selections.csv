@@ -1,0 +1,77 @@
+fold,threshold_pp,family,representation,model,inner_macro_F1
+0,-12.5,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6645195920558239
+1,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.625081504020865
+2,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6361746361746362
+3,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""RF"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.643668663499277
+4,-12.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.5993589743589745
+5,-7.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""LDA"", ""shrinkage"": ""auto""}",0.6591724467830662
+6,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.625
+7,-10.0,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6666666666666666
+8,-7.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6238425925925926
+9,-20.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6551003344481605
+10,-5.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""ET"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6822033898305084
+11,-10.0,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6063348416289593
+12,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6232958622339153
+13,-5.0,high_variance_PR,full_PR|delta|100|0|variance|0|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6361746361746362
+14,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6362433862433863
+15,-20.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6061077611359658
+16,-12.5,RNA_protein_interface,PR_train_union_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6130581747020103
+17,-5.0,RNA_protein_interface,PR_reference_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6232958622339153
+18,-12.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6133333333333333
+19,-7.5,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.625081504020865
+20,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.614065180102916
+21,-15.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6666666666666666
+22,-5.0,RNA_protein_interface,PR_reference_interface|delta|250|0|variance|0.5|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6475721637950325
+23,-12.5,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6799431009957326
+24,-20.0,RNA_protein_interface,PR_train_union_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6475721637950325
+25,-12.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6527777777777777
+26,-5.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""RF"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6697746697746698
+27,-7.5,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6576831123668767
+28,-15.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6645195920558239
+29,-5.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""ET"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6459627329192547
+30,-12.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6376811594202898
+31,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.5|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.597953216374269
+32,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6462264150943396
+33,-5.0,RNA_protein_interface,PR_reference_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6475721637950325
+34,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6475721637950325
+35,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""LinearSVM"", ""C"": 0.1, ""class_weight"": ""balanced""}",0.6576831123668767
+36,-7.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6228347923263178
+37,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.625081504020865
+38,-12.5,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6657158138705652
+39,-20.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""RF"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6031746031746031
+40,-10.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6507729558577016
+41,-5.0,RNA_protein_interface,PR_reference_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6475721637950325
+42,-12.5,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6753246753246753
+43,-12.5,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.64
+44,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6237458193979933
+45,-12.5,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6785714285714286
+46,-2.5,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.60609243697479
+47,-5.0,high_variance_PR,full_PR|delta|100|0|variance|0|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6361746361746362
+48,-10.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6482683982683983
+49,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6238425925925926
+50,-5.0,high_variance_PR,full_PR|delta|100|0|variance|0|False,"{""algorithm"": ""RF"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6459627329192547
+51,-15.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6664294609500089
+52,-15.0,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6527777777777777
+53,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6583481877599524
+54,-7.5,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.614065180102916
+55,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6362433862433863
+56,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6475721637950325
+57,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6211355829460496
+58,-20.0,RNA_protein_interface,PR_train_union_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6238425925925926
+59,-20.0,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6467817896389325
+60,-20.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 10, ""class_weight"": ""balanced""}",0.625081504020865
+61,-12.5,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.689803992087754
+62,-20.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6462264150943396
+63,-5.0,RNA_protein_interface,PR_reference_interface|delta|250|0|variance|0.8|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.6590909090909092
+64,-5.0,high_variance_PR,full_PR|delta|100|0|variance|0|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.625
+65,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 10, ""class_weight"": ""balanced""}",0.6576831123668767
+66,-5.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.5|False,"{""algorithm"": ""RBF"", ""C"": 1, ""class_weight"": ""balanced""}",0.612312030075188
+67,-20.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""ET"", ""n_estimators"": 32, ""max_depth"": 3, ""min_samples_leaf"": 4, ""class_weight"": ""balanced""}",0.6514447363103657
+68,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""LinearSVM"", ""C"": 0.1, ""class_weight"": ""balanced""}",0.6015246015246015
+69,-7.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""LDA"", ""shrinkage"": ""auto""}",0.681136719624077
+70,-7.5,RNA_protein_interface,PR_reference_interface|delta|1000|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.642478813559322
+71,-20.0,high_variance_PR,full_PR|delta|250|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6783876500857633
+72,-10.0,all_PR,full_PR|delta|all|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 0.1, ""class_weight"": null}",0.6527777777777778
+73,-20.0,high_variance_PR,full_PR|delta|1000|0|variance|0|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6349206349206349
+74,-5.0,RNA_protein_interface,PR_train_union_interface|delta|100|0|variance|0.2|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6362433862433863
+75,-20.0,RNA_protein_interface,PR_train_union_interface|delta|250|0|variance|0.5|False,"{""algorithm"": ""Ridge"", ""alpha"": 1.0, ""class_weight"": ""balanced""}",0.6126833298905185

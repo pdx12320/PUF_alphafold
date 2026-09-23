@@ -1,0 +1,2 @@
+All model, prediction and search files are byte-identical to the audited runs.
+The original LOCO output_sha256.json contains a self-entry computed before that manifest was written; it is not a valid self-checksum. The original is retained unchanged. publication_sha256.json independently hashes every imported artifact, including both original manifests, and excludes itself. All non-self original checksum entries were verified.

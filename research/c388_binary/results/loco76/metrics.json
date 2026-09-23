@@ -1,0 +1,110 @@
+{
+  "results": [
+    {
+      "version": "matched_RNA_protein_interface",
+      "n": 76,
+      "correct": 42,
+      "accuracy": 0.5526315789473685,
+      "balanced_accuracy": 0.5342261904761905,
+      "macro_F1": 0.5318840579710145,
+      "MCC": 0.06687855262239009,
+      "confusion_matrix": [
+        [
+          29,
+          19
+        ],
+        [
+          15,
+          13
+        ]
+      ]
+    },
+    {
+      "version": "matched_all_PR",
+      "n": 76,
+      "correct": 52,
+      "accuracy": 0.6842105263157895,
+      "balanced_accuracy": 0.6755952380952381,
+      "macro_F1": 0.6695652173913043,
+      "MCC": 0.3431160525844361,
+      "confusion_matrix": [
+        [
+          34,
+          14
+        ],
+        [
+          10,
+          18
+        ]
+      ]
+    },
+    {
+      "version": "matched_high_variance_PR",
+      "n": 76,
+      "correct": 49,
+      "accuracy": 0.6447368421052632,
+      "balanced_accuracy": 0.6369047619047619,
+      "macro_F1": 0.6303368762385155,
+      "MCC": 0.2664753164270722,
+      "confusion_matrix": [
+        [
+          32,
+          16
+        ],
+        [
+          11,
+          17
+        ]
+      ]
+    },
+    {
+      "version": "primary",
+      "n": 76,
+      "correct": 48,
+      "accuracy": 0.631578947368421,
+      "balanced_accuracy": 0.6041666666666667,
+      "macro_F1": 0.6041666666666667,
+      "MCC": 0.20833333333333334,
+      "confusion_matrix": [
+        [
+          34,
+          14
+        ],
+        [
+          14,
+          14
+        ]
+      ]
+    },
+    {
+      "version": "matched_majority",
+      "n": 76,
+      "correct": 50,
+      "accuracy": 0.6578947368421053,
+      "balanced_accuracy": 0.6175595238095238,
+      "macro_F1": 0.62,
+      "MCC": 0.24399456673427916,
+      "confusion_matrix": [
+        [
+          37,
+          11
+        ],
+        [
+          15,
+          13
+        ]
+      ]
+    }
+  ],
+  "elapsed_seconds": 203.26258012501057,
+  "threshold_frequency": {
+    "-5.0": 26,
+    "-20.0": 20,
+    "-12.5": 12,
+    "-7.5": 8,
+    "-10.0": 5,
+    "-15.0": 4,
+    "-2.5": 1
+  },
+  "interpretation": "Adaptive-threshold LOCO on 76 development constructs. Fold-specific label boundaries; not a fixed-threshold endpoint."
+}

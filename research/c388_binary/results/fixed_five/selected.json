@@ -1,0 +1,56 @@
+{
+  "a": 5,
+  "b": 0,
+  "representation": {
+    "family": "full_PR",
+    "mode": "delta",
+    "retain": 1000,
+    "pca": 0,
+    "ranking": "variance",
+    "support": 0,
+    "cp_trm": false,
+    "id": "full_PR|delta|1000|0|variance|0|False"
+  },
+  "family": "high_variance_PR",
+  "model": {
+    "algorithm": "Ridge",
+    "alpha": 1.0,
+    "class_weight": "balanced"
+  },
+  "stage": "screen",
+  "status": "ok",
+  "metrics": {
+    "n": 76,
+    "weighted_n": 76.0,
+    "accuracy": 0.7631578947368421,
+    "balanced_accuracy": 0.6590229312063809,
+    "macro_F1": 0.6590229312063809,
+    "MCC": 0.3180458624127617,
+    "n_classes_observed": 2,
+    "precision_decrease": 0.847457627118644,
+    "recall_decrease": 0.847457627118644,
+    "F1_decrease": 0.847457627118644,
+    "support_decrease": 59.0,
+    "ROC_AUC_decrease": 0.6570289132602194,
+    "AP_decrease": 0.8727238468076567,
+    "precision_unchanged": 0.47058823529411764,
+    "recall_unchanged": 0.47058823529411764,
+    "F1_unchanged": 0.47058823529411764,
+    "support_unchanged": 17.0,
+    "ROC_AUC_unchanged": 0.6570289132602193,
+    "AP_unchanged": 0.3653746363011367,
+    "specificity": 0.47058823529411764,
+    "false_negative_rate": 0.15254237288135597,
+    "ROC_AUC": 0.6570289132602194,
+    "AP": 0.8727238468076567,
+    "cm_0_0": 50.0,
+    "cm_0_1": 9.0,
+    "cm_1_0": 9.0,
+    "cm_1_1": 8.0
+  },
+  "actual_counts": [
+    807,
+    857,
+    694
+  ]
+}

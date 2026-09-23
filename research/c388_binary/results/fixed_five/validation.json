@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "prediction_seal_hash": true,
+    "input_hashes": true,
+    "runner_hash": true,
+    "source_hashes": true,
+    "split_counts": true,
+    "inner_splits": true,
+    "artifact_prediction_roundtrip": true,
+    "metrics_recomputed": true,
+    "feature_dictionary_count": true,
+    "selection_matches_frozen_rank": true,
+    "search_budget": true,
+    "high_variance_equivalent_to_all": true
+  },
+  "n_checks": 12,
+  "actual_selected_features": 876,
+  "eligible_features": 876,
+  "exact_embedding_rank": 75,
+  "training_class_counts": {
+    "decrease": 59,
+    "unchanged": 17
+  },
+  "training_batches": {
+    "new_TRM": 48,
+    "old_TRM": 28
+  },
+  "test_batches": {
+    "new_TRM": 3,
+    "old_TRM": 2
+  },
+  "confusion_matrix": [
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ]
+  ],
+  "input_registry_sha256": "28901a98f02c7f331c5caddff4f5a52842869c1d431925d0f0d26d4ae8dc2464"
+}
