@@ -243,43 +243,9 @@ Agreement with favourable measured TRM variants is limited. ProteinMPNN and Liga
 
 The [complete mutation-to-assay table](../research/model_interpretation_20260923/model3_exact_mutation_wetlab_comparison.csv) retains every construct, matched-control change and exact sampling count. The [analysis methods](../research/model_interpretation_20260923/README.md) explain the numbering verification, sample parsing and example-selection rule.
 
-## Design–Build–Test–Learn for Module 2
+## Engineering record
 
-Our engineering objective is to retain C388 target editing while reducing C295 and C871 bystander editing. We organize Module 2 into three linked Design–Build–Test–Learn (DBTL) cycles, moving from scaffold selection to recognition-motif engineering and non-TRM design. Each cycle connects a design decision to measured outcomes and a specific next step. This iterative use of experimental feedback follows the DBTL framework described by Radivojević et al. (2020).
-
-### Cycle 1. Establishing a functional scaffold
-
-**Design.** We first asked which repeat arrangements could support a functional PUF scaffold. Structural contact features provided an interpretable starting point for screening arrangements before experimental testing.
-
-**Build.** We established a decision-tree baseline and subsequently combined contact and structural descriptors in a shallow random forest. The final classifier used twenty training constructs. Designs 1, 3, 7 and 8 were excluded together from preprocessing, fitting and model selection, forming a separate test panel.
-
-**Test.** Predictions were compared with the subsequent wet-lab outcomes for the four designs. Design 1 worked, whereas Designs 3, 7 and 8 did not work. The classifier agreed with three outcomes and incorrectly predicted Design 7 as functional.
-
-**Learn.** Contact-based screening supported prioritization of functional scaffolds, while the Design 7 error identified a limit of structural descriptors. Scaffold function also left a separate engineering question unresolved: how would recognition-motif changes affect target and bystander editing? This motivated the endpoint-specific analysis in Cycle 2.
-
-### Cycle 2. Balancing target and bystander editing
-
-**Design.** We examined recognition-motif substitutions to preserve target editing while reducing unwanted editing at nearby reporter sites. The programmability of Pumilio recognition residues provided the biological rationale for this design space (Cheong & Hall, 2006).
-
-**Build.** We trained separate classifiers for C295, C388 and C871 using contact features and, where selected, sequence descriptors. P9-GNS, P9-NPS, P9-NTQ, P8-GVE and P4-SNE + P7-SNE formed the fixed test panel. All five candidates and identical sequences were excluded together before preprocessing and model selection. Training used the remaining 76 constructs, with endpoint thresholds selected within the training data.
-
-**Test.** Subsequent wet-lab measurements agreed with 11 of 15 endpoint classifications: five at C295, three at C388 and three at C871. Experimental editing profiles also identified useful backgrounds. Relative to its matched control, P4-SNE + P7-SNE increased C388 editing by 7.77 percentage points and reduced C295 and C871 editing by 13.15 and 34.90 points, respectively.
-
-**Learn.** Retaining all three endpoints exposed trade-offs that a single work/non-work label could not capture. Contact attribution highlighted P3/P5/P2 for C295, P3/P4/P7 for C388 and P1/P10/P11 for C871. These associations suggest regions for further investigation, while the measured editing profiles identify backgrounds for the next design round.
-
-### Cycle 3. Extending the search beyond recognition motifs
-
-**Design.** We next explored substitutions outside the recognition motifs while preserving the intended recognition code. ProteinMPNN and LigandMPNN provided complementary structure-conditioned sequence proposals (Dauparas et al., 2022, 2025).
-
-**Build.** Each model generated 10,000 sequences from the PUF structural input. After excluding recognition-code positions, we retained 17 non-TRM substitutions with the same alternative residue supported at frequencies of at least 80% by both models. These substitutions constitute computational designs; their wet-lab construction and testing remain the next cycle.
-
-**Test.** We compared sampled preferences with exact TRM substitutions already represented in the experimental dataset. Several favourable experimental variants had low or zero sampling counts, demonstrating limited correspondence between structural sequence preference and editing performance. None of the 17 non-TRM nominations had an exact experimentally measured substitution match in that dataset.
-
-**Learn.** Sampling frequency can nominate structurally compatible candidates, but provides insufficient evidence for improved editing. The next test should compare individual non-TRM substitutions with their unchanged, experimentally characterized TRM backgrounds before evaluating combinations. Measuring C388, C295 and C871 together would determine whether each substitution improves the desired editing profile and whether combinations retain individual benefits.
-
-### Feeding experimental evidence into the next design round
-
-The three cycles progressively refine the question from scaffold function to editing selectivity and then sequence context. New measurements should be linked to exact substitutions, matched controls and the frozen predictions that preceded testing. After evaluation, those measurements can inform an updated training set, with new candidates reserved for the next independent test panel. This closes the learning loop while preserving a clear record of what each model predicted before experimental feedback.
+The standalone [Module 2 DBTL record](../research/docs/DRY_LAB_DBTL.md) traces the five engineering cycles, their experimental feedback and the next non-TRM validation round.
 
 ## Data, figures and reproducibility
 

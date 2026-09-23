@@ -971,8 +971,8 @@
   },
   {
     "path": "research/docs/DRY_LAB_DBTL.md",
-    "bytes": 8311,
-    "sha256": "6d6eaa2f2124d6c719e0339f434c1038ced448d0f8c1be6dd076c20b3c67136b"
+    "bytes": 20506,
+    "sha256": "b9946f0786d939437b342cab0a1fbc8baca7f66e2fa0b1b4527d9696f45d4b59"
   },
   {
     "path": "research/docs/REPOSITORY_GUIDE.md",
@@ -1696,8 +1696,8 @@
   },
   {
     "path": "wiki/PUF_Model_EN.md",
-    "bytes": 31546,
-    "sha256": "48dabed3b2f6b3123cc610b8d59ce9f8919027164e786bcc3920da11c46aa0f0"
+    "bytes": 26428,
+    "sha256": "f35a0a22701c7912c08697e913e0f0be37deed8c115617385f81c28cc151d8df"
   },
   {
     "path": "wiki/PUF_Module1_EN.md",
