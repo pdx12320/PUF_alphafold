@@ -1,10 +1,10 @@
-# Model 1.  Selecting functional PUF scaffolds
+# Model 1. Contact-based scaffold screening
 
-### Background: repeat rearrangement requires structural support
+### Why repeat arrangement matters
 
 Changing repeat order or inserting loops can alter the organization of the PUF scaffold. We asked whether protein-internal contacts could distinguish arrangements with different experimental work/non-work outcomes. Here, “work” follows the recorded work/non-work label; C388 editing activity is evaluated separately in Model 2.
 
-### Model explanation: from a decision rule to a shallow tree ensemble
+### Learning a structural decision rule
 
 We represented each structure by contact-probability (CP) summaries. For a sequence separation of at least $d$ residues, the density of high-probability contacts was
 
@@ -18,7 +18,7 @@ A depth-one decision tree established the initial classification rule. Feature s
 
 The three-feature random forest used S4, S12 and S24. Its nine-feature companion added core pLDDT mean and minimum, mean PAE, contact-weighted PAE, normalized radius of gyration and anisotropy. Both used 300 trees, maximum depth two, minimum leaf size two, balanced class weights and random seed 2026. Scores of at least 0.5 produced a work prediction. These scores are uncalibrated classifier outputs.
 
-### Training and held-out performance
+### From the initial rule to expanded scaffold evaluation
 
 The initial decision-tree analysis correctly classified all 14 constructs under leave-one-construct-out evaluation, including three work and eleven non-work cases. The three-feature random forest reproduced this separation. Restricting that evaluation to the twelve PUF12 constructs also retained complete agreement.
 
@@ -45,12 +45,11 @@ The experimental panel contained **one work construct and three non-work constru
 
 *Figure 2. Four-design experimental comparison. All four constructs were excluded simultaneously from the fit. The matrix shows one true positive, two true negatives and one false positive. Predictions come from the nine-feature random forest.*
 
-### What this gives the wet lab
+### Scaffold selection for experimental testing
 
 The model provides a structural criterion for prioritizing repeat arrangements and identifies Design 1 as a candidate with a matching recorded work outcome. The false positive motivates checking additional determinants of construct function. Once a functional scaffold is available, the next question concerns its editing profile.
 
 Source records: [scaffold protocol](../../results_20260922/scaffold_RF/audit/protocol.json), [metrics](../../results_20260922/scaffold_RF/results/metrics.csv), [predictions](../../results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).
-
 
 ## Continue the design cycle
 

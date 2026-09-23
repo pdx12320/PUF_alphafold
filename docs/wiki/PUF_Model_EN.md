@@ -17,17 +17,17 @@ Our PUF–APOBEC system couples this programmable recognition scaffold to RNA ed
 |---|---|---|---|
 | **1. Scaffold function** | Which repeat arrangements support a functional PUF scaffold? | Work/non-work classification from protein contacts | Four-design comparison with one work and three non-work outcomes |
 | **2. TRM-dependent editing** | Which recognition-motif changes retain target editing and reduce bystander editing? | Separate predictions for C295, C388 and C871 | Five experimentally characterized constructs with complementary editing profiles |
-| **3. Non-TRM design** | Which surrounding residues should be tested on favourable TRM backgrounds? | Inverse-folding nominations and mutation combinations | G0–G10 candidate sequences for the next experimental round |
+| **3. Non-TRM design** | Which surrounding residues should be tested on favourable TRM backgrounds? | Inverse-folding nominations and mutation combinations | Non-TRM mutation candidates for experimental testing |
 
 The sections follow **background → model → evaluation → experimental comparison → design consequence**. The comparisons use construct-held-out predictions and existing experimental records. They describe retrospective validation; Model 3 adds computational proposals for a subsequent wet-lab round.
 
-## Model 1. Selecting functional PUF scaffolds
+## Model 1. Contact-based scaffold screening
 
-### Background: repeat rearrangement requires structural support
+### Why repeat arrangement matters
 
 Changing repeat order or inserting loops can alter the organization of the PUF scaffold. We asked whether protein-internal contacts could distinguish arrangements with different experimental work/non-work outcomes. Here, “work” follows the recorded work/non-work label; C388 editing activity is evaluated separately in Model 2.
 
-### Model explanation: from a decision rule to a shallow tree ensemble
+### Learning a structural decision rule
 
 We represented each structure by contact-probability (CP) summaries. For a sequence separation of at least $d$ residues, the density of high-probability contacts was
 
@@ -41,7 +41,7 @@ A depth-one decision tree established the initial classification rule. Feature s
 
 The three-feature random forest used S4, S12 and S24. Its nine-feature companion added core pLDDT mean and minimum, mean PAE, contact-weighted PAE, normalized radius of gyration and anisotropy. Both used 300 trees, maximum depth two, minimum leaf size two, balanced class weights and random seed 2026. Scores of at least 0.5 produced a work prediction. These scores are uncalibrated classifier outputs.
 
-### Training and held-out performance
+### From the initial rule to expanded scaffold evaluation
 
 The initial decision-tree analysis correctly classified all 14 constructs under leave-one-construct-out evaluation, including three work and eleven non-work cases. The three-feature random forest reproduced this separation. Restricting that evaluation to the twelve PUF12 constructs also retained complete agreement.
 
@@ -68,15 +68,15 @@ The experimental panel contained **one work construct and three non-work constru
 
 *Figure 2. Four-design experimental comparison. All four constructs were excluded simultaneously from the fit. The matrix shows one true positive, two true negatives and one false positive. Predictions come from the nine-feature random forest.*
 
-### What this gives the wet lab
+### Scaffold selection for experimental testing
 
 The model provides a structural criterion for prioritizing repeat arrangements and identifies Design 1 as a candidate with a matching recorded work outcome. The false positive motivates checking additional determinants of construct function. Once a functional scaffold is available, the next question concerns its editing profile.
 
 Source records: [scaffold protocol](../../results_20260922/scaffold_RF/audit/protocol.json), [metrics](../../results_20260922/scaffold_RF/results/metrics.csv), [predictions](../../results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).
 
-## Model 2. Connecting TRM changes to reporter editing
+## Model 2. Balancing target and bystander editing
 
-### Background: target retention and bystander reduction require separate endpoints
+### Defining the three-site editing objective
 
 The tripartite recognition motif (TRM) defines a repeat's base-recognition code. Changing this motif can produce different effects at the target and the two bystander sites. We modeled all three editing endpoints separately and compared each variant with its matched experimental control.
 
@@ -88,7 +88,7 @@ $$
 
 where editing fractions lie between zero and one. Changes are reported in percentage points (pp). Negative C295 or C871 changes indicate lower bystander editing; C388 changes quantify target-activity retention or improvement.
 
-### Model explanation and fitting
+### Learning endpoint-specific contact patterns
 
 The workflow used protein–RNA contact changes as structural inputs, including local, distal, full-matrix and reference-interface feature sets. The selected classifier and feature family could differ between endpoints and training folds. Saved selections included regularized linear models, support-vector methods, discriminant analysis and tree ensembles.
 
@@ -96,7 +96,7 @@ For C295 and C871, the classifier distinguished a reduction beyond the selected 
 
 The evaluation withheld each construct in turn, fitted the workflow using the remaining constructs and predicted the omitted construct. A construct's own editing outcome was excluded from its corresponding fit. Variants at the same repeat position could remain in training.
 
-### Evaluation: complete cohort and five-construct assessment
+### Cross-validation and the five-candidate comparison
 
 The complete combined protein–RNA evaluation provides the context for reading the five highlighted candidates.
 
@@ -114,41 +114,15 @@ Across those five constructs, predicted and experimental classes agreed at **13 
 
 *Figure 3. Prediction–measurement agreement for the five highlighted constructs. Each construct was withheld individually, using its saved cross-validation prediction. “Interval” denotes the fold-specific C388 interval. All five C871 observations belonged to the decrease class, so this panel cannot estimate C871 specificity. Thresholds and predictions are supplied in the source table.*
 
-### Wet-lab findings: five complementary editing profiles
+## Model 3. Exploring non-TRM sequence space with AiCE
 
-We compared the held-out predictions with measurements for P9-GNS, P9-NPS, P9-NTQ, P8-GVE and P4-R5-SNE+P7-R5-SNE. All five retained substantial C388 editing and showed lower measured C295 and C871 editing than their matched controls.
-
-| Construct | C295 editing | C388 editing | C871 editing | ΔC295 (pp) | ΔC388 (pp) | ΔC871 (pp) |
-|---|---:|---:|---:|---:|---:|---:|
-| P9-GNS | 30.55% | 62.68% | 26.37% | −1.03 | −4.40 | −30.70 |
-| P9-NPS | 25.52% | 60.46% | 20.39% | −6.07 | −6.62 | −36.68 |
-| P9-NTQ | 23.03% | 62.98% | 18.46% | −8.55 | −4.10 | −38.60 |
-| P8-GVE | 25.22% | 65.86% | 10.23% | −7.74 | −6.70 | −57.27 |
-| P4-R5-SNE+P7-R5-SNE | 19.80% | 80.34% | 32.60% | −13.15 | +7.77 | −34.90 |
-
-P8-GVE showed the largest C871 reduction in this panel, while retaining 65.86% C388 editing. P9-NTQ combined a modest C388 change with reductions at both bystander sites. The double-SNE construct increased C388 editing by 7.77 pp and reduced C295 and C871 by 13.15 and 34.90 pp, respectively.
-
-These measurements identify useful backbones for continued engineering. The classifiers recovered most of their recorded endpoint classes. The experimental measurements establish the specific editing advantages of each candidate.
-
-![Measured editing percentages and matched-control changes](figures/fig4_model2_measured_and_control_delta.png)
-
-*Figure 4. Experimental profiles of the five TRM constructs. Absolute editing percentages and matched-control changes are shown separately. Each change uses the control associated with that construct; controls differ between experimental groups. Values are archived construct-level summaries, with no inferred error bars or significance claims.*
-
-### What this gives the wet lab
-
-P8-GVE and the P9 variants provide backgrounds for investigating reduced C871 editing with retained target activity. The P4/P7 double-SNE construct provides a complementary route that increases C388 editing. These are experimentally grounded positional priorities. The current classifiers do not supply validated individual-residue importance scores.
-
-Source records: [five-construct predictions, thresholds and measurements](../../results_20260922/five_construct_holdout/predictions.csv), [complete cohort predictions](../../results_20260922/v4/all81_LOCO.csv) and [matched-baseline evaluation](../../results_20260922/v4/main_metrics.csv). The separate [ten-construct simultaneous holdout](../../results_20260922/ten_construct_holdout/ranking.csv) uses a different protocol and remains a distinct analysis.
-
-## Model 3. Designing mutations outside the TRM recognition code
-
-### Background: preserve useful recognition motifs and explore the surrounding scaffold
+### Extending design beyond RNA recognition
 
 Models 1 and 2 established a route from scaffold selection to experimentally useful TRM backgrounds. We next examined substitutions outside the recognition code. Such substitutions offer testable hypotheses about scaffold organization and the protein–RNA interface while preserving the chosen TRMs.
 
 We adapted the AiCE framework, AI-informed constraints for protein engineering, to structure-conditioned sequence sampling (Fei et al., 2025). This module applies pretrained inverse-folding models to nominate mutations. The PUF editing measurements guide background selection and interpretation.
 
-### Model explanation: structure, sampling, filtering and combination
+### The inverse-folding workflow
 
 | Step | Input and operation | Output |
 |---|---|---|
@@ -156,14 +130,14 @@ We adapted the AiCE framework, AI-informed constraints for protein engineering, 
 | **2. Sample compatible sequences** | Generate 10,000 sequences per model at temperature 0.5 | ProteinMPNN and LigandMPNN sequence ensembles |
 | **3. Scan every position** | Count WT and alternative amino-acid frequencies across all 493 positions | Position-specific sequence preferences |
 | **4. Protect the recognition code** | Apply the configured recognition-position filter after sampling and retain supported non-TRM changes | 81 nominated positions, including 17 same-substitution dual-model nominations |
-| **5. Combine with experimental backgrounds** | Add selected non-TRM substitutions to P8-GVE, P9-NTQ or P7-SYVIRR | Eleven candidate sequences, G0–G10 |
+| **5. Combine with experimental backgrounds** | Add selected non-TRM substitutions to P8-GVE, P9-NTQ or P7-SYVIRR | Background-specific mutation proposals |
 | **6. Return to the wet lab** | Compare candidates with their backgrounds using C295, C388 and C871 measurements | A direct test of the proposed substitutions |
 
 ProteinMPNN conditions sequence generation on the protein backbone (Dauparas et al., 2022). LigandMPNN additionally uses the surrounding atomic context, including RNA atoms (Dauparas et al., 2025). Both use the same structural reference, with different conditioning information.
 
 Sampling covered the protein sequence without fixing TRM positions during generation. Recognition positions were protected during candidate filtering and construction of the final sequences. For this run, the implemented frequency filter used a threshold of 0.8; all exported positions had the flexible-region flag set to false. No task-specific retraining of either MPNN model was performed.
 
-### Sampling results: explicit non-TRM mutation nominations
+### Seventeen consensus substitutions
 
 The screen identified **17 substitutions supported by both inverse-folding models**. Both models favoured the same alternative amino acid at these positions. The table separates substitutions used in the proposed core set from further consensus candidates.
 
@@ -172,38 +146,16 @@ The screen identified **17 substitutions supported by both inverse-folding model
 | Consensus set used in the proposed core combinations | **T350V, D374E, M458L, L274I, T278I, V366I** | Test a combined change to the surrounding scaffold |
 | N-terminal-region candidate | **R45T** | Test an additional change near the fusion-end region |
 | Further dual-model nominations | **V294I, L166I, R93K, E351L, R462L, V208E, A136E, V388E, A244E, S100E** | Extend the candidate pool with single-mutant comparisons |
-| Additional interface proposals | A438G, H392D | Supported by one model at the stated threshold; included in G4 and G8 |
+| Additional interface proposals | A438G, H392D | Supported by one model at the stated threshold |
 | Additional N-terminal proposals | S30A, L41R; N12S as an exploratory design choice | Included in geometry combinations; N12S has the nomination-label discrepancy described below |
 
 ![Sampling support for the 17 dual-model non-TRM substitutions](figures/fig5_model3_nontrm_consensus.png)
 
-*Figure 5. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference. It does not estimate the probability of improved RNA editing.*
+*Figure 4. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference. It does not estimate the probability of improved RNA editing.*
 
 The broader 81-position export requires an additional identity check. At N12, the ProteinMPNN frequency above the threshold supports **N12G**, while the proposed construct contains **N12S**. We retain N12S as an exploratory design choice and document the discrepancy in the [Model 3 methods page](../../aice_mpnn_20260922/README.md). Neither substitution has a measured editing benefit in this release.
 
 Residue numbers refer to the full **493-residue reference protein**. N12 identifies its twelfth residue; TRM positions 12, 13 and 16 refer to positions within a repeat. Numbering should be mapped explicitly when using constructs with different terminal sequences.
-
-### Wet-lab handoff: G0–G10
-
-The proposed core set contains T350V, D374E, M458L, L274I, T278I and V366I. The interface set contains A438G and H392D. The geometry set contains N12S, S30A and L41R. These names describe design hypotheses without establishing their molecular effects.
-
-| Construct | TRM background | Added non-TRM substitutions |
-|---|---|---|
-| G0 | P8-GVE | None; matched background control |
-| G1 | P8-GVE | R45T |
-| G2 | P8-GVE | Core set |
-| G3 | P8-GVE | R45T + core set |
-| G4 | P8-GVE | Interface set |
-| G5 | P8-GVE | Geometry set |
-| G6 | P8-GVE | R45T + core + interface + geometry sets |
-| G7 | P9-NTQ | R45T + core set |
-| G8 | P9-NTQ | R45T + interface set |
-| G9 | P8-GVE + P9-NTQ | R45T + core set |
-| G10 | P7-SYVIRR | Core set |
-
-The next experiment should compare each combination with its corresponding TRM background. Single-mutant comparisons can identify which substitutions contribute to the measured response. G0–G10 are computational designs in the current release; their non-TRM effects remain to be measured.
-
-Source records: [sampling and filtering methods](../../aice_mpnn_20260922/README.md), [493-position scan](../../aice_mpnn_20260922/results/aice_single_ranked.csv), [nomination export](../../aice_mpnn_20260922/results/recommended_mutations.csv), [G0–G10 mutation lists](../../aice_mpnn_20260922/results/gen3_constructs.csv) and [candidate sequences](../../aice_mpnn_20260922/results/gen3_constructs.fasta).
 
 ## Integration into the engineering cycle
 
