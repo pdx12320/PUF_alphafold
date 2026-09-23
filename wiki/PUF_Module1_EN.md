@@ -43,11 +43,9 @@ The experimental panel contained **one work construct and three non-work constru
 
 ![scaffold_validation_combined](figures/fixed4_scaffold_test.png)
 
-*Figure 1. Four scaffold designs evaluated as one fixed test panel. (a) Work scores from the model fitted to twenty separate training constructs; the dashed line marks the fixed 0.5 cutoff. Colours show the subsequently measured class. (b) Comparison with experimental labels: one true positive, two true negatives and one false positive. All four designs were excluded together from preprocessing and fitting.*
 
 ![scaffold_s12_distribution](figures/training20_s12.png)
 
-*Figure 2. S12 distribution in the twenty-construct training set: seventeen non-work and three work constructs. Each point represents one training construct; horizontal lines show medians. The four test designs are absent. S12 denotes high-confidence nonlocal contacts per residue; horizontal offsets only separate points.*
 
 ### Scaffold selection for experimental testing
 

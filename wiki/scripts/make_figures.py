@@ -286,8 +286,6 @@ def model3_figure():
     ax.spines["left"].set_visible(False)
     ax.legend(loc="lower center", bbox_to_anchor=(.5, 1.015), ncol=2, frameon=False,
               handlelength=1, columnspacing=1.7)
-    fig.text(.5, .963, "Consensus non-TRM substitutions", ha="center", fontsize=9)
-    fig.text(.5, .04, "17 computational nominations · 10,000 sequences per model", ha="center", fontsize=6.5)
     save_figure(fig, "fig5_model3_nontrm_consensus", [ax])
 
 

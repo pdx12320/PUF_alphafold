@@ -31,3 +31,7 @@ Figure 4. Contact-feature importance across all twelve repeat cores and the outs
 Figure 5. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.
 
 ![fig5_model3_nontrm_consensus](fig5_model3_nontrm_consensus.svg)
+
+## Module 2 workflow
+
+`module2_workflow.png` is slide 3 of the supplied `dry_lab流程图(1).pptx`, rendered directly from the original presentation. It opens the main Wiki and repository landing page.

@@ -14,9 +14,6 @@ ax.set_xticks(range(13),['P'+str(p) if p else 'Outside\ncores' for p in cols]);a
 for i in range(3):
  for j in range(13):
   v=values.iloc[i,j];ax.text(j,i,f'{v:.1f}',ha='center',va='center',fontsize=6.5,color='white' if v>11 else DARK)
-ax.set_title('Where do the fixed endpoint models assign contact importance?',pad=14)
 cax=fig.add_axes([.91,.29,.015,.50]);cb=fig.colorbar(im,cax=cax);cb.set_label('Share of CP importance (%)')
-fig.text(.49,.10,'Each row totals 100% · C388 sequence descriptors are summarized separately',ha='center',fontsize=6.5)
-fig.text(.49,.04,'RF impurity importance (C295); absolute standardized coefficients (C388, C871)',ha='center',fontsize=6.5)
 alignment_gate(fig,'model2_repeat_importance',[ax])
 fig.savefig(OUT/'model2_repeat_importance.svg');fig.savefig(OUT/'model2_repeat_importance.pdf');fig.savefig(OUT/'model2_repeat_importance.png',dpi=600)

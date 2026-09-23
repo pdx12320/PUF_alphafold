@@ -6,8 +6,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 4172,
-    "sha256": "8844c8123323195afea93d3c0a1cede2120af919b85708fa5ddbb5a131e2a54f"
+    "bytes": 4229,
+    "sha256": "6f8b3c6464d1cbf40091ebec6509cba18fa9ae3a10f15be97e310696adee7bd2"
   },
   {
     "path": "research/README.md",
@@ -1696,13 +1696,13 @@
   },
   {
     "path": "wiki/PUF_Model_EN.md",
-    "bytes": 27663,
-    "sha256": "102e4d6409761e3034bee61e5b9e727813bcc8d6a2e0a973f8dc54c1606c7717"
+    "bytes": 26690,
+    "sha256": "e7d4cce794453197717bbe3e9f0060edbe5bb7fb158b166c1045a12b2bddbee3"
   },
   {
     "path": "wiki/PUF_Module1_EN.md",
-    "bytes": 5292,
-    "sha256": "0d6acaf261fb7f94b591ed3b35c276fff4b00627b917fd9503730df34157db98"
+    "bytes": 4556,
+    "sha256": "3a33731e6cb7d230382c5f5b608e334ea849520d487a34936bb608c7e0b89bac"
   },
   {
     "path": "wiki/README.md",
@@ -1801,8 +1801,8 @@
   },
   {
     "path": "wiki/figures/captions.md",
-    "bytes": 2522,
-    "sha256": "d14b14fe02168bd6837ec9d294725117001442009fb49833104377425b4c82e4"
+    "bytes": 2725,
+    "sha256": "cc49d596829fdce6576455d552217c9767db3f8f1aa75e14d87813a17d696346"
   },
   {
     "path": "wiki/figures/fig3_model2_five_construct_confusion.pdf",
@@ -1821,63 +1821,68 @@
   },
   {
     "path": "wiki/figures/fig5_model3_nontrm_consensus.pdf",
-    "bytes": 14961,
-    "sha256": "23818c5f7ff89d734eec54aafe16abad50cf75fbf0fae7f25aa02b5f3a813ba1"
+    "bytes": 14256,
+    "sha256": "77cd051125b6b94e3c119c2c7afe7a10c209be29174fc74587f9b68f5b7c852f"
   },
   {
     "path": "wiki/figures/fig5_model3_nontrm_consensus.png",
-    "bytes": 239832,
-    "sha256": "9503ed3bfb6cb1380f985815decdb3109c93c01167ecc5469aa1d33b8d8ce596"
+    "bytes": 188236,
+    "sha256": "a2419c9524055f9b8fdd201720c407699480c7440ad1ce2a23eb37ec3019bd8b"
   },
   {
     "path": "wiki/figures/fig5_model3_nontrm_consensus.svg",
-    "bytes": 19870,
-    "sha256": "eb26d4c559a9bb0cf88bdfc4443969f16d0866519e7bc294ed00c4594496ed26"
+    "bytes": 19238,
+    "sha256": "a2dd71914cf2a0cdfb3ae9f042dc7a99b8c37414f5f694e8b2185ba12ad52bfc"
   },
   {
     "path": "wiki/figures/fixed4_scaffold_test.pdf",
-    "bytes": 19163,
-    "sha256": "7ca425e822396e3316701c135946941682e85e69bfe33b0c6c65880ee7f4e6ee"
+    "bytes": 16911,
+    "sha256": "1a6c71876d795dd0527343022d609c7eded89134cd9b240c31a659c7d0da96e6"
   },
   {
     "path": "wiki/figures/fixed4_scaffold_test.png",
-    "bytes": 270894,
-    "sha256": "70fddee63587636e31f79f3e3fde4f52d67a416b0647ce37616fc02ab5ee31d2"
+    "bytes": 189804,
+    "sha256": "ddba69b83d71a545db12074d243e563b91c544a1f7cec3770f986bd59dfce67d"
   },
   {
     "path": "wiki/figures/fixed4_scaffold_test.svg",
-    "bytes": 13830,
-    "sha256": "cd77a42d284b926f6944eeaa97bf865b16fe6c938ccca206aa1f7644c2ef9d3c"
+    "bytes": 14690,
+    "sha256": "348ecf9127b1503f294dce9fc80cef1e4a065dc022c686e3a40cb8cbfe8eea3f"
   },
   {
     "path": "wiki/figures/fixed5_endpoint_test.pdf",
-    "bytes": 19679,
-    "sha256": "e605bb663caa9cc01d9a23bc026432bf912c85bea6598c15a24cb6bebba155f7"
+    "bytes": 17091,
+    "sha256": "a225c373e35139fd70e12a65cbd10e9c16a7f8cf66ed7268a5c7b43a2ece2de3"
   },
   {
     "path": "wiki/figures/fixed5_endpoint_test.png",
-    "bytes": 282552,
-    "sha256": "a98d2e9750679d429c50f38491056ebf2e0c1d3c3c976288c1b2d454548b1af5"
+    "bytes": 198476,
+    "sha256": "fe6df8348392c0aa0d47a7421e6a7a582c6fd7bfda6680e5217c3ca30ca1f40b"
   },
   {
     "path": "wiki/figures/fixed5_endpoint_test.svg",
-    "bytes": 15824,
-    "sha256": "685223440722444c358384ba69891220dcc8cf5293019188fa81ffe140fd6a9c"
+    "bytes": 16775,
+    "sha256": "578d1109f63bfe884c31468d1ee14c934ec4a751c6edca28ccfd5a792d81018e"
   },
   {
     "path": "wiki/figures/model2_repeat_importance.pdf",
-    "bytes": 17408,
-    "sha256": "d02a2f5b02fb128bb8b10b26497f24fe4960ecc895392c8eb020cb5f2c0ad2ee"
+    "bytes": 14008,
+    "sha256": "a5c618f00e94e82a11ac82675c539b55bbd88e981630e7dc1980209ffe67f5ad"
   },
   {
     "path": "wiki/figures/model2_repeat_importance.png",
-    "bytes": 305833,
-    "sha256": "acbd81850a776d1a7b8a29ef61e30c3b618db8615b1c8681a76e0d6b4b7f4994"
+    "bytes": 178604,
+    "sha256": "e76485c7d08015d3ba88f34672d7865ec63cde2871cbf3797f8cf553e6d5c310"
   },
   {
     "path": "wiki/figures/model2_repeat_importance.svg",
-    "bytes": 21816,
-    "sha256": "c94fda3902bc0747ac5e9698b0869e7a4c2d8670ff274636e362d430c5dc41f8"
+    "bytes": 20917,
+    "sha256": "95e39d10960fb79a8f07b4388620a519cc00bee8d744961d4c37f11ef1b79ef1"
+  },
+  {
+    "path": "wiki/figures/module2_workflow.png",
+    "bytes": 474147,
+    "sha256": "96d748dfb0e2d58e84a25df946a57203a2b4584fd4ff4250b528df6c158d0eaf"
   },
   {
     "path": "wiki/figures/qa/QA_REPORT.md",
@@ -2201,18 +2206,18 @@
   },
   {
     "path": "wiki/figures/training20_s12.pdf",
-    "bytes": 14330,
-    "sha256": "c88a7972515c4e897f54018a3a353f79fe46faf828f041e78400ab5e9d64a4c4"
+    "bytes": 13119,
+    "sha256": "4f28cd20b2f21b0274036ec057a4b6839a9eaefb584f4d285f67bdfd86267bdb"
   },
   {
     "path": "wiki/figures/training20_s12.png",
-    "bytes": 174259,
-    "sha256": "97f419bcd796a352eb8aadf7bf21bd82f07f0ced3a67a84551efd663f87dfe7b"
+    "bytes": 123356,
+    "sha256": "0627dfb974b8b7216822ec2dd516c8f2e9f0a50e12c811e7839f8ff42ddd6af8"
   },
   {
     "path": "wiki/figures/training20_s12.svg",
-    "bytes": 12371,
-    "sha256": "5174595f2419338679d165d3bd3e79d99c8d4b7058736c29a18de6884b5e299d"
+    "bytes": 12198,
+    "sha256": "505e42ed7adc07420d8588d091298b78d12cfdb5cbf8daffbb8bcd3199b3d61e"
   },
   {
     "path": "wiki/scripts/add_wiki_figures.py",
@@ -2221,17 +2226,17 @@
   },
   {
     "path": "wiki/scripts/make_figures.py",
-    "bytes": 14882,
-    "sha256": "9b0ca3c4115a987e891d28d50a81b849f4b9b76e30bfab5b58930b5b982af31b"
+    "bytes": 14688,
+    "sha256": "3b7dc8a598db36885cc5cdf013bad72ccc99d825efc1a14dc27db41be6be32ef"
   },
   {
     "path": "wiki/scripts/make_fixed_test_figures.py",
-    "bytes": 4567,
-    "sha256": "3c32c0a18c3e066d89a8879599fef699db809ca892b3a55ce5db8a3651e79a4c"
+    "bytes": 4087,
+    "sha256": "7aa4aa5bfbbf45ca9a32acbbea3de9625c2642260a233f3e53e5ba5a9531bf3a"
   },
   {
     "path": "wiki/scripts/make_repeat_importance.py",
-    "bytes": 1828,
-    "sha256": "9a00a28d04498f8327f76c8964f65cffe55004bb4850cf275c06c100dbcef03a"
+    "bytes": 1498,
+    "sha256": "fe831ae940c6887c647066457e67b9b77034d7ee1c8090add2e843822f6d4f56"
   }
 ]

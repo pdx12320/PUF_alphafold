@@ -7,6 +7,8 @@ language: "en"
 
 # From PUF scaffold selection to selective RNA editing
 
+![Module 2 workflow](figures/module2_workflow.png)
+
 ## Background and engineering objective
 
 PUF proteins recognize RNA through an array of repeats, each contributing a small set of base-recognition residues (Wang et al., 2002). These residues can be redesigned to change RNA sequence preference (Cheong & Hall, 2006). Repeat expansion also changes the architecture and binding properties of the RNA-binding domain (Zhao et al., 2018).
@@ -62,11 +64,9 @@ The experimental panel contained **one work construct and three non-work constru
 
 ![scaffold_validation_combined](figures/fixed4_scaffold_test.png)
 
-*Figure 1. Four scaffold designs evaluated as one fixed test panel. (a) Work scores from the model fitted to twenty separate training constructs; the dashed line marks the fixed 0.5 cutoff. Colours show the subsequently measured class. (b) Comparison with experimental labels: one true positive, two true negatives and one false positive. All four designs were excluded together from preprocessing and fitting.*
 
 ![scaffold_s12_distribution](figures/training20_s12.png)
 
-*Figure 2. S12 distribution in the twenty-construct training set: seventeen non-work and three work constructs. Each point represents one training construct; horizontal lines show medians. The four test designs are absent. S12 denotes high-confidence nonlocal contacts per residue; horizontal offsets only separate points.*
 
 ### Scaffold selection for experimental testing
 
@@ -120,7 +120,6 @@ All five C295 measurements fall in the no-decrease class under the training-sele
 
 ![Five fixed test constructs](figures/fixed5_endpoint_test.png)
 
-*Figure 3. Endpoint predictions for the fixed five-construct test panel. All five constructs were excluded together from every fitting and selection step. The same endpoint-specific classifier and class boundaries apply to every test construct. Matrices show 5/5, 3/5 and 3/5 agreement for C295, C388 and C871, respectively. Rows are measured classes and columns are predictions.*
 
 ### Which repeats and residues drive the predictions?
 
@@ -136,7 +135,6 @@ For C871, residues outside canonical repeat cores collectively account for a fur
 
 ![Repeat-level importance in the fixed Model 2 classifiers](figures/model2_repeat_importance.png)
 
-*Figure 4. Contact-feature importance across all twelve repeat cores and the outside-core region. Values are percentages of each endpoint’s total CP importance. C295 uses random-forest impurity importance; C388 and C871 use absolute standardized coefficients. C388 sequence descriptors are excluded from this CP-only normalization. All regions are shown, with no selection based on test performance.*
 
 These results prioritize **P3/P4 for C388-focused mechanistic follow-up**, **P2/P3/P5 for C295-associated contacts**, and **P1/P10/P11 plus terminal regions for C871-associated contacts**. Importance identifies features used by the fitted classifier; the direction and benefit of a particular substitution require experimental testing. Summed importance can depend on the number of selected contacts, so the [complete residue and repeat tables](../research/model_interpretation_20260923/) also report contact counts and mean per-contact importance.
 
@@ -185,7 +183,6 @@ The screen identified **17 substitutions supported by both inverse-folding model
 
 ![fig5_model3_nontrm_consensus](figures/fig5_model3_nontrm_consensus.png)
 
-*Figure 5. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.*
 
 The broader 81-position export requires an additional identity check. At N12, the ProteinMPNN frequency above the threshold supports **N12G**, while the proposed construct contains **N12S**. We retain N12S as an exploratory design choice and document the discrepancy in the [Model 3 methods page](../research/aice_mpnn_20260922/README.md). Neither substitution has a measured editing benefit in this release.
 
@@ -239,6 +236,10 @@ To compare these exact mutations with Model 3, we counted generated sequences ca
 | P8-GVE: S288G, Y289V | 0 / 305 | 0 / 3006 |
 
 **P1-SHE (Y37H)** provides a limited example of agreement: the mutant residue occurs more often than WT at that position in both sampling models and has a favourable measured bystander profile. Its absolute frequency is low—**0.22%** in ProteinMPNN and **0.02%** in LigandMPNN—well below the 80% non-TRM nomination threshold. Several strong experimental variants receive low or zero exact-set counts, including P8-GVE. The comparison therefore supports their measured utility while showing that sampling frequency alone does not rank editing performance reliably.
+
+### Why structural preferences only partly match editing outcomes
+
+Agreement with favourable measured TRM variants is limited. ProteinMPNN and LigandMPNN generate sequences compatible with a supplied structure; they were not trained here on editing outcomes. The PUF–RNA input also omits the complete PUF–APOBEC fusion and cellular context, which can affect catalytic positioning and editing. Moreover, the sampled sequences contain multiple substitutions, so their frequencies do not isolate the effect of a single experimental mutation. These methodological differences plausibly explain the mismatch; they have not been established as its experimental causes. A zero count means no occurrence in 10,000 samples. The 17 non-TRM nominations remain candidates for wet-lab testing.
 
 The [complete mutation-to-assay table](../research/model_interpretation_20260923/model3_exact_mutation_wetlab_comparison.csv) retains every construct, matched-control change and exact sampling count. The [analysis methods](../research/model_interpretation_20260923/README.md) explain the numbering verification, sample parsing and example-selection rule.
 

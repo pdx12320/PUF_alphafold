@@ -1,5 +1,7 @@
 # PUF–APOBEC: structure-guided RNA editing
 
+![Module 2 workflow](wiki/figures/module2_workflow.png)
+
 ### From scaffold selection to selective editing and non-TRM design
 
 We combine protein–RNA structure analysis, interpretable classifiers and inverse folding to guide PUF–APOBEC engineering. Our objective is to retain editing at **C388** while reducing bystander editing at **C295 and C871**.
