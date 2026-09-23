@@ -1,4 +1,4 @@
-# C388 binary two-batch search
+# C388 activity-retention modelling across two batches
 
 This is a new runner; it does not overwrite the archived three-class analysis,
 source arrays, fitted models, labels or frozen splits. It requires the verified
@@ -8,7 +8,7 @@ TRM features are excluded from this search).
 
 ## Recorded results
 
-The fixed-five binary model selected **−5 pp**, Ridge (α=1, balanced class weights),
+The fixed-five model selected **−5 pp**, Ridge (α=1, balanced class weights),
 and **876 eligible protein–RNA CP entries**. It agreed with **3/5** outcomes,
 versus **2/5** for the training-majority reference; balanced accuracy was **66.7%**
 versus **50.0%**. The nominal top-1,000 candidate retained all eligible entries.
@@ -22,7 +22,7 @@ baseline advantage. Fold-specific biological thresholds vary from −2.5 to −2
 [Fixed-five model and predictions](results/fixed_five/) ·
 [Nested LOCO predictions and full search audit](results/loco76/) ·
 [LOCO method](LOCO_README.md). Historical three-class results remain unchanged.
-C388 repeat/residue attribution has not been recomputed for this binary model.
+C388 repeat/residue attribution has not been recomputed for this model.
 The archived C388 importance figures therefore remain historical only.
 
 ## Task and cohort

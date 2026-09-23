@@ -1,6 +1,6 @@
 # Fixed test panels for Models 1 and 2
 
-**C388 status:** the three-class reconstruction below is retained as historical evidence. The [current C388 binary model and nested validation](../c388_binary/README.md) supersede its C388 presentation; C295/C871 records here remain unchanged.
+**C388 status:** the three-class reconstruction below is retained as historical evidence. The [current C388 model and nested validation](../c388_binary/README.md) supersede its C388 presentation; C295/C871 records here remain unchanged.
 
 [Project home](../../README.md) · [Wiki](../../wiki/PUF_Model_EN.md)
 

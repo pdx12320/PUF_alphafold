@@ -28,9 +28,9 @@ A decision-tree baseline identified informative contact features. A shallow rand
 
 Separate models predict control-relative editing classes at the three reporter sites. All five test candidates are excluded together before preprocessing, model selection and fitting. Models trained on the remaining 76 constructs agree with **11 of 15 experimental endpoint classes**: C295 **5/5**, C388 **3/5** and C871 **3/5**. The project workflow advances predicted candidates to subsequent wet-lab testing.
 
-C388 now uses a binary −5 pp boundary and a CP-only Ridge model. Its fixed-panel agreement is 3/5 versus a 2/5 majority baseline, but nested LOCO on the 76 training constructs gives 60.4% balanced accuracy versus 61.8% for the matched baseline. The complete selection procedure therefore has no established baseline advantage. [Binary results and full validation](research/c388_binary/README.md).
+C388 now uses a −5 pp boundary and a CP-only Ridge model. Its fixed-panel agreement is 3/5 versus a 2/5 majority baseline, but nested LOCO on the 76 training constructs gives 60.4% balanced accuracy versus 61.8% for the matched baseline. The complete selection procedure therefore has no established baseline advantage. [C388 results and full validation](research/c388_binary/README.md).
 
-Retained contact attribution highlights **P3/P5/P2 for C295** and **P1/P10/P11 for C871**, with additional C871 signal outside repeat cores. The former C388 attributions belong to its archived three-class model; binary C388 attribution has not been re-estimated.
+Retained contact attribution highlights **P3/P5/P2 for C295** and **P1/P10/P11 for C871**, with additional C871 signal outside repeat cores. The former C388 attributions belong to its archived three-class model; C388 attribution has not been re-estimated.
 
 [Editing profiles and model interpretation →](wiki/PUF_Model_EN.md#model-2-balancing-target-and-bystander-editing)
 
