@@ -1,53 +1,49 @@
-# PUF–APOBEC Structure-Guided Engineering
+# PUF–APOBEC: structure-guided RNA editing
 
-We use structural modelling and reporter measurements to engineer PUF–APOBEC RNA editing. The dry-lab workflow addresses three linked questions: which PUF repeat arrangements retain function, which recognition-motif changes improve editing selectivity, and which residues outside the recognition code merit experimental testing.
+### From scaffold selection to selective editing and non-TRM design
 
-**Read the Wiki:** [English](docs/wiki/PUF_Model_EN.md) · [中文](docs/wiki/PUF_Model_ZH.md) · [Design–Build–Test–Learn](docs/DRY_LAB_DBTL.md)
+We combine protein–RNA structure analysis, interpretable classifiers and inverse folding to guide PUF–APOBEC engineering. Our objective is to retain editing at **C388** while reducing bystander editing at **C295 and C871**.
 
-## Three models, one design cycle
+**[Read the full Dry Lab Wiki →](wiki/PUF_Model_EN.md)** · [Figures and captions](wiki/figures/captions.md) · [Research files](research/README.md) · [GitHub](https://github.com/pdx12320/PUF_alphafold)
 
-| Stage | Biological question | Model and evaluation | Experimental connection |
-|---|---|---|---|
-| **Model 1 — Scaffold function** | Can a redesigned PUF repeat arrangement retain function? | A decision-tree baseline identifies informative protein-contact features. A shallow random forest combines contact and structural features for the four-construct comparison. | The frozen panel contains one experimentally labelled work construct and three labelled non-work constructs; the model agrees with three of the four recorded outcomes. |
-| **Model 2 — TRM-dependent editing** | Can C388 editing be retained while reducing C295/C871 bystander editing? | Site-specific classifiers use changes in protein–RNA contacts to predict editing classes relative to matched controls. | Five experimentally favourable TRM constructs provide 15 site-level comparisons; 13 predictions agree with the measurements. |
-| **Model 3 — Non-TRM design** | Which changes outside the RNA-recognition code should be tested next? | Pretrained ProteinMPNN and LigandMPNN sample sequences from the PUF12 structure; their frequency profiles nominate non-TRM substitutions. | Seventeen dual-model consensus substitutions inform an 11-construct G0–G10 test set on experimentally characterized TRM backbones. These designs await experimental assessment. |
+## Our modelling workflow
 
-The Wiki follows **background → model rationale → model fitting or sampling → experimental comparison → next design**. Models 1 and 2 are evaluated against existing experimental records using held-out predictions. The five Model 2 constructs are each omitted from their own training fold; they are an outcome-selected retrospective panel. Model 3 generates hypotheses for the next wet-lab round.
-
-## Results to display
-
-| Result | Recorded outcome | Source |
+| Design question | Approach | Experimental connection |
 |---|---|---|
-| Model 1 four-construct panel | Trained on the remaining 20 constructs; TP = 1, TN = 2, FP = 1, FN = 0; **3/4 agreement** | [Predictions](results_20260922/scaffold_RF/results/predictions_indexed.csv) · [Fixed protocol](results_20260922/scaffold_RF/audit/protocol.json) |
-| Model 1 broader construct-held-out assessment | CP + structure random forest: **22/24 correct** | [Metrics](results_20260922/scaffold_RF/results/metrics.csv) |
-| Model 2 five-construct panel | **13/15 endpoint calls correct**: C295 5/5, C388 4/5, C871 4/5 | [Predictions and measurements](results_20260922/five_construct_holdout/predictions.csv) |
-| Model 3 sequence-based nomination | **17 dual-model consensus substitutions**; **G0–G10** proposed constructs | [Candidate table](aice_mpnn_20260922/results/recommended_mutations.csv) · [Design sequences](aice_mpnn_20260922/results/gen3_constructs.fasta) |
+| Which repeat arrangements retain function? | Contact-based scaffold screening | Compare work/non-work predictions with four recorded outcomes. |
+| Which recognition motifs improve editing profiles? | Endpoint-specific TRM classifiers | Compare predictions with C295, C388 and C871 measurements for five constructs. |
+| Which surrounding residues merit testing? | ProteinMPNN and LigandMPNN sequence sampling | Nominate non-TRM substitutions for matched-background experiments. |
 
-See the [Wiki figure set and captions](docs/wiki/figures/captions.md) for confusion matrices, measured editing rates, matched-control changes and the non-TRM candidate summary. The separate [ten-construct ranking analysis](results_20260922/ten_construct_holdout/ranking.csv) is retained with its own evaluation scope in the [results index](results_20260922/README.md).
+## 1 · Contact-based scaffold screening
 
-## From predictions to the next experiments
+A decision-tree baseline identified informative contact features. A shallow random forest subsequently combined contact and structural descriptors. It agrees with **22/24** labels under leave-one-construct-out evaluation and **3/4** labels when the four comparison constructs are withheld jointly. That panel contains one work and three non-work constructs.
 
-The Model 2 panel comprises **P8-GVE**, **P9-GNS**, **P9-NPS**, **P9-NTQ** and **P4-R5-SNE+P7-R5-SNE**. Their measured C388 editing spans 60.46–80.34%, while C871 editing decreases by 30.70–57.27 percentage points relative to matched controls. The dual P4/P7 construct also increases C388 editing and reduces both bystander sites.
+![Scaffold classification under LOCO and joint four-construct holdout](wiki/figures/scaffold_validation_combined.png)
 
-Model 3 builds on these experimentally characterized recognition motifs and on the high-C388 **P7-SYVIRR** backbone. Proposed additions include **R45T**; the six-residue package **T350V, D374E, M458L, L274I, T278I and V366I**; **A438G/H392D**; and **N12S/S30A/L41R**. The [Model 3 workflow](aice_mpnn_20260922/README.md) documents the 493-residue reference numbering, sampling, filters, sequence checks and proposed tests. Structural roles assigned to these substitutions are design hypotheses.
+[Model rationale and experimental comparison →](wiki/PUF_Model_EN.md#model-1-contact-based-scaffold-screening)
 
-## Repository map
+## 2 · Balancing target and bystander editing
 
-| Directory | Purpose |
+Separate models predict control-relative editing classes at the three reporter sites. For five experimentally favourable constructs, **13 of 15 endpoint predictions** agree with measured classes: C295 **5/5**, C388 **4/5** and C871 **4/5**. These are retrospectively selected examples; each construct was withheld in its own training fold.
+
+![Endpoint-specific classification for five TRM constructs](wiki/figures/fig3_model2_five_construct_confusion.png)
+
+[Editing profiles and model interpretation →](wiki/PUF_Model_EN.md#model-2-balancing-target-and-bystander-editing)
+
+## 3 · Exploring non-TRM sequence space
+
+ProteinMPNN and LigandMPNN each generated **10,000 sequences** from the PUF structural input. After recognition-code filtering, both models nominated the same alternative amino acid at **17 non-TRM positions**. These candidates connect structural sequence preferences to the next round of wet-lab comparisons.
+
+[Sampling workflow and exact substitutions →](wiki/PUF_Model_EN.md#model-3-exploring-non-trm-sequence-space-with-aice)
+
+## Explore the evidence
+
+| Page | What you will find |
 |---|---|
-| [`docs/wiki/`](docs/wiki/) | Current English and Chinese Wiki narrative, APA references and display-ready figures |
-| [`results_20260922/`](results_20260922/README.md) | Model 1 reproduction script, model outputs, experimental comparisons and split records |
-| [`aice_mpnn_20260922/`](aice_mpnn_20260922/README.md) | Model 3 structure inputs, sampling workflow, non-TRM nominations and G0–G10 sequences |
-| [`architecture_validation/`](architecture_validation/) | Supporting scaffold analysis with repeat arrangements held out |
-| [`data/`](data/) and [`tools/`](tools/) | Input records, provenance and reproduction utilities |
+| [Full model narrative](wiki/PUF_Model_EN.md) | Background, model explanations, evaluation, experimental connections and APA references |
+| [Figure gallery](wiki/figures/captions.md) | Four current figures with captions and editable vector exports |
+| [Engineering cycle](research/docs/DRY_LAB_DBTL.md) | Design–Build–Test–Learn across the three models |
+| [Research index](research/README.md) | Source data, scripts, outputs, provenance and historical analyses |
+| [Reproducibility](research/docs/REPRODUCIBILITY.md) | Environment, validation and execution commands |
 
-Earlier analyses remain accessible through the [repository guide](docs/REPOSITORY_GUIDE.md) and the dated history in [DRY_LAB_DBTL.md](docs/DRY_LAB_DBTL.md).
-
-## Reproduce the scaffold models
-
-```bash
-python -m pip install -r requirements.txt
-python results_20260922/scaffold_RF/retrain.py
-```
-
-Use the [recorded package versions](results_20260922/scaffold_RF/audit/environment.json) when reproducing the saved results. The [results index](results_20260922/README.md) documents source archives and the distinct validation settings; the [Model 3 README](aice_mpnn_20260922/README.md) provides its sampling and design commands.
+The repository is organized into two folders: **`wiki/` for presentation** and **`research/` for supporting analyses**. All displayed measurements and predictions come from the recorded source tables.
