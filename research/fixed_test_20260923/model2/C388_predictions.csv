@@ -1,0 +1,6 @@
+target,construct_id,endpoint,true_class,predicted_class,correct,decrease_threshold_pp,increase_threshold_pp,measured_delta_pp,feature_family,algorithm,n_train,n_test,validation
+P9-GNS,25_p9_gns,C388,within_selected_interval,within_selected_interval,True,12.5,2.5,-4.401499999999992,full_PR,LinearSVM,76,5,joint_fixed_five_test
+P9-NPS,30_p9_nps,C388,within_selected_interval,within_selected_interval,True,12.5,2.5,-6.620999999999988,full_PR,LinearSVM,76,5,joint_fixed_five_test
+P9-NTQ,32_p9_ntq,C388,within_selected_interval,within_selected_interval,True,12.5,2.5,-4.102499999999987,full_PR,LinearSVM,76,5,joint_fixed_five_test
+P4-R5-SNE+P7-R5-SNE,p4_r5_sne_plus_p7_r5_sne,C388,increase,within_selected_interval,False,12.5,2.5,7.773999999999992,full_PR,LinearSVM,76,5,joint_fixed_five_test
+P8-GVE,p8_r6_gve,C388,within_selected_interval,decrease,False,12.5,2.5,-6.704500000000014,full_PR,LinearSVM,76,5,joint_fixed_five_test

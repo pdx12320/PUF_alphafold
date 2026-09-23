@@ -1,4 +1,8 @@
-# Model 1. Contact-based scaffold screening
+# Scaffold screening: fixed test panel
+
+[Full model page](PUF_Model_EN.md) · [GitHub](https://github.com/pdx12320/PUF_alphafold)
+
+## Model 1. Contact-based scaffold screening
 
 ### Why repeat arrangement matters
 
@@ -18,15 +22,15 @@ A depth-one decision tree established the initial classification rule. Feature s
 
 The three-feature random forest used S4, S12 and S24. Its nine-feature companion added core pLDDT mean and minimum, mean PAE, contact-weighted PAE, normalized radius of gyration and anisotropy. Both used 300 trees, maximum depth two, minimum leaf size two, balanced class weights and random seed 2026. Scores of at least 0.5 produced a work prediction. These scores are uncalibrated classifier outputs.
 
-### From the initial rule to expanded scaffold evaluation
+### Training with a separate four-design test panel
 
-The initial decision-tree analysis correctly classified all 14 constructs under leave-one-construct-out evaluation, including three work and eleven non-work cases. The three-feature random forest reproduced this separation. Restricting that evaluation to the twelve PUF12 constructs also retained complete agreement.
+The four test designs were set aside before fitting. We trained the nine-feature random forest on the remaining twenty scaffold constructs. Missing-value handling, feature scaling and model fitting used only those training records. The forest recipe and 0.5 classification cutoff were fixed; none was selected using the four test outcomes.
 
-After the PUF12 collection was expanded, the nine-feature forest correctly classified 22 of 24 constructs under leave-one-construct-out evaluation. Balanced accuracy was 0.850 and ROC-AUC was 0.913. This expanded evaluation included one false positive and one false negative.
+The earlier decision-tree analysis motivated contact-based screening. Its cross-validation results are retained in the research archive. The result displayed here is the fixed four-design test.
 
 ### Experimental comparison: one work and three non-work designs
 
-For the four-design assessment, we trained the nine-feature forest on the remaining twenty constructs and predicted all four excluded designs. We then compared these predictions with their wet-lab labels.
+The four designs advanced to wet-lab testing after prediction in the project workflow. The reproducible fixed-test analysis predicts all four with one model fitted to the twenty training constructs, then compares their predictions with the experimental work/non-work outcomes.
 
 | Construct | Work score | Model prediction | Experimental outcome |
 |---|---:|---|---|
@@ -37,20 +41,18 @@ For the four-design assessment, we trained the nine-feature forest on the remain
 
 The experimental panel contained **one work construct and three non-work constructs**. Predictions agreed with three of the four outcomes. Design 1 received the highest score and received a work outcome in the wet-lab record. Design 7 remained a false positive, showing why scaffold prioritization still requires experimental testing.
 
-![scaffold_validation_combined](figures/scaffold_validation_combined.png)
+![scaffold_validation_combined](figures/fixed4_scaffold_test.png)
 
-*Figure 1. Scaffold classification in two recorded evaluations. (a) Leave-one-construct-out (LOCO) evaluation in the expanded collection: 22/24 correct. (b) Four constructs withheld jointly: 3/4 correct, comprising one true positive, two true negatives and one false positive. Rows are measured classes and columns are predictions of the nine-feature random forest at a score threshold of 0.5. Both panels use the same colour scale for counts. The historical decision stump is a separate analysis.*
+*Figure 1. Four scaffold designs evaluated as one fixed test panel. (a) Work scores from the model fitted to twenty separate training constructs; the dashed line marks the fixed 0.5 cutoff. Colours show the subsequently measured class. (b) Comparison with experimental labels: one true positive, two true negatives and one false positive. All four designs were excluded together from preprocessing and fitting.*
 
-![scaffold_s12_distribution](figures/scaffold_s12_distribution.png)
+![scaffold_s12_distribution](figures/training20_s12.png)
 
-*Figure 2. Observed S12 distribution across the expanded scaffold collection. Each point represents one construct (20 non-work; four work); horizontal lines indicate medians. S12 is the per-residue high-confidence nonlocal contact feature, pp_nonlocal12_high_per_res. Horizontal offsets separate observations and have no quantitative meaning. The overlapping distributions are descriptive and do not establish a universal decision threshold.*
+*Figure 2. S12 distribution in the twenty-construct training set: seventeen non-work and three work constructs. Each point represents one training construct; horizontal lines show medians. The four test designs are absent. S12 denotes high-confidence nonlocal contacts per residue; horizontal offsets only separate points.*
 
 ### Scaffold selection for experimental testing
 
 The model provides a structural criterion for prioritizing repeat arrangements and identifies Design 1 as a candidate with a matching recorded work outcome. The false positive motivates checking additional determinants of construct function. Once a functional scaffold is available, the next question concerns its editing profile.
 
-Source records: [scaffold protocol](../research/results_20260922/scaffold_RF/audit/protocol.json), [metrics](../research/results_20260922/scaffold_RF/results/metrics.csv), [predictions](../research/results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).
+Current fixed-test records: [train/test split](../research/fixed_test_20260923/model1/split.json) and [four test predictions](../research/fixed_test_20260923/model1/predictions.csv).
 
-## Continue the design cycle
-
-See the [complete three-model Wiki](PUF_Model_EN.md) for TRM editing, non-TRM design, APA references and the integrated engineering cycle. The [earlier detailed module](https://github.com/pdx12320/PUF_alphafold/blob/c38943d46e4e08754a01b3160f53a599505878e4/docs/wiki/PUF_Module1_EN.md) retains additional historical evaluation details.
+Earlier development records: [scaffold protocol](../research/results_20260922/scaffold_RF/audit/protocol.json), [metrics](../research/results_20260922/scaffold_RF/results/metrics.csv), [predictions](../research/results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).

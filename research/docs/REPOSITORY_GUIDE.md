@@ -25,11 +25,11 @@ The focused [scaffold page](../../wiki/PUF_Module1_EN.md) reproduces the current
 
 ## Model 2 — TRM-dependent reporter editing
 
-The main illustrative panel comprises P8-GVE, P9-GNS, P9-NPS, P9-NTQ and P4-R5-SNE+P7-R5-SNE. Each construct is held out in its own fold, and experimental editing is compared with its matched control. The reported 13/15 agreement counts the three endpoints for each construct. This retrospective panel was selected for its experimentally favourable behaviour.
+The fixed test panel comprises P8-GVE, P9-GNS, P9-NPS, P9-NTQ and P4-R5-SNE+P7-R5-SNE. All five constructs are excluded together from training and selection. The fixed-test reconstruction fits 76 training constructs and produces 11/15 agreement (C295 5/5, C388 3/5, C871 3/5). See the [current split protocol](../fixed_test_20260923/README.md) and [predictions](../fixed_test_20260923/model2/predictions.csv). The earlier individually held-out 13/15 result is archived separately.
 
 | File | Contents |
 |---|---|
-| [Five-construct panel](../results_20260922/five_construct_holdout/predictions.csv) | Measured rates, control-relative changes, selected class thresholds and predicted classes for all 15 endpoints |
+| [Earlier individually held-out five-construct panel](../results_20260922/five_construct_holdout/predictions.csv) | Measured rates, control-relative changes, selected class thresholds and predicted classes for all 15 endpoints |
 | [All-construct predictions](../results_20260922/v4/all81_LOCO.csv) | Full construct-held-out result table from which the five-construct panel is drawn |
 | [Main metrics](../results_20260922/v4/main_metrics.csv) | Broader performance and matched baseline comparisons |
 | [Ten-construct comparison](../results_20260922/ten_construct_holdout/ranking.csv) | A separate, simultaneous ten-construct holdout ranking analysis |

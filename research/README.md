@@ -8,6 +8,7 @@ The presentation pages are in `wiki/`. This directory contains the underlying in
 
 | Directory | Contents |
 |---|---|
+| [fixed_test_20260923](fixed_test_20260923/README.md) | Current fixed-four scaffold test and fixed-five TRM test, with reconstructed training splits and fitted models |
 | [results_20260922](results_20260922/README.md) | Scaffold RF results, five-construct endpoint comparisons, full-cohort results and split definitions |
 | [aice_mpnn_20260922](aice_mpnn_20260922/README.md) | Model 3 inputs, sequence-sampling workflow and non-TRM nominations |
 | [data](data/) | Retained scaffold input caches and provenance |

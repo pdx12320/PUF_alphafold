@@ -1,0 +1,52 @@
+[
+  {
+    "construct_id": "25_p9_gns",
+    "predicted_class": "within_selected_interval",
+    "scores": [
+      -0.591399191053921,
+      0.31072395733771674,
+      -0.6838740558179582
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "30_p9_nps",
+    "predicted_class": "within_selected_interval",
+    "scores": [
+      -0.7638789177544737,
+      0.5825154613751207,
+      -0.7666068288583626
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "32_p9_ntq",
+    "predicted_class": "within_selected_interval",
+    "scores": [
+      -0.2431823944033851,
+      -0.10457878689173708,
+      -0.574780255879241
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "p4_r5_sne_plus_p7_r5_sne",
+    "predicted_class": "within_selected_interval",
+    "scores": [
+      -0.7393601954634881,
+      0.2690105565708969,
+      -0.10596232689614504
+    ],
+    "score_kind": "native_margin_not_probability"
+  },
+  {
+    "construct_id": "p8_r6_gve",
+    "predicted_class": "decrease",
+    "scores": [
+      0.24113534938676043,
+      -0.5678907581124902,
+      -0.7657843775948922
+    ],
+    "score_kind": "native_margin_not_probability"
+  }
+]

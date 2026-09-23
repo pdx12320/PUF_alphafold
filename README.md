@@ -16,17 +16,17 @@ We combine protein–RNA structure analysis, interpretable classifiers and inver
 
 ## 1 · Contact-based scaffold screening
 
-A decision-tree baseline identified informative contact features. A shallow random forest subsequently combined contact and structural descriptors. It agrees with **22/24** labels under leave-one-construct-out evaluation and **3/4** labels when the four comparison constructs are withheld jointly. That panel contains one work and three non-work constructs.
+A decision-tree baseline identified informative contact features. A shallow random forest subsequently combined contact and structural descriptors. It is trained on twenty scaffolds with all four test designs excluded together, and agrees with **3/4** subsequent experimental outcomes. That panel contains one work and three non-work constructs.
 
-![Scaffold classification under LOCO and joint four-construct holdout](wiki/figures/scaffold_validation_combined.png)
+![Four-design fixed test](wiki/figures/fixed4_scaffold_test.png)
 
 [Model rationale and experimental comparison →](wiki/PUF_Model_EN.md#model-1-contact-based-scaffold-screening)
 
 ## 2 · Balancing target and bystander editing
 
-Separate models predict control-relative editing classes at the three reporter sites. For five experimentally favourable constructs, **13 of 15 endpoint predictions** agree with measured classes: C295 **5/5**, C388 **4/5** and C871 **4/5**. These are retrospectively selected examples; each construct was withheld in its own training fold.
+Separate models predict control-relative editing classes at the three reporter sites. All five test candidates are excluded together before preprocessing, model selection and fitting. Models trained on the remaining 76 constructs agree with **11 of 15 experimental endpoint classes**: C295 **5/5**, C388 **3/5** and C871 **3/5**. The project workflow advances predicted candidates to subsequent wet-lab testing.
 
-![Endpoint-specific classification for five TRM constructs](wiki/figures/fig3_model2_five_construct_confusion.png)
+![Endpoint-specific classification for five TRM constructs](wiki/figures/fixed5_endpoint_test.png)
 
 [Editing profiles and model interpretation →](wiki/PUF_Model_EN.md#model-2-balancing-target-and-bystander-editing)
 

@@ -113,7 +113,7 @@ def alignment_gate(fig, stem, axes):
 def save_figure(fig, stem, axes):
     alignment_gate(fig, stem, axes)
     # Fixed dimensions preserve the measured physical layout; text is editable.
-    active = {"fig3_model2_five_construct_confusion", "fig5_model3_nontrm_consensus", "scaffold_validation_combined", "scaffold_s12_distribution"}
+    active = {"fig5_model3_nontrm_consensus", "fixed4_scaffold_test", "training20_s12", "fixed5_endpoint_test"}
     destination = OUT if stem in active else ROOT / "research/archive/wiki_figures"
     destination.mkdir(parents=True, exist_ok=True)
     fig.savefig(destination / f"{stem}.svg")

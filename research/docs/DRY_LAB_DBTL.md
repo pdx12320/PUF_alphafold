@@ -9,7 +9,7 @@ Retain C388 target editing while reducing C295 and C871 bystander editing. Scaff
 | Stage | Design and build | Test | Learn and next experiment |
 |---|---|---|---|
 | Scaffold screening | Use contact features to establish a decision-tree baseline, then combine contact and structural descriptors in a shallow random forest. | The fixed four-construct panel is excluded jointly from fitting. Recorded labels comprise one work and three non-work constructs; three predictions agree. | Contact features can prioritize scaffolds; test additional arrangements using a frozen recipe. |
-| Recognition-motif engineering | Predict control-relative editing classes separately at C295, C388 and C871. | Five retrospectively selected constructs contribute 15 individually held-out endpoint calls; 13 agree with measurements. | Compare complementary editing profiles and carry useful backgrounds into subsequent designs. |
+| Recognition-motif engineering | Predict control-relative editing classes separately at C295, C388 and C871. | All five test constructs are excluded together from the 76-construct training set; 11 of 15 endpoint predictions agree with the subsequent assay outcomes. | Compare complementary editing profiles and carry useful backgrounds into subsequent designs. |
 | Non-TRM sequence exploration | Sample 10,000 sequences each from ProteinMPNN and LigandMPNN and filter recognition-code positions after sampling. | Seventeen substitutions receive same-residue support from both models. | Compare individual substitutions and combinations with their matched TRM backgrounds in the wet lab. |
 
 ## Development history

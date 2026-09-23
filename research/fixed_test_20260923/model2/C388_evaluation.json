@@ -1,0 +1,9 @@
+{
+  "correct": 3,
+  "n_test": 5,
+  "matched_majority_correct": 0,
+  "majority_class": "decrease",
+  "predictions_sha256": "2fd021b5e18c5012a1124e5b4cf3fc5eba014b547e541efa47335a01b9ebcba0",
+  "model_sha256": "48e4c488a33a2f88cebd0126fef6cc7ab4916de6e7161b79a4487f2ad1e505e7",
+  "evaluated_after_prediction_seal": true
+}

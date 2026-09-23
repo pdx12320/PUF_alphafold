@@ -2,6 +2,8 @@
 
 This directory publishes a **curated, outcome-complete result snapshot** from the latest uploaded archives, together with a newly executed scaffold random-forest rerun. It does not declare one universal “best” model across incompatible endpoints or validation schemes. Existing repository analyses are retained.
 
+The current Wiki uses the later [fixed test-panel reconstruction](../fixed_test_20260923/README.md): Model 2 excludes all five test candidates together and achieves 11/15 agreement. The 13/15 result below belongs to the archived individual-fold analysis.
+
 ## Start here
 
 - [Rewritten Module 1 — English](../../wiki/PUF_Module1_EN.md)

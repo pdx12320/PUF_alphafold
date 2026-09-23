@@ -19,7 +19,7 @@ Our PUF–APOBEC system couples this programmable recognition scaffold to RNA ed
 | **2. TRM-dependent editing** | Which recognition-motif changes retain target editing and reduce bystander editing? | Separate predictions for C295, C388 and C871 | Five experimentally characterized constructs with complementary editing profiles |
 | **3. Non-TRM design** | Which surrounding residues should be tested on favourable TRM backgrounds? | Inverse-folding nominations and mutation combinations | Non-TRM mutation candidates for experimental testing |
 
-The sections follow **background → model → evaluation → experimental comparison → design consequence**. The comparisons use construct-held-out predictions and existing experimental records. They describe retrospective validation; Model 3 adds computational proposals for a subsequent wet-lab round.
+The project workflow follows **training → candidate prediction → subsequent wet-lab testing → design refinement**. Four scaffold designs and five TRM variants form fixed test panels for Models 1 and 2, respectively. Every member of each panel is excluded together from its model’s training and model-selection steps. Model 3 proposes non-TRM substitutions for the next experimental round.
 
 ## Model 1. Contact-based scaffold screening
 
@@ -41,15 +41,15 @@ A depth-one decision tree established the initial classification rule. Feature s
 
 The three-feature random forest used S4, S12 and S24. Its nine-feature companion added core pLDDT mean and minimum, mean PAE, contact-weighted PAE, normalized radius of gyration and anisotropy. Both used 300 trees, maximum depth two, minimum leaf size two, balanced class weights and random seed 2026. Scores of at least 0.5 produced a work prediction. These scores are uncalibrated classifier outputs.
 
-### From the initial rule to expanded scaffold evaluation
+### Training with a separate four-design test panel
 
-The initial decision-tree analysis correctly classified all 14 constructs under leave-one-construct-out evaluation, including three work and eleven non-work cases. The three-feature random forest reproduced this separation. Restricting that evaluation to the twelve PUF12 constructs also retained complete agreement.
+The four test designs were set aside before fitting. We trained the nine-feature random forest on the remaining twenty scaffold constructs. Missing-value handling, feature scaling and model fitting used only those training records. The forest recipe and 0.5 classification cutoff were fixed; none was selected using the four test outcomes.
 
-After the PUF12 collection was expanded, the nine-feature forest correctly classified 22 of 24 constructs under leave-one-construct-out evaluation. Balanced accuracy was 0.850 and ROC-AUC was 0.913. This expanded evaluation included one false positive and one false negative.
+The earlier decision-tree analysis motivated contact-based screening. Its cross-validation results are retained in the research archive. The result displayed here is the fixed four-design test.
 
 ### Experimental comparison: one work and three non-work designs
 
-For the four-design assessment, we trained the nine-feature forest on the remaining twenty constructs and predicted all four excluded designs. We then compared these predictions with their wet-lab labels.
+The four designs advanced to wet-lab testing after prediction in the project workflow. The reproducible fixed-test analysis predicts all four with one model fitted to the twenty training constructs, then compares their predictions with the experimental work/non-work outcomes.
 
 | Construct | Work score | Model prediction | Experimental outcome |
 |---|---:|---|---|
@@ -60,19 +60,21 @@ For the four-design assessment, we trained the nine-feature forest on the remain
 
 The experimental panel contained **one work construct and three non-work constructs**. Predictions agreed with three of the four outcomes. Design 1 received the highest score and received a work outcome in the wet-lab record. Design 7 remained a false positive, showing why scaffold prioritization still requires experimental testing.
 
-![scaffold_validation_combined](figures/scaffold_validation_combined.png)
+![scaffold_validation_combined](figures/fixed4_scaffold_test.png)
 
-*Figure 1. Scaffold classification in two recorded evaluations. (a) Leave-one-construct-out (LOCO) evaluation in the expanded collection: 22/24 correct. (b) Four constructs withheld jointly: 3/4 correct, comprising one true positive, two true negatives and one false positive. Rows are measured classes and columns are predictions of the nine-feature random forest at a score threshold of 0.5. Both panels use the same colour scale for counts. The historical decision stump is a separate analysis.*
+*Figure 1. Four scaffold designs evaluated as one fixed test panel. (a) Work scores from the model fitted to twenty separate training constructs; the dashed line marks the fixed 0.5 cutoff. Colours show the subsequently measured class. (b) Comparison with experimental labels: one true positive, two true negatives and one false positive. All four designs were excluded together from preprocessing and fitting.*
 
-![scaffold_s12_distribution](figures/scaffold_s12_distribution.png)
+![scaffold_s12_distribution](figures/training20_s12.png)
 
-*Figure 2. Observed S12 distribution across the expanded scaffold collection. Each point represents one construct (20 non-work; four work); horizontal lines indicate medians. S12 is the per-residue high-confidence nonlocal contact feature, pp_nonlocal12_high_per_res. Horizontal offsets separate observations and have no quantitative meaning. The overlapping distributions are descriptive and do not establish a universal decision threshold.*
+*Figure 2. S12 distribution in the twenty-construct training set: seventeen non-work and three work constructs. Each point represents one training construct; horizontal lines show medians. The four test designs are absent. S12 denotes high-confidence nonlocal contacts per residue; horizontal offsets only separate points.*
 
 ### Scaffold selection for experimental testing
 
 The model provides a structural criterion for prioritizing repeat arrangements and identifies Design 1 as a candidate with a matching recorded work outcome. The false positive motivates checking additional determinants of construct function. Once a functional scaffold is available, the next question concerns its editing profile.
 
-Source records: [scaffold protocol](../research/results_20260922/scaffold_RF/audit/protocol.json), [metrics](../research/results_20260922/scaffold_RF/results/metrics.csv), [predictions](../research/results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).
+Current fixed-test records: [train/test split](../research/fixed_test_20260923/model1/split.json) and [four test predictions](../research/fixed_test_20260923/model1/predictions.csv).
+
+Earlier development records: [scaffold protocol](../research/results_20260922/scaffold_RF/audit/protocol.json), [metrics](../research/results_20260922/scaffold_RF/results/metrics.csv), [predictions](../research/results_20260922/scaffold_RF/results/predictions_indexed.csv) and [historical decision-tree analysis](https://github.com/pdx12320/PUF_alphafold/blob/958de2cc3567671c8f9c452cf819aa2133b630d5/previous/results/PUF_CP_report.md).
 
 ## Model 2. Balancing target and bystander editing
 
@@ -88,31 +90,43 @@ $$
 
 where editing fractions lie between zero and one. Changes are reported in percentage points (pp). Negative C295 or C871 changes indicate lower bystander editing; C388 changes quantify target-activity retention or improvement.
 
-### Learning endpoint-specific contact patterns
+### Training with five candidates reserved for testing
 
-The workflow used protein–RNA contact changes as structural inputs, including local, distal, full-matrix and reference-interface feature sets. The selected classifier and feature family could differ between endpoints and training folds. Saved selections included regularized linear models, support-vector methods, discriminant analysis and tree ensembles.
+The test panel comprises **P9-GNS, P9-NPS, P9-NTQ, P8-GVE and P4-R5-SNE+P7-R5-SNE**. All five constructs, together with any identical-sequence records, are excluded before training. The remaining **76 constructs** supply the training data. Each endpoint has one final classifier, fitted without any of the five test outcomes.
 
-For C295 and C871, the classifier distinguished a reduction beyond the selected threshold from smaller changes. C388 used three classes: decrease, within the selected interval and increase. Thresholds were selected in the training workflow and are recorded for every held-out prediction. Consequently, the labels describe fold-specific biological boundaries.
+Protein–RNA contact representations include full-matrix, local, distal and reference-interface features. Representation selection, preprocessing, classifier selection and biological threshold selection are performed using grouped internal cross-validation within the 76 training constructs. These internal validation splits contain no member of the five-construct test panel. The final selected model is then fitted to all 76 training constructs and predicts the five test constructs together.
 
-The evaluation withheld each construct in turn, fitted the workflow using the remaining constructs and predicted the omitted construct. A construct's own editing outcome was excluded from its corresponding fit. Variants at the same repeat position could remain in training.
+For reproducibility, the test outcome fields were masked throughout the new training run. Predictions were saved before the outcomes were reintroduced for scoring. One training-selected set of class boundaries applies to all five test constructs at each endpoint.
 
-### Cross-validation and the five-candidate comparison
+| Endpoint | Training-selected representation | Final classifier | Fixed experimental class boundaries |
+|---|---|---|---|
+| C295 | full_PR | RF | Decrease: ΔE ≤ −15 pp; otherwise no decrease |
+| C388 | full_PR | LinearSVM | Decrease: ΔE ≤ −12.5 pp; interval: −12.5 < ΔE < +2.5 pp; increase: ΔE ≥ +2.5 pp |
+| C871 | full_PR | Ridge | Decrease: ΔE ≤ −7.5 pp; otherwise no decrease |
 
-The complete combined protein–RNA evaluation provides the context for reading the five highlighted candidates.
+### Subsequent wet-lab testing and prediction agreement
 
-| Endpoint | Correct held-out predictions | Balanced accuracy | Matched baseline balanced accuracy |
-|---|---:|---:|---:|
-| C295 | 57/81 | 0.703 | 0.519 |
-| C388, three classes | 36/81 | 0.433 | 0.399 |
-| C871 | 49/81 | 0.610 | 0.687 |
+The five candidates were tested experimentally after prediction in the project workflow. The fixed-panel reconstruction compares one set of predictions with their measured C295, C388 and C871 editing outcomes. Agreement is **11/15 endpoint calls**: **5/5 at C295, 3/5 at C388 and 3/5 at C871**.
 
-Performance varied by endpoint, and the C871 model did not exceed the matched baseline in this evaluation. The selected five-construct comparison therefore serves as a detailed case study of useful experimental profiles. These constructs were selected for presentation based on their experimental outcomes.
+| Endpoint | Correct test predictions | Majority-class reference from training |
+|---|---:|---:|
+| C295 | 5/5 | 5/5 |
+| C388 | 3/5 | 0/5 |
+| C871 | 3/5 | 5/5 |
 
-Across those five constructs, predicted and experimental classes agreed at **13 of 15 endpoints**: five of five for C295, four of five for C388 and four of five for C871. The disagreements were C388 for P9-GNS and C871 for P8-GVE.
+For C388, the model predicts the selected interval correctly for P9-GNS, P9-NPS and P9-NTQ. It predicts a decrease for P8-GVE, whose measured change falls within the interval, and predicts the interval for P4-R5-SNE+P7-R5-SNE, whose editing increases. For C871, the missed decreases occur in P9-NPS and the P4/P7 dual variant.
 
-![fig3_model2_five_construct_confusion](figures/fig3_model2_five_construct_confusion.png)
+All five C295 measurements fall in the no-decrease class under the training-selected −15 pp boundary, and all five C871 measurements fall in the decrease class under the −7.5 pp boundary. These small single-class panels support an exact agreement count; they do not characterize both classes equally. The majority-class reference provides context for the endpoint-specific results.
 
-*Figure 3. Endpoint-level confusion matrices for the same five constructs. Agreement is 5/5 at C295, 4/5 at C388 and 4/5 at C871. All five C871 measurements belong to the decrease class, so C871 specificity cannot be estimated from this panel. Each construct was withheld individually; class thresholds are fold-specific.*
+![Five fixed test constructs](figures/fixed5_endpoint_test.png)
+
+*Figure 3. Endpoint predictions for the fixed five-construct test panel. All five constructs were excluded together from every fitting and selection step. The same endpoint-specific classifier and class boundaries apply to every test construct. Matrices show 5/5, 3/5 and 3/5 agreement for C295, C388 and C871, respectively. Rows are measured classes and columns are predictions.*
+
+### Experimental feedback for the next design
+
+The measured editing profiles identify backgrounds for subsequent non-TRM engineering. Prediction errors identify endpoint behaviours to address in the next model iteration. The five test outcomes remain separate from this fitted model; using them in a future update would require a new independent test set.
+
+Source records: [fixed-panel protocol and reconstruction](../research/fixed_test_20260923/README.md), [all fifteen test predictions](../research/fixed_test_20260923/model2/predictions.csv), and endpoint-specific training splits and selected models in the [result directory](../research/fixed_test_20260923/model2/). Earlier individual-construct cross-validation outputs are retained in the archive and are not used for the test metrics shown here.
 
 ## Model 3. Exploring non-TRM sequence space with AiCE
 
@@ -167,9 +181,9 @@ The experimental records support the work prediction for Design 1 and reveal com
 
 GitHub repository: [pdx12320/PUF_alphafold](https://github.com/pdx12320/PUF_alphafold).
 
-All quantitative displays were regenerated from archived prediction and measurement tables. No wet-lab values, model predictions or labels were changed during this revision. Confusion matrices use held-out predictions and retain every error within the displayed panels.
+Models 1 and 2 were rerun with fixed test membership, and the displayed test predictions come from those runs. Original wet-lab values were preserved. Model 2 class boundaries were selected using training data only, so its test classes follow the newly selected common endpoint thresholds. Confusion matrices use the fixed-panel predictions and retain every error within the displayed panels.
 
-The [figure script](scripts/make_figures.py), [figure source data](figure_data) and [vector exports](figures) accompany this page. The [results index](../research/results_20260922/README.md) distinguishes the scaffold, five-construct, ten-construct and full-cohort evaluation protocols. Historical analyses remain available through the [engineering record](../research/docs/DRY_LAB_DBTL.md).
+The [fixed-test figure script](scripts/make_fixed_test_figures.py) and [non-TRM figure script](scripts/make_figures.py), [figure source data](figure_data) and [vector exports](figures) accompany this page. The [results index](../research/results_20260922/README.md) distinguishes the scaffold, five-construct, ten-construct and full-cohort evaluation protocols. Historical analyses remain available through the [engineering record](../research/docs/DRY_LAB_DBTL.md).
 
 ## References
 

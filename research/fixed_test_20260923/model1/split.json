@@ -1,0 +1,53 @@
+{
+  "train": [
+    "12_130_r123456654loop328",
+    "13_130_r12345665432loop8",
+    "14_130_r123456734loop568",
+    "15_130_r12345673456loop8",
+    "16_130_r12365673156loop8",
+    "2_130_r123_r567_r5loop67_r678",
+    "4_130_r123_r567_r567_rloop678",
+    "5_130_r123_r567_r567_r6loop78",
+    "puf12_r123_r5678_r56788",
+    "puf12_r123_r5678_r5loop6788",
+    "puf12_r123_r567_r567_r678",
+    "puf12_r123_r567_r5loop67_loopr678",
+    "puf12_r123_r567_r5loop67_r678",
+    "puf12_r123_r567_r6loopr7_r5678",
+    "puf12_r123_r567_r6loopr7_r5loop678",
+    "puf12_r123_r567_r6r7_r5678",
+    "puf_12_loopr4loopr4",
+    "puf_12_loopr4r4",
+    "puf_12_r4loopr4",
+    "puf_12_r4r4"
+  ],
+  "test": [
+    "1_130_r123_r567_r567_r67_no_loop_8",
+    "3_130_r123_r567_r56loop7_r678",
+    "7_130_r123_r567_r567_rloop67loop8",
+    "8_130_r123_r567_r567_r6loop7loop8"
+  ],
+  "test_excluded_from_fit_and_preprocessing": true,
+  "features": [
+    "pp_nonlocal4_high_per_res",
+    "pp_nonlocal12_high_per_res",
+    "pp_nonlocal24_high_per_res",
+    "plddt_core_mean",
+    "plddt_core_min",
+    "global_core_PAE",
+    "pae_contact_weighted",
+    "Rg_full_length_normalized",
+    "anisotropy"
+  ],
+  "RF": {
+    "n_estimators": 300,
+    "max_depth": 2,
+    "min_samples_leaf": 2,
+    "max_features": "sqrt",
+    "class_weight": "balanced",
+    "random_state": 2026,
+    "n_jobs": 1
+  },
+  "cutoff": 0.5,
+  "correct": 3
+}

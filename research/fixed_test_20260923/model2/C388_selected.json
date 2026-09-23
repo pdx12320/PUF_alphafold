@@ -1,0 +1,62 @@
+{
+  "a": 12.5,
+  "b": 2.5,
+  "representation": {
+    "family": "full_PR",
+    "mode": "raw",
+    "retain": 250,
+    "pca": 0,
+    "ranking": "variance",
+    "support": 0,
+    "cp_trm": true,
+    "id": "full_PR|raw|250|0|variance|0|True"
+  },
+  "model": {
+    "algorithm": "LinearSVM",
+    "C": 0.1,
+    "class_weight": "balanced"
+  },
+  "stage": "refine",
+  "status": "ok",
+  "metrics": {
+    "n": 76,
+    "weighted_n": 76.0,
+    "accuracy": 0.6842105263157895,
+    "balanced_accuracy": 0.48125,
+    "macro_F1": 0.48125,
+    "MCC": 0.41836734693877553,
+    "n_classes_observed": 3,
+    "precision_decrease": 0.725,
+    "recall_decrease": 0.725,
+    "F1_decrease": 0.725,
+    "support_decrease": 40.0,
+    "ROC_AUC_decrease": 0.70625,
+    "AP_decrease": 0.7690043931328358,
+    "precision_within_selected_interval": 0.71875,
+    "recall_within_selected_interval": 0.71875,
+    "F1_within_selected_interval": 0.71875,
+    "support_within_selected_interval": 32.0,
+    "ROC_AUC_within_selected_interval": 0.7911931818181818,
+    "AP_within_selected_interval": 0.6691265181747217,
+    "precision_increase": 0.0,
+    "recall_increase": 0.0,
+    "F1_increase": 0.0,
+    "support_increase": 4.0,
+    "ROC_AUC_increase": 0.5590277777777778,
+    "AP_increase": 0.07777649636720102,
+    "cm_0_0": 29.0,
+    "cm_0_1": 7.0,
+    "cm_0_2": 4.0,
+    "cm_1_0": 9.0,
+    "cm_1_1": 23.0,
+    "cm_1_2": 0.0,
+    "cm_2_0": 2.0,
+    "cm_2_1": 2.0,
+    "cm_2_2": 0.0
+  },
+  "actual_counts": [
+    250,
+    250,
+    250
+  ]
+}

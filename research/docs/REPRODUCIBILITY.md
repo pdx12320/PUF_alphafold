@@ -11,7 +11,11 @@ python research/tools/validate_snapshot.py
 
 The snapshot validator checks file hashes, 24 unique PUF12 constructs, four work labels, prediction coverage and equivalent architecture/source-order holdouts. The current manifest uses repository-relative paths. Original input provenance records retain their historical source paths and hashes.
 
-## Current scaffold model
+## Current fixed test panels
+
+See [fixed_test_20260923](../fixed_test_20260923/README.md) for the current Model 1 and Model 2 training commands and source archive.
+
+## Earlier scaffold model comparisons
 
 ```bash
 python research/results_20260922/scaffold_RF/retrain.py
@@ -31,10 +35,10 @@ This runs `stats.py`, `models.py`, `plot_static.py`, `finish.py` and `write_repo
 
 ```bash
 python wiki/scripts/make_figures.py
-python wiki/scripts/add_wiki_figures.py
+python wiki/scripts/make_fixed_test_figures.py
 ```
 
-These scripts read recorded values without model fitting. The first regenerates the endpoint confusion and non-TRM support figures, along with archived standalone panels. The second generates the combined scaffold validation and S12 distribution figures. Only the four figures listed in [current captions](../../wiki/figures/captions.md) appear in the Wiki.
+These scripts read recorded values without model fitting. The first regenerates the endpoint confusion and non-TRM support figures, along with archived standalone panels. The second generates all fixed-test displays and the training-only S12 distribution. Only the four figures listed in [current captions](../../wiki/figures/captions.md) appear in the Wiki.
 
 ## Additional analyses
 
