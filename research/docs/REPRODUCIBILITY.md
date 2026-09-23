@@ -36,9 +36,10 @@ This runs `stats.py`, `models.py`, `plot_static.py`, `finish.py` and `write_repo
 ```bash
 python wiki/scripts/make_figures.py
 python wiki/scripts/make_fixed_test_figures.py
+python wiki/scripts/make_repeat_importance.py
 ```
 
-These scripts read recorded values without model fitting. The first regenerates the endpoint confusion and non-TRM support figures, along with archived standalone panels. The second generates all fixed-test displays and the training-only S12 distribution. Only the four figures listed in [current captions](../../wiki/figures/captions.md) appear in the Wiki.
+These scripts read recorded values without model fitting. The first regenerates the endpoint confusion and non-TRM support figures, along with archived standalone panels. The second generates all fixed-test displays and the training-only S12 distribution. Only the five figures listed in [current captions](../../wiki/figures/captions.md) appear in the Wiki.
 
 ## Additional analyses
 

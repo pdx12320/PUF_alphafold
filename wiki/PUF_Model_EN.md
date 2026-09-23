@@ -122,6 +122,26 @@ All five C295 measurements fall in the no-decrease class under the training-sele
 
 *Figure 3. Endpoint predictions for the fixed five-construct test panel. All five constructs were excluded together from every fitting and selection step. The same endpoint-specific classifier and class boundaries apply to every test construct. Matrices show 5/5, 3/5 and 3/5 agreement for C295, C388 and C871, respectively. Rows are measured classes and columns are predictions.*
 
+### Which repeats and residues drive the predictions?
+
+We traced the fitted models back to their protein–RNA contact features, without refitting or using the test outcomes to select residues. Random-forest importance was calculated from impurity reduction; linear-model coefficients were mapped back to standardized original features. We then summed contact importance by protein residue and repeat P. Each endpoint was normalized separately.
+
+| Endpoint | Leading repeat cores: share of CP importance | Leading contact-associated residues |
+|---|---|---|
+| C295 | **P3 17.4%, P5 16.4%, P2 15.9%**; P4 15.2% | **R109 (P3), Y181 (P5), Y73 (P2), Y145 (P4)** |
+| C388 | **P3 12.1%, P4 11.3%, P7 8.5%** | **C108 (P3), Y145 and P141 (P4), P249 (P7)** |
+| C871 | **P1 13.7%, P10 10.4%, P11 8.1%** | **R361 and Q364 (P10), Y397 (P11)**; E7 outside repeat cores |
+
+For C871, residues outside canonical repeat cores collectively account for a further **19.3%** of CP importance. C388 uses both contact and sequence descriptors: the CP block contributes **43.6%** of total absolute standardized coefficient weight. Its leading sequence terms include TRM12 residue-size and amino-acid indicators and TRM16 charge-change descriptors; the table above describes its contact block.
+
+![Repeat-level importance in the fixed Model 2 classifiers](figures/model2_repeat_importance.png)
+
+*Figure 4. Contact-feature importance across all twelve repeat cores and the outside-core region. Values are percentages of each endpoint’s total CP importance. C295 uses random-forest impurity importance; C388 and C871 use absolute standardized coefficients. C388 sequence descriptors are excluded from this CP-only normalization. All regions are shown, with no selection based on test performance.*
+
+These results prioritize **P3/P4 for C388-focused mechanistic follow-up**, **P2/P3/P5 for C295-associated contacts**, and **P1/P10/P11 plus terminal regions for C871-associated contacts**. Importance identifies features used by the fitted classifier; the direction and benefit of a particular substitution require experimental testing. Summed importance can depend on the number of selected contacts, so the [complete residue and repeat tables](../research/model_interpretation_20260923/) also report contact counts and mean per-contact importance.
+
+All residue labels in this section use the **493-residue reference shared with Model 3**. The earlier Model 2 reference numbering is larger by 16; the [verified crosswalk](../research/model_interpretation_20260923/reference_crosswalk.csv) retains both conventions.
+
 ### Experimental feedback for the next design
 
 The measured editing profiles identify backgrounds for subsequent non-TRM engineering. Prediction errors identify endpoint behaviours to address in the next model iteration. The five test outcomes remain separate from this fitted model; using them in a future update would require a new independent test set.
@@ -165,11 +185,62 @@ The screen identified **17 substitutions supported by both inverse-folding model
 
 ![fig5_model3_nontrm_consensus](figures/fig5_model3_nontrm_consensus.png)
 
-*Figure 4. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.*
+*Figure 5. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.*
 
 The broader 81-position export requires an additional identity check. At N12, the ProteinMPNN frequency above the threshold supports **N12G**, while the proposed construct contains **N12S**. We retain N12S as an exploratory design choice and document the discrepancy in the [Model 3 methods page](../research/aice_mpnn_20260922/README.md). Neither substitution has a measured editing benefit in this release.
 
 Residue numbers refer to the full **493-residue reference protein**. N12 identifies its twelfth residue; TRM positions 12, 13 and 16 refer to positions within a repeat. Numbering should be mapped explicitly when using constructs with different terminal sequences.
+
+### Repeat-level preferences and candidate locations
+
+Model 3 provides two complementary position-level readouts. First, retention of the WT recognition residues indicates which repeat codes the sampled sequences favour. LigandMPNN retains WT residues at the three TRM positions most strongly in **P9 (90.4%), P10 (71.1%), P6 (64.6%) and P3 (63.0%)**. ProteinMPNN also ranks **P9** highest, at **43.8%**. These values are the mean WT frequency across the three TRM positions in each repeat; they describe sequence preferences under the structural input.
+
+Second, the non-TRM screen identifies positions with a strongly favoured alternative residue. **P10 contains four of the 17 dual-model consensus substitutions**; P4, P7, P8 and P12 each contain two. The complete mapping is:
+
+| Repeat position | Dual-model consensus non-TRM substitutions |
+|---|---|
+| P1 | R45T |
+| P2 | R93K |
+| P3 | S100E |
+| P4 | L166I, A136E |
+| P6 | V208E |
+| P7 | L274I, A244E |
+| P8 | V294I, T278I |
+| P10 | T350V, D374E, V366I, E351L |
+| P11 | V388E |
+| P12 | M458L, R462L |
+
+This gives a concrete handoff for experiments: P10 combines high WT retention at recognition residues with several nominated changes outside those residues. P3 is highlighted by both Model 2 contact attribution and Model 3 recognition-site retention. These readouts address different questions and are retained as separate evidence for choosing sites to investigate.
+
+### Exact mutation matches to the wet-lab results
+
+We compared the model outputs with **the same amino-acid substitutions measured experimentally**, using the verified residue alignment and matched controls. None of the 17 consensus non-TRM substitutions has an exact match in the current 81-variant assay collection. Their experimental validation therefore remains a subsequent design step.
+
+The sampled sequences also allow a direct comparison with experimentally tested **TRM substitutions**, before the non-TRM protection filter is applied. The positive examples below retain C388 within 10 pp of its matched control or improve it, reduce C871 by at least 10 pp, and do not increase C295. They are descriptive assay examples selected by this stated rule; the complete comparison includes all 81 variants.
+
+| Experimentally tested variant | Exact substitutions in the 493-residue reference | ΔC388 (pp) | ΔC295 (pp) | ΔC871 (pp) |
+|---|---|---:|---:|---:|
+| **P1-SHE** | Y37H | -9.22 | -5.65 | -14.49 |
+| **P4-SNE** | Y145N | +1.75 | -20.49 | -18.80 |
+| **P4-SNE + P7-SNE** | Y145N, Y253N | +7.77 | -13.15 | -34.90 |
+| **P9-NTQ** | Y325T | -4.10 | -8.55 | -38.60 |
+| **P8-GVE** | S288G, Y289V | -6.70 | -7.73 | -57.27 |
+
+The P4/P7 combination is a favourable three-site example: C388 editing rises by **7.77 pp**, while C295 and C871 fall by **13.15 pp** and **34.90 pp**. P8-GVE produces the largest C871 reduction among these displayed examples (**57.27 pp**) with a **6.70 pp** reduction in C388. P9-NTQ retains C388 within **4.10 pp** of its control while reducing both bystander sites.
+
+To compare these exact mutations with Model 3, we counted generated sequences carrying every listed changed residue and compared that count with WT residues at the same positions. Each model contributes 10,000 sampled sequences; the rest of each sequence is unconstrained.
+
+| Exact experimental substitution set | ProteinMPNN: mutant / WT count | LigandMPNN: mutant / WT count |
+|---|---:|---:|
+| P1-SHE: Y37H | 22 / 5 | 2 / 0 |
+| P4-SNE: Y145N | 569 / 839 | 0 / 1889 |
+| P4-SNE + P7-SNE: Y145N, Y253N | 120 / 359 | 0 / 461 |
+| P9-NTQ: Y325T | 19 / 1017 | 1 / 7464 |
+| P8-GVE: S288G, Y289V | 0 / 305 | 0 / 3006 |
+
+**P1-SHE (Y37H)** provides a limited example of agreement: the mutant residue occurs more often than WT at that position in both sampling models and has a favourable measured bystander profile. Its absolute frequency is low—**0.22%** in ProteinMPNN and **0.02%** in LigandMPNN—well below the 80% non-TRM nomination threshold. Several strong experimental variants receive low or zero exact-set counts, including P8-GVE. The comparison therefore supports their measured utility while showing that sampling frequency alone does not rank editing performance reliably.
+
+The [complete mutation-to-assay table](../research/model_interpretation_20260923/model3_exact_mutation_wetlab_comparison.csv) retains every construct, matched-control change and exact sampling count. The [analysis methods](../research/model_interpretation_20260923/README.md) explain the numbering verification, sample parsing and example-selection rule.
 
 ## Integration into the engineering cycle
 

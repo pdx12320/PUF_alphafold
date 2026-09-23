@@ -1,0 +1,14 @@
+{
+  "backend": "python-matplotlib",
+  "tolerance_pt": 1.5,
+  "verdict": "NOT APPLICABLE",
+  "plot_area_rectangles_pt": [
+    [
+      57.06141732283465,
+      55.077165354330724,
+      456.4913385826772,
+      150.03779527559058
+    ]
+  ],
+  "checks": {}
+}
