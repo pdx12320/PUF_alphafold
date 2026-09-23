@@ -24,10 +24,6 @@ The initial decision-tree analysis correctly classified all 14 constructs under 
 
 After the PUF12 collection was expanded, the nine-feature forest correctly classified 22 of 24 constructs under leave-one-construct-out evaluation. Balanced accuracy was 0.850 and ROC-AUC was 0.913. This expanded evaluation included one false positive and one false negative.
 
-![Expanded scaffold cross-validation confusion matrix](figures/fig2_model1_loco_confusion.png)
-
-*Figure 1. Scaffold classification under leave-one-construct-out evaluation. Rows show recorded experimental classes and columns show predicted classes. The nine-feature random forest classified 19 non-work and three work constructs correctly; one construct in each class was misclassified. Every plotted prediction excluded that construct from fitting.*
-
 ### Experimental comparison: one work and three non-work designs
 
 For the four-design assessment, we trained the nine-feature forest on the remaining twenty constructs and predicted all four excluded designs. We then compared these predictions with their wet-lab labels.
@@ -41,9 +37,13 @@ For the four-design assessment, we trained the nine-feature forest on the remain
 
 The experimental panel contained **one work construct and three non-work constructs**. Predictions agreed with three of the four outcomes. Design 1 received the highest score and received a work outcome in the wet-lab record. Design 7 remained a false positive, showing why scaffold prioritization still requires experimental testing.
 
-![Four-design scaffold prediction and experiment comparison](figures/fig1_model1_four_construct_confusion.png)
+![scaffold_validation_combined](figures/scaffold_validation_combined.png)
 
-*Figure 2. Four-design experimental comparison. All four constructs were excluded simultaneously from the fit. The matrix shows one true positive, two true negatives and one false positive. Predictions come from the nine-feature random forest.*
+*Figure 1. Scaffold classification in two recorded evaluations. (a) Leave-one-construct-out (LOCO) evaluation in the expanded collection: 22/24 correct. (b) Four constructs withheld jointly: 3/4 correct, comprising one true positive, two true negatives and one false positive. Rows are measured classes and columns are predictions of the nine-feature random forest at a score threshold of 0.5. Both panels use the same colour scale for counts. The historical decision stump is a separate analysis.*
+
+![scaffold_s12_distribution](figures/scaffold_s12_distribution.png)
+
+*Figure 2. Observed S12 distribution across the expanded scaffold collection. Each point represents one construct (20 non-work; four work); horizontal lines indicate medians. S12 is the per-residue high-confidence nonlocal contact feature, pp_nonlocal12_high_per_res. Horizontal offsets separate observations and have no quantitative meaning. The overlapping distributions are descriptive and do not establish a universal decision threshold.*
 
 ### Scaffold selection for experimental testing
 

@@ -47,10 +47,6 @@ The initial decision-tree analysis correctly classified all 14 constructs under 
 
 After the PUF12 collection was expanded, the nine-feature forest correctly classified 22 of 24 constructs under leave-one-construct-out evaluation. Balanced accuracy was 0.850 and ROC-AUC was 0.913. This expanded evaluation included one false positive and one false negative.
 
-![Expanded scaffold cross-validation confusion matrix](figures/fig2_model1_loco_confusion.png)
-
-*Figure 1. Scaffold classification under leave-one-construct-out evaluation. Rows show recorded experimental classes and columns show predicted classes. The nine-feature random forest classified 19 non-work and three work constructs correctly; one construct in each class was misclassified. Every plotted prediction excluded that construct from fitting.*
-
 ### Experimental comparison: one work and three non-work designs
 
 For the four-design assessment, we trained the nine-feature forest on the remaining twenty constructs and predicted all four excluded designs. We then compared these predictions with their wet-lab labels.
@@ -64,9 +60,13 @@ For the four-design assessment, we trained the nine-feature forest on the remain
 
 The experimental panel contained **one work construct and three non-work constructs**. Predictions agreed with three of the four outcomes. Design 1 received the highest score and received a work outcome in the wet-lab record. Design 7 remained a false positive, showing why scaffold prioritization still requires experimental testing.
 
-![Four-design scaffold prediction and experiment comparison](figures/fig1_model1_four_construct_confusion.png)
+![scaffold_validation_combined](figures/scaffold_validation_combined.png)
 
-*Figure 2. Four-design experimental comparison. All four constructs were excluded simultaneously from the fit. The matrix shows one true positive, two true negatives and one false positive. Predictions come from the nine-feature random forest.*
+*Figure 1. Scaffold classification in two recorded evaluations. (a) Leave-one-construct-out (LOCO) evaluation in the expanded collection: 22/24 correct. (b) Four constructs withheld jointly: 3/4 correct, comprising one true positive, two true negatives and one false positive. Rows are measured classes and columns are predictions of the nine-feature random forest at a score threshold of 0.5. Both panels use the same colour scale for counts. The historical decision stump is a separate analysis.*
+
+![scaffold_s12_distribution](figures/scaffold_s12_distribution.png)
+
+*Figure 2. Observed S12 distribution across the expanded scaffold collection. Each point represents one construct (20 non-work; four work); horizontal lines indicate medians. S12 is the per-residue high-confidence nonlocal contact feature, pp_nonlocal12_high_per_res. Horizontal offsets separate observations and have no quantitative meaning. The overlapping distributions are descriptive and do not establish a universal decision threshold.*
 
 ### Scaffold selection for experimental testing
 
@@ -110,9 +110,13 @@ Performance varied by endpoint, and the C871 model did not exceed the matched ba
 
 Across those five constructs, predicted and experimental classes agreed at **13 of 15 endpoints**: five of five for C295, four of five for C388 and four of five for C871. The disagreements were C388 for P9-GNS and C871 for P8-GVE.
 
-![Three endpoint confusion matrices for the selected five TRM constructs](figures/fig3_model2_five_construct_confusion.png)
+![five_construct_class_pairs](figures/five_construct_class_pairs.png)
 
-*Figure 3. Prediction–measurement agreement for the five highlighted constructs. Each construct was withheld individually, using its saved cross-validation prediction. “Interval” denotes the fold-specific C388 interval. All five C871 observations belonged to the decrease class, so this panel cannot estimate C871 specificity. Thresholds and predictions are supplied in the source table.*
+*Figure 3. Construct-level prediction–measurement comparison at C295, C388 and C871. Each construct was withheld individually in the saved LOCO evaluation; the five were not withheld jointly. Colours encode classes defined by thresholds selected within each training fold: D, decrease; ND, no threshold-crossing decrease; I, within the selected interval; U, increase. Outlines identify the two disagreements, P9-GNS at C388 and P8-GVE at C871. Agreement is 13/15 across correlated endpoint predictions. These five constructs were selected retrospectively from the existing experimental results.*
+
+![fig3_model2_five_construct_confusion](figures/fig3_model2_five_construct_confusion.png)
+
+*Figure 4. Endpoint-level confusion matrices for the same five constructs. Agreement is 5/5 at C295, 4/5 at C388 and 4/5 at C871. All five C871 measurements belong to the decrease class, so C871 specificity cannot be estimated from this panel. Each construct was withheld individually; class thresholds are fold-specific.*
 
 ## Model 3. Exploring non-TRM sequence space with AiCE
 
@@ -149,9 +153,13 @@ The screen identified **17 substitutions supported by both inverse-folding model
 | Additional interface proposals | A438G, H392D | Supported by one model at the stated threshold |
 | Additional N-terminal proposals | S30A, L41R; N12S as an exploratory design choice | Included in geometry combinations; N12S has the nomination-label discrepancy described below |
 
-![Sampling support for the 17 dual-model non-TRM substitutions](figures/fig5_model3_nontrm_consensus.png)
+![fig5_model3_nontrm_consensus](figures/fig5_model3_nontrm_consensus.png)
 
-*Figure 4. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference. It does not estimate the probability of improved RNA editing.*
+*Figure 5. Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.*
+
+![nontrm_structure_locations](figures/nontrm_structure_locations.png)
+
+*Figure 6. Locations of the 17 consensus non-TRM substitutions on the input PUF–RNA structure. Two orthographic projections show the protein Cα trace (grey), RNA phosphorus trace (blue) and nominated positions (orange). Numbers in panel b map to the mutation key. Coordinates come directly from aice_mpnn_20260922/inputs/complex.pdb; residue numbers follow its 493-residue protein chain A. The figure locates computational candidates and does not establish their effects on binding, stability or editing.*
 
 The broader 81-position export requires an additional identity check. At N12, the ProteinMPNN frequency above the threshold supports **N12G**, while the proposed construct contains **N12S**. We retain N12S as an exploratory design choice and document the discrepancy in the [Model 3 methods page](../../aice_mpnn_20260922/README.md). Neither substitution has a measured editing benefit in this release.
 

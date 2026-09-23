@@ -1,27 +1,39 @@
-# Quantitative figure captions
+# Wiki figure captions
 
-The files below are available in SVG, PDF and 600-dpi PNG. CSV source data are in [../figure_data](../figure_data/). The [plotting script](../scripts/make_figures.py) regenerates every figure directly from the recorded repository tables without retraining the models.
+Figures are provided as SVG, PDF and 600-dpi PNG. Source tables are in [figure_data](../figure_data/). Run [make_figures.py](../scripts/make_figures.py) for the original endpoint and sampling-support figures, and [add_wiki_figures.py](../scripts/add_wiki_figures.py) for the combined validation and added figures. These scripts use recorded data without retraining. No inferential statistics or uncertainty estimates are shown.
 
 ## Figure 1
 
-**Fig. 1 | Cross-validation of scaffold classification.** Confusion matrix for `RF_CP_structure9` under leave-one-construct-out (LOCO) cross-validation in the expanded PUF12 scaffold collection. Rows show recorded experimental labels; columns show predictions. Each construct is excluded from its own training fold. The model classifies 22 of 24 constructs correctly, with three true positives, 19 true negatives, one false positive and one false negative. Counts are aggregated across 24 LOCO predictions at a classifier-score threshold of 0.5. This assessment is distinct from the four-construct panel in Fig. 2. No uncertainty estimate or hypothesis test is shown. Source data: `fig2_model1_loco_confusion_predictions.csv` and `fig2_model1_loco_confusion_counts.csv`.
+Scaffold classification in two recorded evaluations. (a) Leave-one-construct-out (LOCO) evaluation in the expanded collection: 22/24 correct. (b) Four constructs withheld jointly: 3/4 correct, comprising one true positive, two true negatives and one false positive. Rows are measured classes and columns are predictions of the nine-feature random forest at a score threshold of 0.5. Both panels use the same colour scale for counts. The historical decision stump is a separate analysis.
 
-![Scaffold LOCO confusion matrix](fig2_model1_loco_confusion.svg)
+![scaffold_validation_combined](scaffold_validation_combined.svg)
 
 ## Figure 2
 
-**Fig. 2 | Classification of the fixed four-construct panel.** Confusion matrix for the random forest using three contact-probability summary features and six structural descriptors (`RF_CP_structure9`). Rows show recorded experimental scaffold labels; columns show predictions at a classifier-score threshold of 0.5. The panel contains one work and three non-work constructs. Three labels are classified correctly: one true positive, two true negatives and one false positive. The four constructs were excluded together from this recorded RF fit. This is the fixed-panel RF assessment; the historical decision stump is a separate analysis. Values are construct counts; no uncertainty estimate or hypothesis test is shown. Source data: `fig1_model1_four_construct_confusion_predictions.csv` and `fig1_model1_four_construct_confusion_counts.csv`.
+Observed S12 distribution across the expanded scaffold collection. Each point represents one construct (20 non-work; four work); horizontal lines indicate medians. S12 is the per-residue high-confidence nonlocal contact feature, pp_nonlocal12_high_per_res. Horizontal offsets separate observations and have no quantitative meaning. The overlapping distributions are descriptive and do not establish a universal decision threshold.
 
-![Four-construct confusion matrix](fig1_model1_four_construct_confusion.svg)
+![scaffold_s12_distribution](scaffold_s12_distribution.svg)
 
 ## Figure 3
 
-**Fig. 3 | Endpoint-specific prediction agreement for five selected constructs.** Confusion matrices for **a**, C295; **b**, C388; and **c**, C871, using five predictions per endpoint. Rows show the measured class and columns the predicted class. The records are the selected five constructs' individually held-out LOCO predictions; the five were not excluded jointly. Class boundaries were selected within each training fold, and their numerical values are retained in the source table. Consequently, “No decrease” denotes failure to cross the selected decrease threshold, and “Within interval” denotes the selected C388 interval. Agreement is 5/5, 4/5 and 4/5 for C295, C388 and C871, respectively. The two errors concern P9-GNS at C388 and P8-GVE at C871. All five C871 measurements have the decrease label, so this panel does not estimate specificity. The aggregate agreement of 13/15 is a descriptive count across correlated endpoint predictions. No uncertainty estimate or hypothesis test is shown. Source data: `model2_selected_five_complete.csv` and `fig3_model2_five_construct_confusion_counts.csv`.
+Construct-level prediction–measurement comparison at C295, C388 and C871. Each construct was withheld individually in the saved LOCO evaluation; the five were not withheld jointly. Colours encode classes defined by thresholds selected within each training fold: D, decrease; ND, no threshold-crossing decrease; I, within the selected interval; U, increase. Outlines identify the two disagreements, P9-GNS at C388 and P8-GVE at C871. Agreement is 13/15 across correlated endpoint predictions. These five constructs were selected retrospectively from the existing experimental results.
 
-![Five-construct endpoint confusion matrices](fig3_model2_five_construct_confusion.svg)
+![five_construct_class_pairs](five_construct_class_pairs.svg)
 
 ## Figure 4
 
-**Fig. 4 | Non-TRM substitutions supported by both sequence-design models.** Frequencies of the nominated amino acid among 10,000 generated sequences per model at the 17 positions satisfying the recorded consensus rule. Blue circles denote LigandMPNN; orange squares denote ProteinMPNN. The two models nominate the same most frequent amino acid at every displayed position, and all displayed positions are outside the protected TRM set. Mutations use one-based PUF sequence numbering and follow the ranking in the recorded consensus table. Connecting segments link the two model frequencies for the same substitution. These frequencies describe generated-sequence preferences; they do not quantify experimental editing improvements. The candidates remain computational nominations. No inferential uncertainty or hypothesis test is shown. Source data: `fig5_model3_nontrm_consensus.csv`.
+Endpoint-level confusion matrices for the same five constructs. Agreement is 5/5 at C295, 4/5 at C388 and 4/5 at C871. All five C871 measurements belong to the decrease class, so C871 specificity cannot be estimated from this panel. Each construct was withheld individually; class thresholds are fold-specific.
 
-![Non-TRM consensus mutation support](fig5_model3_nontrm_consensus.svg)
+![fig3_model2_five_construct_confusion](fig3_model2_five_construct_confusion.svg)
+
+## Figure 5
+
+Sampling frequencies for the exact 17 consensus substitutions. Each value is the fraction of 10,000 generated sequences carrying the indicated residue in one model. Frequency describes structural sequence preference and does not estimate the probability of improved RNA editing.
+
+![fig5_model3_nontrm_consensus](fig5_model3_nontrm_consensus.svg)
+
+## Figure 6
+
+Locations of the 17 consensus non-TRM substitutions on the input PUF–RNA structure. Two orthographic projections show the protein Cα trace (grey), RNA phosphorus trace (blue) and nominated positions (orange). Numbers in panel b map to the mutation key. Coordinates come directly from aice_mpnn_20260922/inputs/complex.pdb; residue numbers follow its 493-residue protein chain A. The figure locates computational candidates and does not establish their effects on binding, stability or editing.
+
+![nontrm_structure_locations](nontrm_structure_locations.svg)
