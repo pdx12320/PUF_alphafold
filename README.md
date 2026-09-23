@@ -6,7 +6,7 @@
 
 We combine protein–RNA structure analysis, interpretable classifiers and inverse folding to guide PUF–APOBEC engineering. Our objective is to retain editing at **C388** while reducing bystander editing at **C295 and C871**.
 
-**[Read the full Dry Lab Wiki →](wiki/PUF_Model_EN.md)** · [Figures and captions](wiki/figures/captions.md) · [Research files](research/README.md) · [GitHub](https://github.com/pdx12320/PUF_alphafold)
+**[Read the full Dry Lab Wiki →](wiki/PUF_Model_EN.md)** · [Figures and captions](wiki/figures/captions.md) · [Module 2 DBTL](research/docs/DRY_LAB_DBTL.md) · [Research files](research/README.md) · [GitHub](https://github.com/pdx12320/PUF_alphafold)
 
 ## Our modelling workflow
 

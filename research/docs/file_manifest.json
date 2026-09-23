@@ -6,8 +6,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 4229,
-    "sha256": "6f8b3c6464d1cbf40091ebec6509cba18fa9ae3a10f15be97e310696adee7bd2"
+    "bytes": 4279,
+    "sha256": "0b1b7616081a895b2a83586f8085afc4de27a003e04a16bfa4b58486044629d4"
   },
   {
     "path": "research/README.md",
@@ -971,8 +971,8 @@
   },
   {
     "path": "research/docs/DRY_LAB_DBTL.md",
-    "bytes": 3301,
-    "sha256": "8ec35111ab0b16aea3b7df824f2e602e37179355a55fcfa183c38c8e64f0a5a3"
+    "bytes": 8311,
+    "sha256": "6d6eaa2f2124d6c719e0339f434c1038ced448d0f8c1be6dd076c20b3c67136b"
   },
   {
     "path": "research/docs/REPOSITORY_GUIDE.md",
@@ -1696,8 +1696,8 @@
   },
   {
     "path": "wiki/PUF_Model_EN.md",
-    "bytes": 26690,
-    "sha256": "e7d4cce794453197717bbe3e9f0060edbe5bb7fb158b166c1045a12b2bddbee3"
+    "bytes": 31546,
+    "sha256": "48dabed3b2f6b3123cc610b8d59ce9f8919027164e786bcc3920da11c46aa0f0"
   },
   {
     "path": "wiki/PUF_Module1_EN.md",
