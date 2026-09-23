@@ -1,0 +1,16 @@
+target,construct_id,endpoint,cohort,experimental_percent,delta_pp,selected_decrease_threshold_pp,selected_increase_threshold_pp,true_class,predicted_class,same_position_training_count,algorithm,feature_family,actual_CP_count,status,matched_control_percent,correct
+P9-GNS,25_p9_gns,C295,combined_PR,30.5515,-1.0337500000000055,10.0,0.0,not_decrease,not_decrease,10,Ridge,distal_PR,1027.0,ok,31.585250000000006,True
+P9-GNS,25_p9_gns,C388,combined_PR,62.6795,-4.401499999999992,10.0,2.5,within_selected_interval,decrease,10,LR,local_PR,553.0,ok,67.08099999999999,False
+P9-GNS,25_p9_gns,C871,combined_PR,26.368,-30.6955,5.0,0.0,decrease,decrease,10,Ridge,full_PR,209.0,ok,57.0635,True
+P9-NPS,30_p9_nps,C295,combined_PR,25.52,-6.065250000000005,15.0,0.0,not_decrease,not_decrease,10,RBF,distal_PR,250.0,ok,31.585250000000006,True
+P9-NPS,30_p9_nps,C388,combined_PR,60.46,-6.620999999999988,12.5,2.5,within_selected_interval,within_selected_interval,10,LinearSVM,full_PR,250.0,ok,67.08099999999999,True
+P9-NPS,30_p9_nps,C871,combined_PR,20.388,-36.6755,2.5,0.0,decrease,decrease,10,Ridge,full_PR,105.0,ok,57.063500000000005,True
+P9-NTQ,32_p9_ntq,C295,combined_PR,23.0325,-8.552750000000003,20.0,0.0,not_decrease,not_decrease,10,LinearSVM,local_PR,250.0,ok,31.585250000000002,True
+P9-NTQ,32_p9_ntq,C388,combined_PR,62.9785,-4.102499999999987,20.0,2.5,within_selected_interval,within_selected_interval,10,Ridge,local_PR,553.0,ok,67.08099999999999,True
+P9-NTQ,32_p9_ntq,C871,combined_PR,18.463,-38.6005,5.0,0.0,decrease,decrease,10,Ridge,full_PR,1045.0,ok,57.0635,True
+P8-GVE,p8_r6_gve,C295,combined_PR,25.223000000000003,-7.734999999999998,10.0,0.0,not_decrease,not_decrease,0,RBF,distal_PR,250.0,ok,32.958,True
+P8-GVE,p8_r6_gve,C388,combined_PR,65.8565,-6.704500000000014,20.0,2.5,within_selected_interval,within_selected_interval,0,Ridge,full_PR,888.0,ok,72.561,True
+P8-GVE,p8_r6_gve,C871,combined_PR,10.2275,-57.274,20.0,0.0,decrease,not_decrease,0,Ridge,full_PR,1045.0,ok,67.5015,False
+P4-R5-SNE+P7-R5-SNE,p4_r5_sne_plus_p7_r5_sne,C295,combined_PR,19.8035,-13.154499999999995,10.0,0.0,decrease,decrease,9,RF,local_PR,250.0,ok,32.958,True
+P4-R5-SNE+P7-R5-SNE,p4_r5_sne_plus_p7_r5_sne,C388,combined_PR,80.33500000000001,7.773999999999992,12.5,2.5,increase,increase,9,LDA,PR_reference_interface,58.0,ok,72.56100000000002,True
+P4-R5-SNE+P7-R5-SNE,p4_r5_sne_plus_p7_r5_sne,C871,combined_PR,32.597500000000004,-34.90399999999999,25.0,0.0,decrease,decrease,9,ET,distal_PR,715.0,ok,67.5015,True

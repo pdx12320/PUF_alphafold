@@ -1,0 +1,5 @@
+id,dataset,validation,model,score,prediction,correct,n_train,construct,true_work
+20,PUF12_24,fixed4,RF_CP_structure9,0.8544082467423467,1,1,20,1_130_r123_r567_r567_r67_no_loop_8,1
+22,PUF12_24,fixed4,RF_CP_structure9,0.1719017061992383,0,1,20,3_130_r123_r567_r56loop7_r678,0
+25,PUF12_24,fixed4,RF_CP_structure9,0.6797947757273309,1,0,20,7_130_r123_r567_r567_rloop67loop8,0
+26,PUF12_24,fixed4,RF_CP_structure9,0.4305203249159085,0,1,20,8_130_r123_r567_r567_r6loop7loop8,0
