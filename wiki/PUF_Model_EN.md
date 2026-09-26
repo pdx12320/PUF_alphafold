@@ -146,6 +146,14 @@ The measured editing profiles identify backgrounds for subsequent non-TRM engine
 
 Source records: [fixed-panel protocol and reconstruction](../research/fixed_test_20260923/README.md), [all fifteen test predictions](../research/fixed_test_20260923/model2/predictions.csv), and endpoint-specific training splits and selected models in the [result directory](../research/fixed_test_20260923/model2/). Earlier individual-construct cross-validation outputs are retained in the archive and are not used for the test metrics shown here.
 
+## Quantitative extension: protein language model prediction and ranking
+
+A later sequence-representation analysis complements Model 2 by predicting continuous editing fractions at C295, C388 and C871 and ranking constructs with the fixed specificity score \(S=C388-(C295+C871)/2\). The selected **M3a_global_Ridge** model reached a mean out-of-fold MAE of **9.979 pp**, compared with **10.619 pp** for the CP Ridge baseline and **11.244 pp** for the no-feature mean baseline.
+
+The ranking analysis is reported separately from endpoint MAE. On the 66 constructs with complete three-site labels, the strongest reported S rank correlation was **Spearman 0.490** for B1_Ridge; M3a_global_Ridge reached **0.348**, with **NDCG@5 0.867** and **NDCG@10 0.893**. Four of the five highlighted favourable TRMs appeared within its predicted top 13. A separate C388 work classifier reached **AP 0.778**.
+
+[Full protein-language-model result folder →](plm_results_20260926/README.md)
+
 ## Model 3. Exploring non-TRM sequence space with AiCE
 
 ### Extending design beyond RNA recognition
