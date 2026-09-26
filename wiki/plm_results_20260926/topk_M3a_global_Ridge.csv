@@ -1,0 +1,3 @@
+K,n_candidates,NDCG,measured_S_topK,measured_C295_topK,measured_C388_topK,measured_C871_topK
+5,66,0.867,0.303,0.256,0.549,0.236
+10,66,0.893,0.307,0.278,0.610,0.327
