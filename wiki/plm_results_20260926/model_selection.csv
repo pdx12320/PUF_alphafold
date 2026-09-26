@@ -1,0 +1,2 @@
+criterion,selected_model,mean_MAE_pp,CP_baseline_model,CP_baseline_mean_MAE_pp,no_feature_baseline_mean_MAE_pp
+mean_OOF_MAE_across_C295_C388_C871,M3a_global_Ridge,9.979,M0_Ridge,10.619,11.244
