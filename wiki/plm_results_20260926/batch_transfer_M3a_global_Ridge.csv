@@ -1,0 +1,9 @@
+scheme,task,n,MAE_pp,Spearman
+batch1_to_batch2,C295,41,8.454,0.299
+batch1_to_batch2,C388,51,10.471,0.337
+batch1_to_batch2,C871,51,11.740,0.215
+batch1_to_batch2,S,41,9.056,0.278
+batch2_to_batch1,C295,25,9.958,0.251
+batch2_to_batch1,C388,28,14.268,0.571
+batch2_to_batch1,C871,30,18.929,0.139
+batch2_to_batch1,S,25,10.072,0.147
